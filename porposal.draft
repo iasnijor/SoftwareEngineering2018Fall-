@@ -1,0 +1,45 @@
+Resource Reservation/Scheduling System
+Group 1
+https://github.com/iasnijor/SoftwareEngineering2018Fall-
+
+Rojen Shahi (Sophomore/Leader) 
+Programming, Documentation, Management
+	
+Sean Keyse (Senior)
+Design and Programming, Database
+
+Bikash Thapa (Sophomore)
+Algorithm Development, Front-End design, Documentation
+————————————————————-————————————————————-————————————————
+
+Problem:
+	Currently, there is no centralized way for scheduling rooms in the Math department as well as no efficient scheduling system for students and tutors in the MAC. Rooms need to be reserved a lot of time for tutoring and other general purposes like conferences, meeting etc. throughout the department of Math and Stat. As of now, the reservation and scheduling system is very ancient: if you need a room, you have to put a piece of paper on the door saying you need it, or if you need one for tutoring you have to walk around the center and look for an open room, given that the tutor is available—the system is literally traditional and based upon paper work. Because of this, valuable time of all parties—tutors, students, staffs—is wasted while trying to do even the simple tasks of the department, which ultimately results in deficiency in the productivity. 
+
+Description: 
+	Our project’s goal will be to solve the problem that currently exist. The project, when completed, will be used to reserve the rooms instantly without any time conflict, and students and tutors will be able to see, navigate, and set up the appointments with their tutors with ease, while tutors as well will be able to set up their tutoring availability instantly. Our main focus on the project will be efficiency and speed so that everyone can save their time while not losing focus on their works. 
+	The project will be divided into two parts: room reservation system & scheduling system. 
+Room Reservation System for the Department of Math & Stat and the Math Assistance Center: This system will display all of the rooms’ name and their number in real time. A user will be able to see the room name, room number, availability condition(available/not-available), availability time(date + time), and room capacity. The system will let the user click on RESERVE button (if the room is available, of course) and he/she will be able to book the room in real time for the duration that they're requesting. More importantly, the system will be constantly updating every seconds so that one person’s request won’t conflict with the same request of other person.
+Tutors/Students Scheduling System for MAC: Using this system, a tutor will be able to enter his availability for either a particular day or for the whole week/month and his/her attributes(courses that they can tutor for eg Calculus I, Geometry, Liner Algebra etc.). An administrator will then be able to schedule tutors for sessions with students based on the student's requested time and subject as well as the tutor's availability and preferred subjects. It also deals with different limitations of the tutors maximum amount of time they're able to work in a week and the tutor's preference of which time of day they prefer working.
+Of course, our system won’t be limited to the above mention information. Within our system, we will have to incorporate other critical information like user policy, privacy, contact info, connection with the social media and related websites, university policy, and management and protection of information or data within the system. We will be constantly working alongside the department officials to ensure that the project is as systematic as possible. In order to do so, a constant feedback loop from user’s, administrator’s, and developer’s perspective will be kept on higher priority.
+
+Plan of Work:
+	Our plan over the next few weeks starts by obtaining basic data required for the project like a list of the rooms that will be available for reservations as well as information on the specifics of what exactly each type of user should be able to do as opposed to what actions and information should be limited to an administrator.  After getting the rest of the information that we need, we are going to design the database to hold the necessary information for the different users, the part for requesting rooms, and the part for scheduling tutors. Upon verifying all of our information with the customer and getting our database started, we will have to go through and list out the requirements that we can think of for each part and then ranking them based on what our group and the customer think are the most critical features.
+Steps & Development:
+Gather data from the Math Department and MAC.
+Learn and implement SQL to design an effective database system to store different data like room information, time shifts, tutor qualification etc.
+Design following algorithms (using JAVA) to develop the system:
+retrieve data from the database and update the database,
+Displaying accurate info based on what time the user is viewing the system,
+Get input (personal information, attributes etc.) from the user and store in the right place in the database, updating the system accordingly,
+Manipulate and update data based on what users’s actions- reservation, cancelation, preview etc.
+Algorithm/encryption system to protect the privacy (personal info, passwords etc.) of the users,
+Use sorting algorithms to manage database so that it’s easier for users to view and use the information at once,
+Use the time package of java to integrate the status of database in real time.
+Use JavaFX to build required GUIs: display, forms, etc.
+4) Implement and test the system, make correction and improvement as required.
+ 
+Technicality Requirements: 
+	Java, SQL, Netbeans, Oracle SQL developer/Microsoft Access, HTML, Javascript, AJAX, GitHub, Google Code Archive (We might have to add more on the list as per the requirement). 
+
+Duration: 
+	With the current information and our work plan, it looks like the project is doable within two months period. However, for the current plan, we have not consider the integration of our system with Drupal. But if we finish the project earlier in timely fashion, we definitely plan to do that too.
