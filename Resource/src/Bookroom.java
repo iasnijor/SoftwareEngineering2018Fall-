@@ -4,10 +4,17 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 import java.awt.*;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.*;
 import javax.swing.event.*;
 import java.text.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,9 +30,41 @@ public class Bookroom extends javax.swing.JFrame {
     /**
      * Creates new form Book
      */
-    public Bookroom() {
+    File file = new File("./ScheduleSystem.db");
+    
+    public Bookroom() throws ClassNotFoundException, SQLException {
+        Class.forName("org.sqlite.JDBC");
+        
+        Connection connection = DriverManager.getConnection(DB_NAME);
+        
+        statement = connection.createStatement();
+        
         initComponents();
+        
+        System.out.println(jSpinner1.getValue());
+        System.out.println(jSpinner2.getValue());
+        
+        
+        //jSpinner1.setValue("10");
+        //jSpinner2.setValue("Lab 214");
+        
     }
+    
+    public Bookroom(String time, String room) throws ClassNotFoundException, SQLException {
+        Class.forName("org.sqlite.JDBC");
+        
+        Connection connection = DriverManager.getConnection(DB_NAME);
+        
+        statement = connection.createStatement();
+
+        initComponents();
+        
+        jSpinner1.setValue(time);
+        jSpinner2.setValue(room);
+    }
+    private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
+    // Initializing the statement that's declared above
+    public static Statement statement;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,7 +118,7 @@ public class Bookroom extends javax.swing.JFrame {
             }
         });
 
-        jSpinner2.setModel(new javax.swing.SpinnerListModel(new String[] {"Conference Small", "Conference Suite", "Conference 524", "Lab 214", "Lab 403", "Lab  414  "}));
+        jSpinner2.setModel(new javax.swing.SpinnerListModel(new String[] {"Conference Small", "Conference Suite", "Conference 524", "Lab 214", "Lab 403", "Lab 414"}));
 
         jLabel5.setText("Name");
 
@@ -100,31 +139,33 @@ public class Bookroom extends javax.swing.JFrame {
                 .addGap(181, 181, 181)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(77, 77, 77))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(72, 72, 72)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(72, 72, 72)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(72, 72, 72)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(152, 152, 152)))
+                        .addGap(152, 152, 152))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGap(106, 106, 106)
+                            .addComponent(jSpinner2))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(77, 77, 77))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2))
+                                    .addGap(68, 68, 68)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(101, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -153,7 +194,7 @@ public class Bookroom extends javax.swing.JFrame {
                     .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(20, 20, 20)
@@ -199,19 +240,32 @@ public class Bookroom extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Name = jTextField2.getText();
         String Contact= jTextField3.getText();
-        String Event= jTextField1.getText();
+        String myEvent= jTextField1.getText();
         Object Room= jSpinner2.getValue();
         Room=Room.toString();
-        Object Time =jSpinner1.getValue();
-         Time= Time.toString();
+        int Time = Integer.parseInt(jSpinner1.getValue().toString());
+         //Time= Time.toString();
+        try {
+        myEvent myevent = new myEvent(jSpinner2.getValue().toString() , Time , Name, Contact, myEvent);
+            myevent.save(statement);
+        } catch (SQLException ex) {
+            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.out.println(Name);
         System.out.println(Contact);
         System.out.println(Room);
-        System.out.println(Event);
-         System.out.println(Time);
-         Bookroom.this.setVisible(false);
-      Resource room= new Resource();
-        room.setVisible(true);
+        System.out.println(myEvent);
+        System.out.println(Time);
+        Bookroom.this.setVisible(false);
+//        Resource room;
+//        try {
+//            room = new Resource();
+//            room.setVisible(true);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -220,9 +274,16 @@ public class Bookroom extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-       Bookroom.this.setVisible(false);
-      Resource room= new Resource();
-        room.setVisible(true);
+      Bookroom.this.setVisible(false);
+//      Resource room;
+//        try {
+//            room = new Resource();
+//            room.setVisible(true);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -255,7 +316,13 @@ public class Bookroom extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Bookroom().setVisible(true);
+            try {
+                new Bookroom().setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+            }
            
         
         });
