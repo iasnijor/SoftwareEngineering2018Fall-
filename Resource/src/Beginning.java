@@ -1,5 +1,8 @@
 
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -125,8 +128,15 @@ public class Beginning extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Beginning.this.setVisible(false);
-        Resource room= new Resource();
-        room.setVisible(true);
+        Resource room;
+        try {
+            room = new Resource();
+            room.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Beginning.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Beginning.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked

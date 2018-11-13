@@ -1,3 +1,13 @@
+
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,9 +23,23 @@ public class Resource extends javax.swing.JFrame {
     /**
      * Creates new form Resource
      */
-    public Resource() {
+    
+    File file = new File("./ScheduleSystem.db");
+    
+    public Resource() throws ClassNotFoundException, SQLException {
         initComponents();
+        
+        Class.forName("org.sqlite.JDBC");
+        
+        Connection connection = DriverManager.getConnection(DB_NAME);
+        
+        statement = connection.createStatement();
+        getEvents(statement);
     }
+    
+    private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
+    // Initializing the statement that's declared above
+    public static Statement statement;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,8 +63,8 @@ public class Resource extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"COnference Small", null, null, null, null, null, null, null, null, null},
-                {"Conference Executive Suite 510", null, null, null, null, null, null, null, null, null},
+                {"Conference Small", null, null, null, null, null, null, null, null, null},
+                {"Conference Suite", null, null, null, null, null, null, null, null, null},
                 {"Conference 524", null, null, null, null, null, null, null, null, null},
                 {"Lab 214", null, null, null, null, null, null, null, null, null},
                 {"Lab 403", null, null, null, null, null, null, null, null, null},
@@ -126,16 +150,42 @@ public class Resource extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Resource.this.setVisible(false);
+        //Resource.this.setVisible(false);
         Beginning begin = new Beginning();
         begin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Resource.this.setVisible(false);
-        Bookroom room=new Bookroom();
-        room.setVisible(true);
+        //Resource.this.setVisible(false);
+        Bookroom room;
+        try {
+            String selectedTime = jTable1.getColumnName(jTable1.getSelectedColumn());
+            String selectedRoom = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            if (jTable1.getSelectedRow() > -1 ) {
+                String[] parts = selectedTime.split(":");
+                if (jTable1.getSelectedColumn() > 0) {
+                    System.out.println(parts[0] + " " + selectedRoom);
+                    int i = jTable1.getSelectedColumn();
+                    int j = jTable1.getSelectedRow();
+                    System.out.println(i + " " + j);
+                    room = new Bookroom(parts[0], selectedRoom);
+                    room.setVisible(true);        
+                }
+                else {
+                    room = new Bookroom("8", selectedRoom);
+                    room.setVisible(true);
+                }     
+            }
+            else {
+                room = new Bookroom();
+                room.setVisible(true);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -168,11 +218,37 @@ public class Resource extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Resource().setVisible(true);
+                try {
+                    new Resource().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
+    public void getEvents(Statement statement) throws SQLException {
+        
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM event");
+        while (resultSet.next()) {
+            for (int i = 0; i < jTable1.getRowCount(); i++) { // 0-5
+                for (int j = 0; j < jTable1.getColumnCount(); j++) { // 0-9
+
+                String columntime = jTable1.getColumnName(j);
+                
+                String[] parts = columntime.split(":");
+                
+                if (jTable1.getValueAt(i, 0).toString().equals(resultSet.getString("room")) && parts[0].equals(resultSet.getString("time")))
+                    jTable1.setValueAt("X", i, j);
+                }
+            }   
+        }
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
