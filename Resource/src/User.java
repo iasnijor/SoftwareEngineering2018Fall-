@@ -3,12 +3,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Sean-
@@ -27,9 +21,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.level = level.toLowerCase();
-        
-        
+        this.level = level.toLowerCase();        
     }
     
     public void save(Statement statement) throws SQLException {
@@ -77,4 +69,9 @@ public class User {
     public String getName() {
         return name;
     }
+    
+    public String getLevel() {
+        return level.toLowerCase();
+    }
+    
 }

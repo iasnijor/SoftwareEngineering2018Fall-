@@ -46,14 +46,6 @@ public class Bookroom extends javax.swing.JFrame {
         initComponents();
         this.day = Day;
         jLabel7.setText("Day: " + day);
-        
-        //System.out.println(jSpinner1.getValue());
-        //System.out.println(jSpinner2.getValue());
-        
-        
-        //jSpinner1.setValue("10");
-        //jSpinner2.setValue("Lab 214");
-        
     }
     
     public Bookroom(String time, String room, int Day) throws ClassNotFoundException, SQLException {
@@ -83,16 +75,9 @@ public class Bookroom extends javax.swing.JFrame {
         statement = connection.createStatement();
         
         initComponents();
+        jTextField2.setText(user.getName());
         this.day = Day;
         jLabel7.setText("Day: " + day);
-        
-        //System.out.println(jSpinner1.getValue());
-        //System.out.println(jSpinner2.getValue());
-        
-        
-        //jSpinner1.setValue("10");
-        //jSpinner2.setValue("Lab 214");
-        
     }
     
     public Bookroom(String time, String room, int Day, User user) throws ClassNotFoundException, SQLException {
@@ -105,7 +90,8 @@ public class Bookroom extends javax.swing.JFrame {
         statement = connection.createStatement();
 
         initComponents();
-        
+        System.out.println(user.getName());
+        jTextField2.setText(user.getName());
         jSpinner1.setValue(time);
         jSpinner2.setValue(room);
         this.day = Day;
@@ -342,8 +328,14 @@ public class Bookroom extends javax.swing.JFrame {
       Bookroom.this.setVisible(false);
       Resource room;
         try {
-            room = new Resource();
-            room.setVisible(true);
+            if (signedIn) {
+                room = new Resource(user);
+                room.setVisible(true);
+            }
+            else {
+                room = new Resource();
+                room.setVisible(true);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -388,10 +380,7 @@ public class Bookroom extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-        
         });
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
