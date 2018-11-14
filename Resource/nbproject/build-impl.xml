@@ -276,7 +276,8 @@ is divided into following sections:
               <include name="*"/> 
             </dirset> 
           </src>  
-                  <classpath> 
+          <withKotlin/>
+          <classpath> 
             <path path="@{classpath}"/> 
           </classpath>  
           <compilerarg line="${endorsed.classpath.cmd.line.arg}"/>  

@@ -25,6 +25,9 @@ public class Resource extends javax.swing.JFrame {
      */
     
     File file = new File("./ScheduleSystem.db");
+    User user;   
+    private boolean signedIn;
+    
     
     public Resource() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -36,6 +39,29 @@ public class Resource extends javax.swing.JFrame {
         statement = connection.createStatement();
         getEvents(statement);
     }
+    
+    public Resource(User user) throws ClassNotFoundException, SQLException {
+        initComponents();
+        signedIn = true;
+        
+        try {
+            Class.forName("org.sqlite.JDBC");
+            
+            Connection connection = DriverManager.getConnection(DB_NAME);
+            statement = connection.createStatement();
+            
+            
+            getEvents(statement);
+            this.user = user;
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }
+   
     
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
     // Initializing the statement that's declared above
@@ -66,7 +92,16 @@ public class Resource extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
+
+        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Conference Small", null, null, null, null, null, null, null, null, null},
@@ -125,6 +160,23 @@ public class Resource extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Math Department Room Schedule");
 
+        jDayChooser1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jDayChooser1FocusLost(evt);
+            }
+        });
+        jDayChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDayChooser1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jDayChooser1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jDayChooser1MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -156,8 +208,8 @@ public class Resource extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDayChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(121, 121, 121))
         );
@@ -180,35 +232,67 @@ public class Resource extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //Resource.this.setVisible(false);
-        Beginning begin = new Beginning();
-        begin.setVisible(true);
+        
+        Resource.this.setVisible(false);
+        
+        if (!signedIn) {
+            Beginning begin = new Beginning();
+            begin.setVisible(true);
+        }
+        else {
+            Beginning begin = new Beginning(user);
+            begin.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        //Resource.this.setVisible(false);
+        Resource.this.setVisible(false);
         Bookroom room;
+        
+        System.out.println(jDayChooser1.getDay());
+        
         try {
             String selectedTime = jTable1.getColumnName(jTable1.getSelectedColumn());
             String selectedRoom = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            
             if (jTable1.getSelectedRow() > -1 ) {
                 String[] parts = selectedTime.split(":");
                 if (jTable1.getSelectedColumn() > 0) {
-                    System.out.println(parts[0] + " " + selectedRoom);
-                    int i = jTable1.getSelectedColumn();
-                    int j = jTable1.getSelectedRow();
-                    System.out.println(i + " " + j);
-                    room = new Bookroom(parts[0], selectedRoom);
-                    room.setVisible(true);        
+                    //System.out.println(parts[0] + " " + selectedRoom);
+                    //int i = jTable1.getSelectedColumn();
+                    //int j = jTable1.getSelectedRow();
+                    //System.out.println(i + " " + j);
+                    if (signedIn) {
+                        room = new Bookroom(parts[0], selectedRoom, jDayChooser1.getDay(), user);
+                        room.setDay(jDayChooser1.getDay());
+                        room.setVisible(true);        
+                    }
+                    else {
+                        room = new Bookroom(parts[0], selectedRoom, jDayChooser1.getDay());
+                        room.setDay(jDayChooser1.getDay());
+                        room.setVisible(true);
+                    }
+                }
+                else if (signedIn) {
+                    room = new Bookroom("8", selectedRoom, jDayChooser1.getDay(), user);
+                    room.setDay(jDayChooser1.getDay());
+                    room.setVisible(true);
                 }
                 else {
-                    room = new Bookroom("8", selectedRoom);
+                    room = new Bookroom("8", selectedRoom, jDayChooser1.getDay());
+                    room.setDay(jDayChooser1.getDay());
                     room.setVisible(true);
-                }     
+                }
+            }
+            else if (signedIn) {
+                room = new Bookroom(jDayChooser1.getDay(), user);
+                room.setDay(jDayChooser1.getDay());
+                room.setVisible(true);
             }
             else {
-                room = new Bookroom();
+                room = new Bookroom(jDayChooser1.getDay());
+                room.setDay(jDayChooser1.getDay());
                 room.setVisible(true);
             }
         } catch (ClassNotFoundException ex) {
@@ -218,6 +302,69 @@ public class Resource extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jDayChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDayChooser1MouseClicked
+        try {
+            // TODO add your handling code here:
+            getEvents(statement);
+        } catch (SQLException ex) {
+            Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jDayChooser1MouseClicked
+
+    private void jDayChooser1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDayChooser1MousePressed
+        try {
+            // TODO add your handling code here:
+
+            getEvents(statement);
+            System.out.println("day mouse pressed");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jDayChooser1MousePressed
+
+    private void jDayChooser1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDayChooser1FocusLost
+        try {
+            // TODO add your handling code here:
+
+            getEvents(statement);
+            System.out.println("day focus lost");
+        } catch (SQLException ex) {
+            Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jDayChooser1FocusLost
+
+    
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        System.out.println("panel click");
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        System.out.println("panel press");
+        try {
+            getEvents(statement);
+        } catch (SQLException ex) {
+            Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jDayChooser1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDayChooser1MouseReleased
+        
+        System.out.println("hi");
+        try {
+            // TODO add your handling code here:
+            getEvents(statement);
+        } catch (SQLException ex) {
+            Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jDayChooser1MouseReleased
+
+    private void actionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+        getEvents(statement);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -258,11 +405,18 @@ public class Resource extends javax.swing.JFrame {
             }
         });
     }
+    
+    public int getDay() {
+        return jDayChooser1.getDay();
+    }
 
     public void getEvents(Statement statement) throws SQLException {
         
         ResultSet resultSet = statement.executeQuery("SELECT * FROM event");
         while (resultSet.next()) {
+            //System.out.println(jDayChooser1.getDay());
+            //if (jDayChooser1.getDay() != resultSet.getInt("day")) 
+             //       continue;
             for (int i = 0; i < jTable1.getRowCount(); i++) { // 0-5
                 for (int j = 0; j < jTable1.getColumnCount(); j++) { // 0-9
 
@@ -270,12 +424,32 @@ public class Resource extends javax.swing.JFrame {
                 
                 String[] parts = columntime.split(":");
                 
-                if (jTable1.getValueAt(i, 0).toString().equals(resultSet.getString("room")) && parts[0].equals(resultSet.getString("time")))
-                    jTable1.setValueAt("X", i, j);
+                int day = jDayChooser1.getDay();
+                
+                //System.out.println("CAL: " + day + " DB: " + resultSet.getInt("day"));
+                //System.out.println(day == resultSet.getInt("day"));
+                //System.out.println(jTable1.getValueAt(i, 0).equals(resultSet.getInt("room")));
+                //System.out.println(parts[0].equals(resultSet.getString("time")));
+                if (jTable1.getValueAt(i, 0).equals(resultSet.getString("room")) && parts[0].equals(resultSet.getString("time"))) {
+                    
+                    if (day == resultSet.getInt("day")) {
+                        jTable1.setValueAt("X", i, j);
+                        System.out.println("FOUND");
+                    }
+                    else 
+                        jTable1.setValueAt("", i, j);
+                }
+            
+                    
+               // else 
+                    //jTable1.setValueAt("", i, j);
                 }
             }   
         }
+            
+
     }
+
     
     
     
