@@ -3,19 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Resource.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Beginning.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/TutorBook.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Tutor.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Bookroom.java</file>
-=======
+            <file>file:/C:/Users/Sean-/hi/SoftwareEngineering2018Fall-/Resource/src/Registration.java</file>
             <file>file:/C:/Users/Sean-/hi/SoftwareEngineering2018Fall-/Resource/src/Beginning.java</file>
             <file>file:/C:/Users/Sean-/hi/SoftwareEngineering2018Fall-/Resource/src/Room.java</file>
             <file>file:/C:/Users/Sean-/hi/SoftwareEngineering2018Fall-/Resource/src/myEvent.java</file>
+            <file>file:/C:/Users/Sean-/hi/SoftwareEngineering2018Fall-/Resource/src/SignIn.java</file>
             <file>file:/C:/Users/Sean-/hi/SoftwareEngineering2018Fall-/Resource/src/Bookroom.java</file>
             <file>file:/C:/Users/Sean-/hi/SoftwareEngineering2018Fall-/Resource/src/Resource.java</file>
->>>>>>> 928debdaabdf3d8f8a7f520faabe8b28a10547ef
+            <file>file:/C:/Users/Sean-/hi/SoftwareEngineering2018Fall-/Resource/src/Tutor.java</file>
+            <file>file:/C:/Users/Sean-/hi/SoftwareEngineering2018Fall-/Resource/src/User.java</file>
         </group>
     </open-files>
 </project-private>
