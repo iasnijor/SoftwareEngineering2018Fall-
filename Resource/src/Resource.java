@@ -60,11 +60,11 @@ public class Resource extends javax.swing.JFrame {
         popupMenu1 = new java.awt.PopupMenu();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jDayChooser1 = new com.toedter.calendar.JDayChooser();
+        Table = new javax.swing.JTable();
+        BackButton = new javax.swing.JButton();
+        BookButton = new javax.swing.JButton();
+        MathLabel = new javax.swing.JLabel();
+        Calender = new com.toedter.calendar.JDayChooser();
 
         jTextField2.setText("jTextField2");
 
@@ -72,6 +72,8 @@ public class Resource extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -81,8 +83,10 @@ public class Resource extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Table.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Table.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        Table.setForeground(new java.awt.Color(0, 0, 0));
+        Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Conference Small", null, null, null, null, null, null, null, null, null},
                 {"Conference Suite", null, null, null, null, null, null, null, null, null},
@@ -110,52 +114,46 @@ public class Resource extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setToolTipText("");
-        jTable1.setMinimumSize(new java.awt.Dimension(155, 295));
-        jTable1.setPreferredSize(new java.awt.Dimension(525, 300));
-        jTable1.setRowHeight(50);
-        jTable1.setRowSelectionAllowed(false);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(20);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(150);
+        Table.setToolTipText("");
+        Table.setMinimumSize(new java.awt.Dimension(155, 295));
+        Table.setPreferredSize(new java.awt.Dimension(525, 300));
+        Table.setRowHeight(50);
+        Table.setRowSelectionAllowed(false);
+        Table.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(Table);
+        if (Table.getColumnModel().getColumnCount() > 0) {
+            Table.getColumnModel().getColumn(0).setMinWidth(20);
+            Table.getColumnModel().getColumn(0).setPreferredWidth(150);
+            Table.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.setBackground(new java.awt.Color(153, 0, 0));
+        BackButton.setForeground(new java.awt.Color(0, 0, 0));
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Book");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BookButton.setBackground(new java.awt.Color(0, 0, 0));
+        BookButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        BookButton.setForeground(new java.awt.Color(153, 0, 0));
+        BookButton.setText("Book");
+        BookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BookButtonActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Math Department Room Schedule");
+        MathLabel.setBackground(new java.awt.Color(153, 0, 0));
+        MathLabel.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        MathLabel.setForeground(new java.awt.Color(0, 0, 0));
+        MathLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MathLabel.setText("Math Department Room Schedule");
 
-        jDayChooser1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jDayChooser1FocusLost(evt);
-            }
-        });
-        jDayChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDayChooser1MouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jDayChooser1MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jDayChooser1MouseReleased(evt);
-            }
-        });
+        Calender.setBackground(new java.awt.Color(255, 255, 255));
+        Calender.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,44 +161,46 @@ public class Resource extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                .addComponent(jDayChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BackButton)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(250, 250, 250)
+                                .addComponent(MathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Calender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
+                .addGap(437, 437, 437))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(553, 553, 553))
+                .addGap(483, 483, 483)
+                .addComponent(BookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(BackButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDayChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MathLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Calender, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1206, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +210,7 @@ public class Resource extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         Resource.this.setVisible(false);
         
@@ -222,42 +222,42 @@ public class Resource extends javax.swing.JFrame {
             Beginning begin = new Beginning(user);
             begin.setVisible(true);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookButtonActionPerformed
         // TODO add your handling code here:
         Resource.this.setVisible(false);
         Bookroom room;
         
-        System.out.println(jDayChooser1.getDay());
+        System.out.println(Calender.getDay());
         
         try {
-            String selectedTime = jTable1.getColumnName(jTable1.getSelectedColumn());
-            String selectedRoom = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
+            String selectedTime = Table.getColumnName(Table.getSelectedColumn());
+            String selectedRoom = Table.getValueAt(Table.getSelectedRow(), 0).toString();
             
-            if (jTable1.getSelectedRow() > -1 ) {
+            if (Table.getSelectedRow() > -1 ) {
                 String[] parts = selectedTime.split(":");
-                if (jTable1.getSelectedColumn() > 0) {
+                if (Table.getSelectedColumn() > 0) {
                     if (signedIn) {
-                        room = new Bookroom(parts[0], selectedRoom, jDayChooser1.getDay(), this.user);
-                        room.setDay(jDayChooser1.getDay());
+                        room = new Bookroom(parts[0], selectedRoom, Calender.getDay(), this.user);
+                        room.setDay(Calender.getDay());
                         room.setVisible(true);        
                     }
                     else {
-                        room = new Bookroom(parts[0], selectedRoom, jDayChooser1.getDay());
-                        room.setDay(jDayChooser1.getDay());
+                        room = new Bookroom(parts[0], selectedRoom, Calender.getDay());
+                        room.setDay(Calender.getDay());
                         room.setVisible(true);
                     }
                 }
                 else {
                     if (signedIn) {
-                        room = new Bookroom("8", selectedRoom, jDayChooser1.getDay(), user);
-                        room.setDay(jDayChooser1.getDay());
+                        room = new Bookroom("8", selectedRoom, Calender.getDay(), user);
+                        room.setDay(Calender.getDay());
                         room.setVisible(true);
                     }
                     else {
-                        room = new Bookroom("8", selectedRoom, jDayChooser1.getDay());
-                        room.setDay(jDayChooser1.getDay());
+                        room = new Bookroom("8", selectedRoom, Calender.getDay());
+                        room.setDay(Calender.getDay());
                         room.setVisible(true);
                     } //bot else
                 } //top else 
@@ -265,13 +265,13 @@ public class Resource extends javax.swing.JFrame {
             
             else {
                 if (signedIn) {
-                    room = new Bookroom(jDayChooser1.getDay(), user);
-                    room.setDay(jDayChooser1.getDay());
+                    room = new Bookroom(Calender.getDay(), user);
+                    room.setDay(Calender.getDay());
                     room.setVisible(true);
                 }
                 else {
-                    room = new Bookroom(jDayChooser1.getDay());
-                    room.setDay(jDayChooser1.getDay());
+                    room = new Bookroom(Calender.getDay());
+                    room.setDay(Calender.getDay());
                     room.setVisible(true);
                 } //bot else
             } //top else
@@ -280,7 +280,7 @@ public class Resource extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BookButtonActionPerformed
 
     private void jDayChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDayChooser1MouseClicked
         try {
@@ -384,7 +384,7 @@ public class Resource extends javax.swing.JFrame {
     }
     
     public int getDay() {
-        return jDayChooser1.getDay();
+        return Calender.getDay();
     }
 
     public void getEvents(Statement statement) throws SQLException {
@@ -392,21 +392,21 @@ public class Resource extends javax.swing.JFrame {
         ResultSet resultSet = statement.executeQuery("SELECT * FROM event");
         
         while (resultSet.next()) {
-            for (int i = 0; i < jTable1.getRowCount(); i++) { // 0-5
-                for (int j = 0; j < jTable1.getColumnCount(); j++) { // 0-9
+            for (int i = 0; i < Table.getRowCount(); i++) { // 0-5
+                for (int j = 0; j < Table.getColumnCount(); j++) { // 0-9
 
-                    String columntime = jTable1.getColumnName(j);
+                    String columntime = Table.getColumnName(j);
                     String[] parts = columntime.split(":");
                 
-                    int day = jDayChooser1.getDay();
+                    int day = Calender.getDay();
                 
-                    if (jTable1.getValueAt(i, 0).equals(resultSet.getString("room")) && parts[0].equals(resultSet.getString("time"))) {                    
+                    if (Table.getValueAt(i, 0).equals(resultSet.getString("room")) && parts[0].equals(resultSet.getString("time"))) {                    
                         if (day == resultSet.getInt("day")) {
-                            jTable1.setValueAt("X", i, j);
+                            Table.setValueAt("X", i, j);
                             //System.out.println("FOUND");
                         }
                         else 
-                            jTable1.setValueAt("", i, j);
+                            Table.setValueAt("", i, j);
                     } //1st if
                 } //2nd for
             } //1st for
@@ -417,13 +417,13 @@ public class Resource extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDayChooser jDayChooser1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton BackButton;
+    private javax.swing.JButton BookButton;
+    private com.toedter.calendar.JDayChooser Calender;
+    private javax.swing.JLabel MathLabel;
+    private javax.swing.JTable Table;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private java.awt.PopupMenu popupMenu1;
     // End of variables declaration//GEN-END:variables

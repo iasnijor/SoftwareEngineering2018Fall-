@@ -26,13 +26,11 @@ public class Tutor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDayChooser2 = new com.toedter.calendar.JDayChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         TutorTable = new javax.swing.JTable();
         BackButton = new javax.swing.JButton();
         TutorLabel = new javax.swing.JLabel();
         ViewScheduleButton = new javax.swing.JButton();
-        TutorCalender = new com.toedter.calendar.JDayChooser();
         AddTutorButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,17 +89,13 @@ public class Tutor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BackButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(332, Short.MAX_VALUE)
-                        .addComponent(TutorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104)))
-                .addComponent(TutorCalender, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(BackButton)
+                .addContainerGap(1237, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(332, Short.MAX_VALUE)
+                .addComponent(TutorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(453, 453, 453))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AddTutorButton)
@@ -117,15 +111,10 @@ public class Tutor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BackButton)
-                        .addGap(29, 29, 29)
-                        .addComponent(TutorLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 33, Short.MAX_VALUE)
-                        .addComponent(TutorCalender, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BackButton)
+                .addGap(29, 29, 29)
+                .addComponent(TutorLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -196,11 +185,9 @@ public class Tutor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddTutorButton;
     private javax.swing.JButton BackButton;
-    private com.toedter.calendar.JDayChooser TutorCalender;
     private javax.swing.JLabel TutorLabel;
     private javax.swing.JTable TutorTable;
     private javax.swing.JButton ViewScheduleButton;
-    private com.toedter.calendar.JDayChooser jDayChooser2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
