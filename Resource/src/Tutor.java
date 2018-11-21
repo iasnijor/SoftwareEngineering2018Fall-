@@ -28,17 +28,17 @@ public class Tutor extends javax.swing.JFrame {
 
         jDayChooser2 = new com.toedter.calendar.JDayChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        ViewSchedule = new javax.swing.JButton();
-        jDayChooser3 = new com.toedter.calendar.JDayChooser();
-        AddTutor = new javax.swing.JButton();
+        TutorTable = new javax.swing.JTable();
+        BackButton = new javax.swing.JButton();
+        TutorLabel = new javax.swing.JLabel();
+        ViewScheduleButton = new javax.swing.JButton();
+        TutorCalender = new com.toedter.calendar.JDayChooser();
+        AddTutorButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TutorTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TutorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"", null},
                 {null, null},
@@ -57,32 +57,32 @@ public class Tutor extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setPreferredSize(new java.awt.Dimension(825, 200));
-        jTable1.setRowHeight(50);
-        jScrollPane1.setViewportView(jTable1);
+        TutorTable.setPreferredSize(new java.awt.Dimension(825, 200));
+        TutorTable.setRowHeight(50);
+        jScrollPane1.setViewportView(TutorTable);
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Tutor Scheduling System");
+        TutorLabel.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        TutorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TutorLabel.setText("Tutor Scheduling System");
 
-        ViewSchedule.setText("View Schedule");
-        ViewSchedule.addActionListener(new java.awt.event.ActionListener() {
+        ViewScheduleButton.setText("View Schedule");
+        ViewScheduleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewScheduleActionPerformed(evt);
+                ViewScheduleButtonActionPerformed(evt);
             }
         });
 
-        AddTutor.setText("Add Tutor");
-        AddTutor.addActionListener(new java.awt.event.ActionListener() {
+        AddTutorButton.setText("Add Tutor");
+        AddTutorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddTutorActionPerformed(evt);
+                AddTutorButtonActionPerformed(evt);
             }
         });
 
@@ -94,19 +94,19 @@ public class Tutor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addComponent(BackButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(332, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TutorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(104, 104, 104)))
-                .addComponent(jDayChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TutorCalender, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AddTutor)
+                .addComponent(AddTutorButton)
                 .addGap(356, 356, 356)
-                .addComponent(ViewSchedule)
+                .addComponent(ViewScheduleButton)
                 .addGap(346, 346, 346))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -119,45 +119,44 @@ public class Tutor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(BackButton)
                         .addGap(29, 29, 29)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(TutorLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 33, Short.MAX_VALUE)
-                        .addComponent(jDayChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TutorCalender, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddTutor)
-                    .addComponent(ViewSchedule))
+                    .addComponent(AddTutorButton)
+                    .addComponent(ViewScheduleButton))
                 .addGap(48, 48, 48))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         Tutor.this.setVisible(false);
         Beginning begin = new Beginning();
         begin.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void ViewScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewScheduleActionPerformed
+    private void ViewScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewScheduleButtonActionPerformed
         // TODO add your handling code here:
         Tutor.this.setVisible(false);
         TutorDayandTime dayandtime= new TutorDayandTime();
         dayandtime.setVisible(true);
         
-    }//GEN-LAST:event_ViewScheduleActionPerformed
+    }//GEN-LAST:event_ViewScheduleButtonActionPerformed
 
-    private void AddTutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTutorActionPerformed
+    private void AddTutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTutorButtonActionPerformed
     Tutor.this.setVisible(false);
         TutorAdd tutorbook = new TutorAdd();
         tutorbook.setVisible(true);
-    }//GEN-LAST:event_AddTutorActionPerformed
+    }//GEN-LAST:event_AddTutorButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,14 +194,14 @@ public class Tutor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddTutor;
-    private javax.swing.JButton ViewSchedule;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton AddTutorButton;
+    private javax.swing.JButton BackButton;
+    private com.toedter.calendar.JDayChooser TutorCalender;
+    private javax.swing.JLabel TutorLabel;
+    private javax.swing.JTable TutorTable;
+    private javax.swing.JButton ViewScheduleButton;
     private com.toedter.calendar.JDayChooser jDayChooser2;
-    private com.toedter.calendar.JDayChooser jDayChooser3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
 

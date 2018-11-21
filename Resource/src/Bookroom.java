@@ -45,7 +45,7 @@ public class Bookroom extends javax.swing.JFrame {
         
         initComponents();
         this.day = Day;
-        jLabel7.setText("Day: " + day);
+        DayLabel.setText("Day: " + day);
     }
     
     public Bookroom(String time, String room, int Day) throws ClassNotFoundException, SQLException {
@@ -58,11 +58,11 @@ public class Bookroom extends javax.swing.JFrame {
 
         initComponents();
         
-        jSpinner1.setValue(time);
-        jSpinner2.setValue(room);
+        TimeSpinner.setValue(time);
+        RoomSpinner.setValue(room);
         this.day = Day;
         
-        jLabel7.setText("Day: " + day);
+        DayLabel.setText("Day: " + day);
         
     }
     public Bookroom(int Day, User user) throws ClassNotFoundException, SQLException {
@@ -75,9 +75,9 @@ public class Bookroom extends javax.swing.JFrame {
         statement = connection.createStatement();
         
         initComponents();
-        jTextField2.setText(user.getName());
+        NameTextField.setText(user.getName());
         this.day = Day;
-        jLabel7.setText("Day: " + day);
+        DayLabel.setText("Day: " + day);
     }
     
     public Bookroom(String time, String room, int Day, User user) throws ClassNotFoundException, SQLException {
@@ -91,12 +91,12 @@ public class Bookroom extends javax.swing.JFrame {
 
         initComponents();
         System.out.println(user.getName());
-        jTextField2.setText(user.getName());
-        jSpinner1.setValue(time);
-        jSpinner2.setValue(room);
+        NameTextField.setText(user.getName());
+        TimeSpinner.setValue(time);
+        RoomSpinner.setValue(room);
         this.day = Day;
         
-        jLabel7.setText("Day: " + day);
+        DayLabel.setText("Day: " + day);
         
     }
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
@@ -114,62 +114,62 @@ public class Bookroom extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        RoomtextLabel = new javax.swing.JLabel();
+        RoomLabel = new javax.swing.JLabel();
+        EventTextField = new javax.swing.JTextField();
+        TimeLabel = new javax.swing.JLabel();
+        EventLabel = new javax.swing.JLabel();
+        TimeSpinner = new javax.swing.JSpinner();
+        SubmitButton = new javax.swing.JButton();
+        RoomSpinner = new javax.swing.JSpinner();
+        NameLabel = new javax.swing.JLabel();
+        ContactLabel = new javax.swing.JLabel();
+        NameTextField = new javax.swing.JTextField();
+        ContactTextField = new javax.swing.JTextField();
+        BackButton = new javax.swing.JButton();
+        DayLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Room Scheduler");
+        RoomtextLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        RoomtextLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RoomtextLabel.setText("Room Scheduler");
 
-        jLabel1.setText("Room");
+        RoomLabel.setText("Room");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        EventTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                EventTextFieldActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Time");
+        TimeLabel.setText("Time");
 
-        jLabel2.setText("Event");
+        EventLabel.setText("Event");
 
-        jSpinner1.setModel(new javax.swing.SpinnerListModel(new String[] {"8", "9", "10", "11", "12", "1", "2", "3", "4", "5"}));
+        TimeSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"8", "9", "10", "11", "12", "1", "2", "3", "4", "5"}));
 
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        SubmitButton.setText("Submit");
+        SubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SubmitButtonActionPerformed(evt);
             }
         });
 
-        jSpinner2.setModel(new javax.swing.SpinnerListModel(new String[] {"Conference Small", "Conference Suite", "Conference 524", "Lab 214", "Lab 403", "Lab 414"}));
+        RoomSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"Conference Small", "Conference Suite", "Conference 524", "Lab 214", "Lab 403", "Lab 414"}));
 
-        jLabel5.setText("Name");
+        NameLabel.setText("Name");
 
-        jLabel6.setText("Contact Number ");
+        ContactLabel.setText("Contact Number ");
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Day");
+        DayLabel.setText("Day");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -177,75 +177,75 @@ public class Bookroom extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(RoomtextLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jButton2)
+                .addComponent(BackButton)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(DayLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(NameLabel)
                                 .addGap(72, 72, 72)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(TimeLabel)
                                 .addGap(77, 77, 77)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(EventTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TimeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(ContactLabel)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel1)))
+                                        .addComponent(EventLabel)
+                                        .addComponent(RoomLabel)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSpinner2, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(RoomSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                    .addComponent(ContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(SubmitButton)
+                                .addGap(197, 197, 197)))
                         .addContainerGap(57, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jButton2)
+                .addComponent(BackButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(RoomtextLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NameLabel)
+                    .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ContactLabel)
+                    .addComponent(ContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(RoomSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RoomLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(EventTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EventLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(TimeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TimeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(46, 46, 46))
+                .addComponent(DayLabel)
+                .addGap(18, 18, 18)
+                .addComponent(SubmitButton)
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -278,20 +278,20 @@ public class Bookroom extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
         // TODO add your handling code here:
-        String Name = jTextField2.getText();
-        String Contact= jTextField3.getText();
-        String myEvent= jTextField1.getText();
-        Object Room= jSpinner2.getValue();
+        String Name = NameTextField.getText();
+        String Contact= ContactTextField.getText();
+        String myEvent= EventTextField.getText();
+        Object Room= RoomSpinner.getValue();
         Room=Room.toString();
         
         
-        int Time = Integer.parseInt(jSpinner1.getValue().toString());
+        int Time = Integer.parseInt(TimeSpinner.getValue().toString());
          //Time= Time.toString();
          
         try {
-        myEvent myevent = new myEvent(jSpinner2.getValue().toString() , Time , Name, Contact, myEvent, day);
+        myEvent myevent = new myEvent(RoomSpinner.getValue().toString() , Time , Name, Contact, myEvent, day);
             myevent.save(statement);
         } catch (SQLException ex) {
             Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
@@ -313,17 +313,17 @@ public class Bookroom extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SubmitButtonActionPerformed
 
     public void setDay(int day) {
         this.day = day;
     }
     
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void EventTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EventTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_EventTextFieldActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
       Bookroom.this.setVisible(false);
       Resource room;
@@ -341,7 +341,7 @@ public class Bookroom extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -384,22 +384,22 @@ public class Bookroom extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton BackButton;
+    private javax.swing.JLabel ContactLabel;
+    private javax.swing.JTextField ContactTextField;
+    private javax.swing.JLabel DayLabel;
+    private javax.swing.JLabel EventLabel;
+    private javax.swing.JTextField EventTextField;
+    private javax.swing.JLabel NameLabel;
+    private javax.swing.JTextField NameTextField;
+    private javax.swing.JLabel RoomLabel;
+    private javax.swing.JSpinner RoomSpinner;
+    private javax.swing.JLabel RoomtextLabel;
+    private javax.swing.JButton SubmitButton;
+    private javax.swing.JLabel TimeLabel;
+    private javax.swing.JSpinner TimeSpinner;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 
 }

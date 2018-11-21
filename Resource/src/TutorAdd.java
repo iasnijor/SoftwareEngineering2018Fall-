@@ -28,31 +28,31 @@ public class TutorAdd extends javax.swing.JFrame {
 
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         TutorAdd = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
+        TutorLabel = new javax.swing.JLabel();
+        NameLabel = new javax.swing.JLabel();
+        SubjectLabel = new javax.swing.JLabel();
+        NameTextfield = new javax.swing.JTextField();
+        ContactLabel = new javax.swing.JLabel();
+        ContactTextfield = new javax.swing.JTextField();
+        AvailableTimeLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         CalculusList = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        TuedayLis = new javax.swing.JScrollPane();
-        TuesdayList = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        ConfirmButton = new javax.swing.JButton();
+        MondayLabel = new javax.swing.JLabel();
+        TuesdayLabel = new javax.swing.JLabel();
+        WednesdayLabel = new javax.swing.JLabel();
+        FridayLabel = new javax.swing.JLabel();
+        ThursdayLabel = new javax.swing.JLabel();
+        TuedayPanel = new javax.swing.JScrollPane();
+        TuedayList = new javax.swing.JList<>();
+        WednesdayPanel = new javax.swing.JScrollPane();
         WednesdayList = new javax.swing.JList<>();
-        ThursdayLIst = new javax.swing.JScrollPane();
+        ThursdayPanel = new javax.swing.JScrollPane();
         ThursdayList = new javax.swing.JList<>();
-        FridayLIst = new javax.swing.JScrollPane();
+        FridayPanel = new javax.swing.JScrollPane();
         FridayList = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        MondayPanel = new javax.swing.JScrollPane();
         MondayList = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         AlgebraList1 = new javax.swing.JList<>();
@@ -60,49 +60,49 @@ public class TutorAdd extends javax.swing.JFrame {
         StatisticsList = new javax.swing.JList<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         PreCalcList = new javax.swing.JList<>();
-        Algebra = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        AlgebraLabel = new javax.swing.JLabel();
+        PreCalcLabel = new javax.swing.JLabel();
+        CalculusLabel = new javax.swing.JLabel();
+        StatisticsLabel = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel5.setText("Tutor Scheduling System");
+        TutorLabel.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        TutorLabel.setText("Tutor Scheduling System");
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setText("Name");
+        NameLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        NameLabel.setText("Name");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setText("Subject");
+        SubjectLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        SubjectLabel.setText("Subject");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        NameTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                NameTextfieldActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel3.setText("Contact");
+        ContactLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        ContactLabel.setText("Contact");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        ContactTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                ContactTextfieldActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel4.setText("Available time");
+        AvailableTimeLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        AvailableTimeLabel.setText("Available time");
 
         jScrollPane1.setToolTipText("");
 
@@ -113,60 +113,60 @@ public class TutorAdd extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(CalculusList);
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton2.setText("Confirm");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ConfirmButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        ConfirmButton.setText("Confirm");
+        ConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ConfirmButtonActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Monday");
+        MondayLabel.setText("Monday");
 
-        jLabel7.setText("Tuesday");
+        TuesdayLabel.setText("Tuesday");
 
-        jLabel8.setText("Wednesday");
+        WednesdayLabel.setText("Wednesday");
 
-        jLabel9.setText("Friday");
+        FridayLabel.setText("Friday");
 
-        jLabel10.setText("Thursday");
+        ThursdayLabel.setText("Thursday");
 
-        TuesdayList.setModel(new javax.swing.AbstractListModel<String>() {
+        TuedayList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "8", "9", "10", "11", "12", "1", "2", "3", "4" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        TuedayLis.setViewportView(TuesdayList);
+        TuedayPanel.setViewportView(TuedayList);
 
         WednesdayList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "8", "9", "10", "11", "12", "1", "2", "3", "4" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(WednesdayList);
+        WednesdayPanel.setViewportView(WednesdayList);
 
         ThursdayList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "8", "9", "10", "11", "12", "1", "2", "3", "4" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        ThursdayLIst.setViewportView(ThursdayList);
+        ThursdayPanel.setViewportView(ThursdayList);
 
         FridayList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "8", "9", "10", "11", "12", "1", "2", "3", "4" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        FridayLIst.setViewportView(FridayList);
+        FridayPanel.setViewportView(FridayList);
 
-        jScrollPane2.setToolTipText("");
+        MondayPanel.setToolTipText("");
 
         MondayList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "8", "9", "10", "11", "12", "1", "2", "3", "4" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(MondayList);
+        MondayPanel.setViewportView(MondayList);
 
         jScrollPane4.setToolTipText("");
 
@@ -195,13 +195,13 @@ public class TutorAdd extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(PreCalcList);
 
-        Algebra.setText("Algreba");
+        AlgebraLabel.setText("Algreba");
 
-        jLabel12.setText("Pre-Calculus");
+        PreCalcLabel.setText("Pre-Calculus");
 
-        jLabel13.setText("Calculus");
+        CalculusLabel.setText("Calculus");
 
-        jLabel14.setText("Statistics");
+        StatisticsLabel.setText("Statistics");
 
         javax.swing.GroupLayout TutorAddLayout = new javax.swing.GroupLayout(TutorAdd);
         TutorAdd.setLayout(TutorAddLayout);
@@ -213,98 +213,98 @@ public class TutorAdd extends javax.swing.JFrame {
                     .addGroup(TutorAddLayout.createSequentialGroup()
                         .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(TutorAddLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(AvailableTimeLabel)
                                 .addGap(69, 69, 69)
-                                .addComponent(jLabel6))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(MondayLabel))
+                            .addComponent(MondayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
                         .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TuedayLis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TuesdayLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TuedayPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(WednesdayLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(WednesdayPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)
                         .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(TutorAddLayout.createSequentialGroup()
-                                .addComponent(ThursdayLIst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ThursdayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
-                                .addComponent(FridayLIst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(FridayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(TutorAddLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(ThursdayLabel)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel9)))
+                                .addComponent(FridayLabel)))
                         .addGap(412, 412, 412))
                     .addGroup(TutorAddLayout.createSequentialGroup()
                         .addGap(181, 181, 181)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ContactTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(TutorAddLayout.createSequentialGroup()
                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TutorAddLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addComponent(BackButton)
                         .addGap(332, 332, 332)
-                        .addComponent(jLabel5))
+                        .addComponent(TutorLabel))
                     .addGroup(TutorAddLayout.createSequentialGroup()
                         .addGap(533, 533, 533)
-                        .addComponent(jButton2)))
+                        .addComponent(ConfirmButton)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TutorAddLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
+                    .addComponent(ContactLabel)
                     .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)))
+                        .addComponent(NameLabel)
+                        .addComponent(SubjectLabel)))
                 .addGap(81, 81, 81)
                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TutorAddLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(TutorAddLayout.createSequentialGroup()
                         .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Algebra)
+                            .addComponent(AlgebraLabel)
                             .addGroup(TutorAddLayout.createSequentialGroup()
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
+                                    .addComponent(PreCalcLabel)
                                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(35, 35, 35)
                         .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TutorAddLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
+                                .addComponent(CalculusLabel)
                                 .addGap(18, 18, 18)))
-                        .addGap(18, 18, 18)
                         .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(TutorAddLayout.createSequentialGroup()
                                 .addGap(15, 15, 15)
-                                .addComponent(jLabel14)))))
+                                .addComponent(StatisticsLabel))))
+                    .addComponent(NameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(399, 399, 399))
         );
         TutorAddLayout.setVerticalGroup(
             TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TutorAddLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jButton1))
+                    .addGroup(TutorAddLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(TutorLabel))
+                    .addGroup(TutorAddLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BackButton)))
                 .addGap(36, 36, 36)
                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NameLabel)
+                    .addComponent(NameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(SubjectLabel)
                     .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Algebra)
-                        .addComponent(jLabel12)
-                        .addComponent(jLabel13)
-                        .addComponent(jLabel14)))
+                        .addComponent(AlgebraLabel)
+                        .addComponent(PreCalcLabel)
+                        .addComponent(CalculusLabel)
+                        .addComponent(StatisticsLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,29 +313,28 @@ public class TutorAdd extends javax.swing.JFrame {
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(TutorAddLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel3)
+                        .addComponent(ContactLabel)
                         .addGap(64, 64, 64))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TutorAddLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ContactTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel4))))
+                            .addComponent(MondayLabel)
+                            .addComponent(TuesdayLabel)
+                            .addComponent(WednesdayLabel)
+                            .addComponent(FridayLabel)
+                            .addComponent(ThursdayLabel)
+                            .addComponent(AvailableTimeLabel))))
                 .addGap(21, 21, 21)
                 .addGroup(TutorAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TuedayLis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ThursdayLIst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FridayLIst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TuedayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(WednesdayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ThursdayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FridayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MondayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(ConfirmButton)
                 .addGap(30, 30, 30))
         );
 
@@ -355,10 +354,10 @@ public class TutorAdd extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
         // TODO add your handling code here:
         System.out.println(MondayList.getSelectedValuesList());
-        System.out.println(TuesdayList.getSelectedValuesList());
+        System.out.println(TuedayList.getSelectedValuesList());
         System.out.println(WednesdayList.getSelectedValuesList());
         System.out.println(ThursdayList.getSelectedValuesList());
         System.out.println(FridayList.getSelectedValuesList());
@@ -366,22 +365,22 @@ public class TutorAdd extends javax.swing.JFrame {
         System.out.println(PreCalcList.getSelectedValuesList());
         System.out.println(CalculusList.getSelectedValuesList());
         System.out.println(StatisticsList.getSelectedValuesList());
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ConfirmButtonActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void ContactTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_ContactTextfieldActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void NameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_NameTextfieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         TutorAdd.this.setVisible(false);
         Tutor tutor= new Tutor();
         tutor.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,44 +418,44 @@ public class TutorAdd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Algebra;
+    private javax.swing.JLabel AlgebraLabel;
     private javax.swing.JList<String> AlgebraList1;
+    private javax.swing.JLabel AvailableTimeLabel;
+    private javax.swing.JButton BackButton;
+    private javax.swing.JLabel CalculusLabel;
     private javax.swing.JList<String> CalculusList;
-    private javax.swing.JScrollPane FridayLIst;
+    private javax.swing.JButton ConfirmButton;
+    private javax.swing.JLabel ContactLabel;
+    private javax.swing.JTextField ContactTextfield;
+    private javax.swing.JLabel FridayLabel;
     private javax.swing.JList<String> FridayList;
+    private javax.swing.JScrollPane FridayPanel;
+    private javax.swing.JLabel MondayLabel;
     private javax.swing.JList<String> MondayList;
+    private javax.swing.JScrollPane MondayPanel;
+    private javax.swing.JLabel NameLabel;
+    private javax.swing.JTextField NameTextfield;
+    private javax.swing.JLabel PreCalcLabel;
     private javax.swing.JList<String> PreCalcList;
+    private javax.swing.JLabel StatisticsLabel;
     private javax.swing.JList<String> StatisticsList;
-    private javax.swing.JScrollPane ThursdayLIst;
+    private javax.swing.JLabel SubjectLabel;
+    private javax.swing.JLabel ThursdayLabel;
     private javax.swing.JList<String> ThursdayList;
-    private javax.swing.JScrollPane TuedayLis;
-    private javax.swing.JList<String> TuesdayList;
+    private javax.swing.JScrollPane ThursdayPanel;
+    private javax.swing.JList<String> TuedayList;
+    private javax.swing.JScrollPane TuedayPanel;
+    private javax.swing.JLabel TuesdayLabel;
     private javax.swing.JPanel TutorAdd;
+    private javax.swing.JLabel TutorLabel;
+    private javax.swing.JLabel WednesdayLabel;
     private javax.swing.JList<String> WednesdayList;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane WednesdayPanel;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
 

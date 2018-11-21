@@ -28,13 +28,13 @@ public class TutorDayandTime extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        Back = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ScheduleTabel = new javax.swing.JTable();
+        BackButton = new javax.swing.JButton();
+        EditScheduleButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ScheduleTabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Monday", null, null, null, null, null, null, null, null, null},
                 {"Tuesday", null, null, null, null, null, null, null, null, null},
@@ -54,18 +54,18 @@ public class TutorDayandTime extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setPreferredSize(new java.awt.Dimension(750, 250));
-        jTable1.setRowHeight(50);
-        jScrollPane1.setViewportView(jTable1);
+        ScheduleTabel.setPreferredSize(new java.awt.Dimension(750, 250));
+        ScheduleTabel.setRowHeight(50);
+        jScrollPane1.setViewportView(ScheduleTabel);
 
-        Back.setText("Back");
-        Back.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Edit Schedule");
+        EditScheduleButton.setText("Edit Schedule");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,23 +76,23 @@ public class TutorDayandTime extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Back)
+                        .addComponent(BackButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(572, 572, 572)
-                .addComponent(jButton2)
+                .addComponent(EditScheduleButton)
                 .addContainerGap(636, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Back)
+                .addComponent(BackButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addComponent(jButton2)
+                .addComponent(EditScheduleButton)
                 .addGap(56, 56, 56))
         );
 
@@ -112,12 +112,12 @@ public class TutorDayandTime extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         TutorDayandTime.this.setVisible(false);
         Tutor tutor = new Tutor();
         tutor.setVisible(true);
-    }//GEN-LAST:event_BackActionPerformed
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,11 +155,11 @@ public class TutorDayandTime extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Back;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton BackButton;
+    private javax.swing.JButton EditScheduleButton;
+    private javax.swing.JTable ScheduleTabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
 
