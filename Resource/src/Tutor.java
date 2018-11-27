@@ -129,7 +129,7 @@ public class Tutor extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         Tutor.this.setVisible(false);
-        Beginning begin = new Beginning();
+        Welcome1 begin = new Welcome1();
         begin.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 

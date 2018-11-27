@@ -128,13 +128,17 @@ public class Bookroom extends javax.swing.JFrame {
         ContactTextField = new javax.swing.JTextField();
         BackButton = new javax.swing.JButton();
         DayLabel = new javax.swing.JLabel();
+        ImageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        RoomtextLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+
+        RoomtextLabel.setFont(new java.awt.Font("Old English Text MT", 1, 36)); // NOI18N
         RoomtextLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         RoomtextLabel.setText("Room Scheduler");
 
+        RoomLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         RoomLabel.setText("Room");
 
         EventTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -143,12 +147,17 @@ public class Bookroom extends javax.swing.JFrame {
             }
         });
 
+        TimeLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TimeLabel.setText("Time");
 
+        EventLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         EventLabel.setText("Event");
 
         TimeSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"8", "9", "10", "11", "12", "1", "2", "3", "4", "5"}));
 
+        SubmitButton.setBackground(new java.awt.Color(0, 0, 0));
+        SubmitButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        SubmitButton.setForeground(new java.awt.Color(153, 0, 0));
         SubmitButton.setText("Submit");
         SubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,10 +167,14 @@ public class Bookroom extends javax.swing.JFrame {
 
         RoomSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"Conference Small", "Conference Suite", "Conference 524", "Lab 214", "Lab 403", "Lab 414"}));
 
+        NameLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         NameLabel.setText("Name");
 
+        ContactLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         ContactLabel.setText("Contact Number ");
 
+        BackButton.setBackground(new java.awt.Color(0, 0, 0));
+        BackButton.setForeground(new java.awt.Color(153, 0, 0));
         BackButton.setText("Back");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,59 +182,71 @@ public class Bookroom extends javax.swing.JFrame {
             }
         });
 
+        DayLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         DayLabel.setText("Day");
+
+        ImageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Rojen\\Documents\\GitHub\\SoftwareEngineering2018Fall-\\Resource\\build\\classes\\Images\\button.jpg")); // NOI18N
+        ImageLabel.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(RoomtextLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(BackButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(BackButton)
+                        .addGap(0, 409, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(RoomtextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(181, 181, 181)
+                .addGap(151, 151, 151)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(DayLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(NameLabel)
-                                .addGap(72, 72, 72)
-                                .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(NameLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ContactLabel)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(EventLabel)
+                                            .addComponent(RoomLabel)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ContactTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                        .addComponent(RoomSpinner)
+                                        .addComponent(EventTextField))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(TimeLabel)
                                 .addGap(77, 77, 77)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(EventTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TimeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ContactLabel)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(EventLabel)
-                                        .addComponent(RoomLabel)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(RoomSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(ContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(SubmitButton)
-                                .addGap(197, 197, 197)))
-                        .addContainerGap(57, Short.MAX_VALUE))))
+                                    .addComponent(SubmitButton)
+                                    .addComponent(TimeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(BackButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RoomtextLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(BackButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(RoomtextLabel))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(ImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NameLabel)
                     .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -390,6 +415,7 @@ public class Bookroom extends javax.swing.JFrame {
     private javax.swing.JLabel DayLabel;
     private javax.swing.JLabel EventLabel;
     private javax.swing.JTextField EventTextField;
+    private javax.swing.JLabel ImageLabel;
     private javax.swing.JLabel NameLabel;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JLabel RoomLabel;

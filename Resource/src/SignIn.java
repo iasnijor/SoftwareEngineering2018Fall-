@@ -233,7 +233,7 @@ public class SignIn extends javax.swing.JFrame {
                     
                     User newuser = new User(resultSet.getString("name"), userpart[0], passwordString, user, resultSet.getString("level"));
                     SignIn.this.setVisible(false);
-                    Beginning begin = new Beginning(newuser);
+                    Welcome1 begin = new Welcome1(newuser);
                     begin.setVisible(true);
                 }
                 else {
@@ -261,9 +261,9 @@ public class SignIn extends javax.swing.JFrame {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
         }
         //} catch (ClassNotFoundException ex) {
-        //    Logger.getLogger(Beginning.class.getName()).log(Level.SEVERE, null, ex);
+        //    Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
         //} catch (SQLException ex) {
-        //    Logger.getLogger(Beginning.class.getName()).log(Level.SEVERE, null, ex);
+        //    Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
         //}
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
@@ -284,13 +284,13 @@ public class SignIn extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Beginning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Beginning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Beginning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Beginning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

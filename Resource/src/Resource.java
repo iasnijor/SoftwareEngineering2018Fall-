@@ -215,11 +215,11 @@ public class Resource extends javax.swing.JFrame {
         Resource.this.setVisible(false);
         
         if (!signedIn) {
-            Beginning begin = new Beginning();
+            Welcome1 begin = new Welcome1();
             begin.setVisible(true);
         }
         else {
-            Beginning begin = new Beginning(user);
+            Welcome1 begin = new Welcome1(user);
             begin.setVisible(true);
         }
     }//GEN-LAST:event_BackButtonActionPerformed
