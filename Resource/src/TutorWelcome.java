@@ -134,15 +134,17 @@ public class TutorWelcome extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         TutorWelcome.this.setVisible(false);
-        Resource room;
+        Resource  room;
         try {
             room = new Resource();
-            room.setVisible(true);
+             room.setVisible(true);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminWelcome.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TutorWelcome.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(AdminWelcome.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+            Logger.getLogger(TutorWelcome.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
