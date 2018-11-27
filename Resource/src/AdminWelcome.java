@@ -13,12 +13,12 @@ import java.util.logging.Logger;
  *
  * @author Rojen
  */
-public class Welcome3 extends javax.swing.JFrame {
+public class AdminWelcome extends javax.swing.JFrame {
 
     /**
-     * Creates new form Welcome3
+     * Creates new form Welcome2
      */
-    public Welcome3() {
+    public AdminWelcome() {
         initComponents();
     }
 
@@ -45,7 +45,7 @@ public class Welcome3 extends javax.swing.JFrame {
         WelcomeLabel.setText("                    Welcome to Math Resource Scheduling ");
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jButton2.setText("Room Schedule");
+        jButton2.setText("Room Requests");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -53,7 +53,7 @@ public class Welcome3 extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jButton3.setText("View Schedule");
+        jButton3.setText("Tutor Scheduling");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -133,23 +133,18 @@ public class Welcome3 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Welcome3.this.setVisible(false);
-        Resource room;
-        try {
-            room = new Resource();
-            room.setVisible(true);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Welcome2.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Welcome2.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        AdminWelcome.this.setVisible(false);
+        AdminRoom   room = new AdminRoom();
+                    room.setVisible(true);
+     
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Welcome3.this.setVisible(false);
-        TutorDayandTime tutor = new TutorDayandTime();
-        tutor.setVisible(true);
+        AdminWelcome.this.setVisible(false);
+        Tutor view= new Tutor();
+        view.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -169,20 +164,21 @@ public class Welcome3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Welcome3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminWelcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Welcome3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminWelcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Welcome3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminWelcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Welcome3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminWelcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Welcome3().setVisible(true);
+                new AdminWelcome().setVisible(true);
             }
         });
     }

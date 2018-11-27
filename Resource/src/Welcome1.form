@@ -178,7 +178,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tutor Scheduling"/>
+            <Property name="text" type="java.lang.String" value="View Tutors"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TutorButtonActionPerformed"/>
@@ -221,7 +221,7 @@
         <Component class="javax.swing.JLabel" name="TheMacLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Images/The MAC Logo w Kate Penguin 2.png"/>
+              <Image iconType="3" name="/Images/The MAC Logo w Kate Penguin2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>

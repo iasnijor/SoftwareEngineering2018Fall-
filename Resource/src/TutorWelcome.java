@@ -13,12 +13,12 @@ import java.util.logging.Logger;
  *
  * @author Rojen
  */
-public class Welcome2 extends javax.swing.JFrame {
+public class TutorWelcome extends javax.swing.JFrame {
 
     /**
-     * Creates new form Welcome2
+     * Creates new form Welcome3
      */
-    public Welcome2() {
+    public TutorWelcome() {
         initComponents();
     }
 
@@ -53,7 +53,7 @@ public class Welcome2 extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jButton3.setText("View Tutor");
+        jButton3.setText("View Schedule");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -133,21 +133,23 @@ public class Welcome2 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Welcome2.this.setVisible(false);
+        TutorWelcome.this.setVisible(false);
         Resource room;
         try {
             room = new Resource();
-                    room.setVisible(true);
+            room.setVisible(true);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Welcome2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminWelcome.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Welcome2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+            Logger.getLogger(AdminWelcome.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        TutorWelcome.this.setVisible(false);
+        TutorDayandTime tutor = new TutorDayandTime();
+        tutor.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -167,20 +169,21 @@ public class Welcome2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Welcome2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TutorWelcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Welcome2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TutorWelcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Welcome2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TutorWelcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Welcome2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TutorWelcome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Welcome2().setVisible(true);
+                new TutorWelcome().setVisible(true);
             }
         });
     }

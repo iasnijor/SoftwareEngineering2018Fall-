@@ -80,7 +80,7 @@ public class Welcome1 extends javax.swing.JFrame {
         });
 
         TutorButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        TutorButton.setText("Tutor Scheduling");
+        TutorButton.setText("View Tutors");
         TutorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TutorButtonActionPerformed(evt);
@@ -107,7 +107,7 @@ public class Welcome1 extends javax.swing.JFrame {
             }
         });
 
-        TheMacLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/The MAC Logo w Kate Penguin 2.png"))); // NOI18N
+        TheMacLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/The MAC Logo w Kate Penguin2.png"))); // NOI18N
         TheMacLabel.setText("jLabel1");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -231,7 +231,7 @@ public class Welcome1 extends javax.swing.JFrame {
 
     private void TutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorButtonActionPerformed
        Welcome1.this.setVisible(false);
-        Tutor tutor= new Tutor();
+        ViewTutor tutor= new ViewTutor();
         tutor.setVisible(true);
     }//GEN-LAST:event_TutorButtonActionPerformed
 
