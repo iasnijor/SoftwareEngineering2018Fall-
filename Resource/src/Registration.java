@@ -66,9 +66,9 @@ public class Registration extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Register");
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
         FirstLabel.setBackground(new java.awt.Color(51, 51, 51));
         FirstLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -108,8 +108,6 @@ public class Registration extends javax.swing.JFrame {
                 BackButtonActionPerformed(evt);
             }
         });
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Rojen\\Documents\\GitHub\\SoftwareEngineering2018Fall-\\Resource\\build\\classes\\Images\\button.jpg")); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("Register for New Account");

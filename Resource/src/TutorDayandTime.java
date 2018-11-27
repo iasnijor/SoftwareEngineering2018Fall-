@@ -1,3 +1,9 @@
+
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,8 +19,18 @@ public class TutorDayandTime extends javax.swing.JFrame {
     /**
      * Creates new form TutorDayandTime
      */
+    myTutor mytutor;
+
     public TutorDayandTime() {
         initComponents();
+    }
+    
+    public TutorDayandTime(myTutor tutor, Statement statement) {
+        
+        mytutor = tutor;
+        initComponents();
+        
+        getSchedule(statement);
     }
 
     /**
@@ -28,13 +44,14 @@ public class TutorDayandTime extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ScheduleTabel = new javax.swing.JTable();
+        ScheduleTable = new javax.swing.JTable();
         BackButton = new javax.swing.JButton();
         EditScheduleButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tutor Schedule");
 
-        ScheduleTabel.setModel(new javax.swing.table.DefaultTableModel(
+        ScheduleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Monday", null, null, null, null, null, null, null, null, null},
                 {"Tuesday", null, null, null, null, null, null, null, null, null},
@@ -54,9 +71,9 @@ public class TutorDayandTime extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        ScheduleTabel.setPreferredSize(new java.awt.Dimension(750, 250));
-        ScheduleTabel.setRowHeight(50);
-        jScrollPane1.setViewportView(ScheduleTabel);
+        ScheduleTable.setPreferredSize(new java.awt.Dimension(750, 250));
+        ScheduleTable.setRowHeight(50);
+        jScrollPane1.setViewportView(ScheduleTable);
 
         BackButton.setText("Back");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +83,11 @@ public class TutorDayandTime extends javax.swing.JFrame {
         });
 
         EditScheduleButton.setText("Edit Schedule");
+        EditScheduleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditScheduleButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,9 +137,31 @@ public class TutorDayandTime extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         TutorDayandTime.this.setVisible(false);
-        Tutor tutor = new Tutor();
-        tutor.setVisible(true);
+        Tutor tutor;
+        try {
+            tutor = new Tutor();
+            tutor.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void EditScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditScheduleButtonActionPerformed
+        // TODO add your handling code here:
+        TutorDayandTime.this.setVisible(false);
+        TutorAdd tutor;
+        
+        try {
+            tutor = new TutorAdd(true, mytutor);
+            tutor.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_EditScheduleButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,11 +197,19 @@ public class TutorDayandTime extends javax.swing.JFrame {
             }
         });
     }
-
+    public void getSchedule(Statement statement) {
+        for (int day = 0; day < ScheduleTable.getRowCount(); day++) {
+            for (int hour = 0; hour < ScheduleTable.getColumnCount(); hour++) {
+                if (mytutor.getSchedule(day).contains(", " + ScheduleTable.getColumnName(hour) + ", ") || 
+                        mytutor.getSchedule(day).startsWith(ScheduleTable.getColumnName(hour) + ", "))
+                    ScheduleTable.setValueAt("X", day, hour);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JButton EditScheduleButton;
-    private javax.swing.JTable ScheduleTabel;
+    private javax.swing.JTable ScheduleTable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
