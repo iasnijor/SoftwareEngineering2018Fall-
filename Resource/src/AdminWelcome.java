@@ -146,20 +146,14 @@ public class AdminWelcome extends javax.swing.JFrame {
         Tutor view;
         try {
             view = new Tutor();
-<<<<<<< HEAD
-             view.setVisible(true);
-=======
             view.setVisible(true);
->>>>>>> f45946fcf52f4feff7ce0ef075ff6045f72d14ac
+
         } catch (SQLException ex) {
             Logger.getLogger(AdminWelcome.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminWelcome.class.getName()).log(Level.SEVERE, null, ex);
         }
-<<<<<<< HEAD
-       
-=======
->>>>>>> f45946fcf52f4feff7ce0ef075ff6045f72d14ac
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
