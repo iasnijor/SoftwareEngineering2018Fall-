@@ -71,9 +71,9 @@ public class Resource extends javax.swing.JFrame {
         popupMenu1.setLabel("popupMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Room Scheduling");
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -83,7 +83,7 @@ public class Resource extends javax.swing.JFrame {
             }
         });
 
-        Table.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Table.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         Table.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         Table.setForeground(new java.awt.Color(0, 0, 0));
         Table.setModel(new javax.swing.table.DefaultTableModel(
@@ -119,6 +119,8 @@ public class Resource extends javax.swing.JFrame {
         Table.setPreferredSize(new java.awt.Dimension(525, 300));
         Table.setRowHeight(50);
         Table.setRowSelectionAllowed(false);
+        Table.setShowHorizontalLines(true);
+        Table.setShowVerticalLines(true);
         Table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(Table);
         if (Table.getColumnModel().getColumnCount() > 0) {
@@ -128,7 +130,7 @@ public class Resource extends javax.swing.JFrame {
         }
 
         BackButton.setBackground(new java.awt.Color(153, 0, 0));
-        BackButton.setForeground(new java.awt.Color(0, 0, 0));
+        BackButton.setForeground(new java.awt.Color(204, 204, 204));
         BackButton.setText("Back");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +140,7 @@ public class Resource extends javax.swing.JFrame {
 
         BookButton.setBackground(new java.awt.Color(0, 0, 0));
         BookButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        BookButton.setForeground(new java.awt.Color(153, 0, 0));
+        BookButton.setForeground(new java.awt.Color(255, 102, 102));
         BookButton.setText("Book");
         BookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,12 +150,12 @@ public class Resource extends javax.swing.JFrame {
 
         MathLabel.setBackground(new java.awt.Color(153, 0, 0));
         MathLabel.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        MathLabel.setForeground(new java.awt.Color(0, 0, 0));
         MathLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MathLabel.setText("Math Department Room Schedule");
 
-        Calender.setBackground(new java.awt.Color(255, 255, 255));
-        Calender.setForeground(new java.awt.Color(0, 0, 0));
+        Calender.setBackground(new java.awt.Color(153, 0, 0));
+        Calender.setDecorationBackgroundColor(new java.awt.Color(204, 255, 255));
+        Calender.setSundayForeground(new java.awt.Color(153, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

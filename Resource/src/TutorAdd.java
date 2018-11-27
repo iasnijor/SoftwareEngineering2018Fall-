@@ -1,3 +1,13 @@
+
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,9 +23,44 @@ public class TutorAdd extends javax.swing.JFrame {
     /**
      * Creates new form TutorAdd
      */
-    public TutorAdd() {
-        initComponents();
+    File file = new File("./ScheduleSystem.db");
+    User user;
+    myTutor tutor;
+    boolean edit;
+    /**
+     * Creates new form TutorAdd
+     */
+    public TutorAdd() throws ClassNotFoundException, SQLException {
+            initComponents();
+            Class.forName("org.sqlite.JDBC");
+            Connection connection = DriverManager.getConnection(DB_NAME);
+            statement = connection.createStatement();
+            
+            System.out.println(MondayList.getLastVisibleIndex());
+            
     }
+    
+    public TutorAdd(boolean edit, myTutor tutor) throws ClassNotFoundException, SQLException {
+        initComponents();
+        Class.forName("org.sqlite.JDBC");
+        
+        Connection connection = DriverManager.getConnection(DB_NAME);
+        
+        statement = connection.createStatement();
+        this.tutor = tutor;
+        
+        if (edit) {
+            getInformation();
+        }
+    }
+
+    public TutorAdd(myTutor tutor) {
+        
+    }
+    // More information for DB
+    private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
+    // Initializing the statement that's declared above
+    public static Statement statement;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,7 +90,7 @@ public class TutorAdd extends javax.swing.JFrame {
         FridayLabel = new javax.swing.JLabel();
         ThursdayLabel = new javax.swing.JLabel();
         TuedayPanel = new javax.swing.JScrollPane();
-        TuedayList = new javax.swing.JList<>();
+        TuesdayList = new javax.swing.JList<>();
         WednesdayPanel = new javax.swing.JScrollPane();
         WednesdayList = new javax.swing.JList<>();
         ThursdayPanel = new javax.swing.JScrollPane();
@@ -69,6 +114,7 @@ public class TutorAdd extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tutor Information");
 
         BackButton.setText("Back");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -131,12 +177,12 @@ public class TutorAdd extends javax.swing.JFrame {
 
         ThursdayLabel.setText("Thursday");
 
-        TuedayList.setModel(new javax.swing.AbstractListModel<String>() {
+        TuesdayList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "8", "9", "10", "11", "12", "1", "2", "3", "4" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        TuedayPanel.setViewportView(TuedayList);
+        TuedayPanel.setViewportView(TuesdayList);
 
         WednesdayList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "8", "9", "10", "11", "12", "1", "2", "3", "4" };
@@ -356,15 +402,62 @@ public class TutorAdd extends javax.swing.JFrame {
 
     private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println(MondayList.getSelectedValuesList());
-        System.out.println(TuedayList.getSelectedValuesList());
-        System.out.println(WednesdayList.getSelectedValuesList());
-        System.out.println(ThursdayList.getSelectedValuesList());
-        System.out.println(FridayList.getSelectedValuesList());
-        System.out.println(AlgebraList1.getSelectedValuesList());
-        System.out.println(PreCalcList.getSelectedValuesList());
-        System.out.println(CalculusList.getSelectedValuesList());
-        System.out.println(StatisticsList.getSelectedValuesList());
+        String name = NameTextfield.getText();
+        String contact = ContactTextfield.getText();
+        
+        String algebra = "";
+        String precalc = "";
+        String calc = "";
+        String stats = "";
+        
+        String mon = "";
+        String tues = "";
+        String wed = "";
+        String thurs = "";
+        String fri = "";
+
+        for(String temp : AlgebraList1.getSelectedValuesList())
+            algebra += temp + ", ";
+        for(String temp : PreCalcList.getSelectedValuesList())
+            precalc += temp + ", ";
+        for(String temp : CalculusList.getSelectedValuesList())
+            calc += temp + ", ";
+        for(String temp : StatisticsList.getSelectedValuesList())
+            stats += temp + ", ";
+        
+        for (String temp : MondayList.getSelectedValuesList())
+            mon += temp + ", ";
+        for (String temp : TuesdayList.getSelectedValuesList())
+            tues += temp + ", ";
+        for (String temp : WednesdayList.getSelectedValuesList())
+            wed += temp + ", ";
+        for (String temp : ThursdayList.getSelectedValuesList())
+            thurs += temp + ", ";
+        for (String temp : FridayList.getSelectedValuesList())
+            fri += temp + ", ";
+        
+        System.out.println(algebra);
+        System.out.println(precalc);
+        
+        myTutor newtutor = new myTutor(name, algebra, precalc, calc, stats, contact, mon, tues, wed, thurs, fri);
+        System.out.println(newtutor.getMonday());
+        try {
+            newtutor.save(statement);
+        } catch (SQLException ex) {
+            Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        TutorAdd.this.setVisible(false);
+        Tutor tutorframe;
+        try {
+            tutorframe = new Tutor();
+            tutorframe.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     private void ContactTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactTextfieldActionPerformed
@@ -378,8 +471,16 @@ public class TutorAdd extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         TutorAdd.this.setVisible(false);
-        Tutor tutor= new Tutor();
-        tutor.setVisible(true);
+        Tutor tutor;
+        try {
+            tutor = new Tutor();
+            tutor.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
@@ -412,11 +513,88 @@ public class TutorAdd extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TutorAdd().setVisible(true);
+                try {
+                    new TutorAdd().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
+        public void getInformation() {
+        NameTextfield.setText(tutor.getName());
+        ContactTextfield.setText(tutor.getContact());
+        
+        ArrayList<Integer> alg = new ArrayList(), pre = new ArrayList(), calc = new ArrayList(), stat = new ArrayList();
+        
+        ArrayList<Integer> monday = new ArrayList(), tuesday = new ArrayList(), wednesday = new ArrayList(), thursday = new ArrayList(), friday = new ArrayList();
+        
+        for(int i = 0; i < AlgebraList1.getModel().getSize(); i++) {
+            if(tutor.getAlgebra().contains(", " + AlgebraList1.getModel().getElementAt(i) + ", ") || 
+                    tutor.getAlgebra().startsWith(AlgebraList1.getModel().getElementAt(i) + ", "))
+                alg.add(i);
+        }
+        for(int i = 0; i < PreCalcList.getModel().getSize(); i++) {
+            if(tutor.getPreCalc().contains(", " + PreCalcList.getModel().getElementAt(i) + ", ") || 
+                    tutor.getPreCalc().startsWith(PreCalcList.getModel().getElementAt(i) + ", "))
+                pre.add(i);
+        }
+        for(int i = 0; i < CalculusList.getModel().getSize(); i++) {
+            if(tutor.getCalc().contains(", " + CalculusList.getModel().getElementAt(i) + ", ") || 
+                    tutor.getCalc().startsWith(CalculusList.getModel().getElementAt(i) + ", "))
+                calc.add(i);
+        }
+        for(int i = 0; i < StatisticsList.getModel().getSize(); i++) {
+            if(tutor.getStats().contains(", " + StatisticsList.getModel().getElementAt(i) + ", ") || 
+                    tutor.getStats().startsWith(StatisticsList.getModel().getElementAt(i) + ", "))
+                stat.add(i);
+        }
+        AlgebraList1.setSelectedIndices(asArray(alg));
+        PreCalcList.setSelectedIndices(asArray(pre));
+        CalculusList.setSelectedIndices(asArray(calc));
+        StatisticsList.setSelectedIndices(asArray(stat));
+        
+        // get hours for each day
+        for(int hour=0; hour < MondayList.getModel().getSize(); hour++) {
+            if(tutor.getMonday().contains(", " + MondayList.getModel().getElementAt(hour) + ", ") || 
+                    tutor.getMonday().startsWith(MondayList.getModel().getElementAt(hour) + ", ")) {
+                monday.add(hour);
+            }
+            if(tutor.getTuesday().contains(", " + TuesdayList.getModel().getElementAt(hour) + ", ") || 
+                    tutor.getTuesday().startsWith(TuesdayList.getModel().getElementAt(hour) + ", ")) {
+                tuesday.add(hour);
+            }
+            if(tutor.getWednesday().contains(", " + WednesdayList.getModel().getElementAt(hour) + ", ") || 
+                    tutor.getWednesday().startsWith(WednesdayList.getModel().getElementAt(hour) + ", ")) {
+                wednesday.add(hour);
+            }
+            if(tutor.getThursday().contains(", " + ThursdayList.getModel().getElementAt(hour) + ", ") || 
+                    tutor.getThursday().startsWith(ThursdayList.getModel().getElementAt(hour) + ", ")) {
+                thursday.add(hour);
+            }
+            if(tutor.getFriday().contains(", " + FridayList.getModel().getElementAt(hour) + ", ") || 
+                    tutor.getFriday().startsWith(FridayList.getModel().getElementAt(hour) + ", ")) {
+                friday.add(hour);
+            }
+        }
+        // select current hours
+        MondayList.setSelectedIndices(asArray(monday));
+        TuesdayList.setSelectedIndices(asArray(tuesday));
+        WednesdayList.setSelectedIndices(asArray(wednesday));
+        ThursdayList.setSelectedIndices(asArray(thursday));
+        FridayList.setSelectedIndices(asArray(friday));
+    }
+    
+    public int[] asArray(ArrayList<Integer> day) {
+        int[] dayarr = new int[day.size()];
+        for (int i=0; i<day.size(); i++)
+            dayarr[i] = day.get(i);
+        
+        return dayarr;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AlgebraLabel;
     private javax.swing.JList<String> AlgebraList1;
@@ -443,9 +621,9 @@ public class TutorAdd extends javax.swing.JFrame {
     private javax.swing.JLabel ThursdayLabel;
     private javax.swing.JList<String> ThursdayList;
     private javax.swing.JScrollPane ThursdayPanel;
-    private javax.swing.JList<String> TuedayList;
     private javax.swing.JScrollPane TuedayPanel;
     private javax.swing.JLabel TuesdayLabel;
+    private javax.swing.JList<String> TuesdayList;
     private javax.swing.JPanel TutorAdd;
     private javax.swing.JLabel TutorLabel;
     private javax.swing.JLabel WednesdayLabel;
