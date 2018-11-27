@@ -107,7 +107,6 @@ public class Welcome1 extends javax.swing.JFrame {
             }
         });
 
-        TheMacLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/The MAC Logo w Kate Penguin2.png"))); // NOI18N
 
         TheMacLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/Images/MAC_Logo.png"))); // NOI18N
 
