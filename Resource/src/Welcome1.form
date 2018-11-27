@@ -221,7 +221,11 @@
         <Component class="javax.swing.JLabel" name="TheMacLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+<<<<<<< HEAD:Resource/src/Welcome1.form
               <Image iconType="3" name="/Images/The MAC Logo w Kate Penguin2.png"/>
+=======
+              <Image iconType="3" name="/src/Images/MAC_Logo.png"/>
+>>>>>>> 4d9aeacca140f7210f294f9c1dfb22adb4ccd3dc:Resource/src/Beginning.form
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>

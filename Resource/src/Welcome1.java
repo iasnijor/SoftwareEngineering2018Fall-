@@ -107,7 +107,11 @@ public class Welcome1 extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD:Resource/src/Welcome1.java
         TheMacLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/The MAC Logo w Kate Penguin2.png"))); // NOI18N
+=======
+        TheMacLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/Images/MAC_Logo.png"))); // NOI18N
+>>>>>>> 4d9aeacca140f7210f294f9c1dfb22adb4ccd3dc:Resource/src/Beginning.java
         TheMacLabel.setText("jLabel1");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -230,9 +234,22 @@ public class Welcome1 extends javax.swing.JFrame {
     }//GEN-LAST:event_RoomButtonMouseClicked
 
     private void TutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorButtonActionPerformed
+<<<<<<< HEAD:Resource/src/Welcome1.java
        Welcome1.this.setVisible(false);
         ViewTutor tutor= new ViewTutor();
         tutor.setVisible(true);
+=======
+        Beginning.this.setVisible(false);
+        Tutor tutor;
+        try {
+            tutor = new Tutor();
+            tutor.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Beginning.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Beginning.class.getName()).log(Level.SEVERE, null, ex);
+        }
+>>>>>>> 4d9aeacca140f7210f294f9c1dfb22adb4ccd3dc:Resource/src/Beginning.java
     }//GEN-LAST:event_TutorButtonActionPerformed
 
     private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed

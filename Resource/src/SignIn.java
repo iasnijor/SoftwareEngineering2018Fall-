@@ -81,7 +81,6 @@ public class SignIn extends javax.swing.JFrame {
 
         LoginButton.setBackground(new java.awt.Color(153, 0, 0));
         LoginButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        LoginButton.setForeground(new java.awt.Color(0, 0, 0));
         LoginButton.setText("Log In");
         LoginButton.setName("LogInButton"); // NOI18N
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +97,6 @@ public class SignIn extends javax.swing.JFrame {
 
         RegisterButton.setBackground(new java.awt.Color(153, 0, 0));
         RegisterButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        RegisterButton.setForeground(new java.awt.Color(0, 0, 0));
         RegisterButton.setText("Register");
         RegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +114,7 @@ public class SignIn extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Old English Text MT", 1, 18)); // NOI18N
         jLabel4.setText("Youngstown, Ohio");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/youngstownlogoweb.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/Images/youngstownlogoweb.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -131,7 +129,7 @@ public class SignIn extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addGap(228, 228, 228)
                             .addComponent(RegisterButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                             .addComponent(LoginButton))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addGap(166, 166, 166)
@@ -169,7 +167,7 @@ public class SignIn extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(UserLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(UserField, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                    .addComponent(UserField))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)

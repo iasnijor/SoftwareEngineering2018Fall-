@@ -1,3 +1,14 @@
+
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,10 +24,25 @@ public class Tutor extends javax.swing.JFrame {
     /**
      * Creates new form Tutor
      */
-    public Tutor() {
+    File file = new File("./ScheduleSystem.db");
+    ArrayList<myTutor> tutors = new ArrayList();
+    /**
+     * Creates new form Tutor
+     */
+    public Tutor() throws SQLException, ClassNotFoundException {
         initComponents();
+        Class.forName("org.sqlite.JDBC");
+        
+        Connection connection = DriverManager.getConnection(DB_NAME);
+        
+        statement = connection.createStatement();
+        
+        getTutors(statement);
     }
-
+    // More information for DB
+    private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
+    // Initializing the statement that's declared above
+    public static Statement statement;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +60,7 @@ public class Tutor extends javax.swing.JFrame {
         AddTutorButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tutor Scheduling System");
 
         TutorTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TutorTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -88,10 +115,6 @@ public class Tutor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackButton)
-                .addContainerGap(1237, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(332, Short.MAX_VALUE)
                 .addComponent(TutorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,8 +127,13 @@ public class Tutor extends javax.swing.JFrame {
                 .addGap(346, 346, 346))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BackButton)
+                        .addContainerGap(1237, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,17 +162,26 @@ public class Tutor extends javax.swing.JFrame {
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void ViewScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewScheduleButtonActionPerformed
-        // TODO add your handling code here:
+        int selectedIndex = TutorTable.getSelectedRow();
+        System.out.println(selectedIndex);
+        myTutor mytutor = tutors.get(selectedIndex);
         Tutor.this.setVisible(false);
-        TutorDayandTime dayandtime= new TutorDayandTime();
+        TutorDayandTime dayandtime = new TutorDayandTime(mytutor, statement);
         dayandtime.setVisible(true);
         
     }//GEN-LAST:event_ViewScheduleButtonActionPerformed
 
     private void AddTutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTutorButtonActionPerformed
     Tutor.this.setVisible(false);
-        TutorAdd tutorbook = new TutorAdd();
-        tutorbook.setVisible(true);
+        TutorAdd tutorbook;
+        try {
+            tutorbook = new TutorAdd();
+            tutorbook.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_AddTutorButtonActionPerformed
 
     /**
@@ -177,9 +214,31 @@ public class Tutor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tutor().setVisible(true);
+                try {
+                    new Tutor().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
+    }
+    
+    public void getTutors(Statement statement) throws SQLException {
+        ResultSet rs = statement.executeQuery("SELECT * FROM tutor");
+        
+        
+        while (rs.next()) {
+            tutors.add(new myTutor(rs.getString("name"), rs.getString("algebra"), rs.getString("precalc"), rs.getString("calc"), rs.getString("stats"), rs.getString("contact"),
+            rs.getString("mon"), rs.getString("tues"), rs.getString("wed"), rs.getString("thurs"), rs.getString("fri")));
+            
+        }
+        
+        for(int i = 0; i<tutors.size(); i++) {
+            TutorTable.setValueAt(tutors.get(i).getName(), i, 0);
+            TutorTable.setValueAt(tutors.get(i).getClasses(), i, 1);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
