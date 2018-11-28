@@ -15,11 +15,26 @@ import java.util.logging.Logger;
  */
 public class AdminWelcome extends javax.swing.JFrame {
 
+    private User user;
+    private boolean signedIn;
     /**
-     * Creates new form Welcome2
+     * Creates new form NewJFrame
      */
     public AdminWelcome() {
+        signedIn = false;
         initComponents();
+        SignOutButton.setVisible(false);
+    }
+    
+    public AdminWelcome(User user) {
+        
+        initComponents();
+        signedIn = true;
+        this.user = user;
+        NotSignInLabel.setText("Hello " + this.user.getName());
+        SignInButton.setVisible(false);
+        SignOutButton.setVisible(true);
+        System.out.println(user.getName());
     }
 
     /**
@@ -33,17 +48,29 @@ public class AdminWelcome extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         WelcomeLabel = new javax.swing.JLabel();
+<<<<<<< HEAD
         RoomRequestButton = new javax.swing.JButton();
         TutorSchedulingButton = new javax.swing.JButton();
         TheMACIcon = new javax.swing.JLabel();
         YSULabel = new javax.swing.JLabel();
         YoungstownLabel = new javax.swing.JLabel();
+=======
+        RoomButton = new javax.swing.JButton();
+        TutorButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        SignOutButton = new javax.swing.JButton();
+        SignInButton = new javax.swing.JButton();
+        NotSignInLabel = new javax.swing.JLabel();
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         WelcomeLabel.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         WelcomeLabel.setText("                    Welcome to Math Resource Scheduling ");
 
+<<<<<<< HEAD
         RoomRequestButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         RoomRequestButton.setText("Room Requests");
         RoomRequestButton.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +88,25 @@ public class AdminWelcome extends javax.swing.JFrame {
         });
 
         TheMACIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MAC_Logo.png"))); // NOI18N
+=======
+        RoomButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        RoomButton.setText("Room Requests");
+        RoomButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RoomButtonActionPerformed(evt);
+            }
+        });
+
+        TutorButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        TutorButton.setText("Tutor Scheduling");
+        TutorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TutorButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/Images/MAC_Logo.png"))); // NOI18N
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
 
         YSULabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         YSULabel.setText("Youngstown State Univeristy");
@@ -68,11 +114,29 @@ public class AdminWelcome extends javax.swing.JFrame {
         YoungstownLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         YoungstownLabel.setText("Youngstown, Ohio");
 
+        SignOutButton.setText("Sign Out");
+        SignOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignOutButtonActionPerformed(evt);
+            }
+        });
+
+        SignInButton.setText("Sign In");
+        SignInButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignInButtonActionPerformed(evt);
+            }
+        });
+
+        NotSignInLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        NotSignInLabel.setText("Not Signed In");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(174, 174, 174)
@@ -84,6 +148,8 @@ public class AdminWelcome extends javax.swing.JFrame {
                         .addComponent(TutorSchedulingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(333, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
+=======
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
                 .addGap(21, 21, 21)
                 .addComponent(TheMACIcon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -91,16 +157,46 @@ public class AdminWelcome extends javax.swing.JFrame {
                     .addComponent(YSULabel)
                     .addComponent(YoungstownLabel))
                 .addGap(28, 28, 28))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(SignInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SignOutButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(NotSignInLabel)
+                .addGap(96, 96, 96))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(RoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(TutorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(211, 333, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(SignInButton)
+                        .addComponent(SignOutButton))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(NotSignInLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
                     .addComponent(RoomRequestButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TutorSchedulingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                    .addComponent(RoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TutorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -131,28 +227,63 @@ public class AdminWelcome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void RoomRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomRequestButtonActionPerformed
+=======
+    private void RoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomButtonActionPerformed
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
         // TODO add your handling code here:
-        AdminWelcome.this.setVisible(false);
-        AdminRoom   room = new AdminRoom();
-                    room.setVisible(true);
-     
 
+        AdminWelcome.this.setVisible(false);
+        AdminRoom room = new AdminRoom(user);
+        room.setVisible(true);
+
+<<<<<<< HEAD
     }//GEN-LAST:event_RoomRequestButtonActionPerformed
 
     private void TutorSchedulingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorSchedulingButtonActionPerformed
+=======
+    }//GEN-LAST:event_RoomButtonActionPerformed
+
+    private void TutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorButtonActionPerformed
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
         try {
             // TODO add your handling code here:
             AdminWelcome.this.setVisible(false);
-            Tutor tutor= new Tutor ();
+            Tutor tutor= new Tutor (user);
             tutor.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminWelcome.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminWelcome.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+<<<<<<< HEAD
     }//GEN-LAST:event_TutorSchedulingButtonActionPerformed
+=======
+    }//GEN-LAST:event_TutorButtonActionPerformed
+
+    private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
+        // TODO add your handling code here:
+        signedIn = false;
+        SignOutButton.setVisible(false);
+        SignInButton.setVisible(true);
+
+        NotSignInLabel.setText("Not Signed In");
+    }//GEN-LAST:event_SignOutButtonActionPerformed
+
+    private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
+        // TODO add your handling code here:
+        AdminWelcome.this.setVisible(false);
+        SignIn signin;
+        try {
+            signin = new SignIn();
+            signin.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_SignInButtonActionPerformed
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
 
     /**
      * @param args the command line arguments
@@ -191,12 +322,24 @@ public class AdminWelcome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JButton RoomRequestButton;
     private javax.swing.JLabel TheMACIcon;
     private javax.swing.JButton TutorSchedulingButton;
     private javax.swing.JLabel WelcomeLabel;
     private javax.swing.JLabel YSULabel;
     private javax.swing.JLabel YoungstownLabel;
+=======
+    private javax.swing.JLabel NotSignInLabel;
+    private javax.swing.JButton RoomButton;
+    private javax.swing.JButton SignInButton;
+    private javax.swing.JButton SignOutButton;
+    private javax.swing.JButton TutorButton;
+    private javax.swing.JLabel WelcomeLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

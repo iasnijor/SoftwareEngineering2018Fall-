@@ -316,8 +316,8 @@ public class Bookroom extends javax.swing.JFrame {
          //Time= Time.toString();
          
         try {
-        myEvent myevent = new myEvent(RoomSpinner.getValue().toString() , Time , Name, Contact, myEvent, day);
-            myevent.save(statement);
+        myRequest request = new myRequest(RoomSpinner.getValue().toString() , Time , Name, Contact, myEvent, day);
+            request.save(statement);
         } catch (SQLException ex) {
             Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -221,6 +221,7 @@ public class Resource extends javax.swing.JFrame {
             begin.setVisible(true);
         }
         else {
+<<<<<<< HEAD
             if(user.getLevel().equals("Teacher")){;
             Welcome1 begin = new Welcome1(user);
             begin.setVisible(true);
@@ -232,6 +233,22 @@ public class Resource extends javax.swing.JFrame {
              else if(user.getLevel().equals("Tutor")){
                 TutorWelcome wel= new TutorWelcome();
                 wel.setVisible(true);
+=======
+            if (user.getLevel().equals("tutor")) {
+                TutorWelcome welcome;
+                try {
+                    welcome = new TutorWelcome(user);
+                    welcome.setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else {
+                Welcome1 begin = new Welcome1(user);
+                begin.setVisible(true);
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
             }
         }
     }//GEN-LAST:event_BackButtonActionPerformed

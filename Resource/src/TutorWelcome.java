@@ -1,7 +1,14 @@
 
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,9 +25,43 @@ public class TutorWelcome extends javax.swing.JFrame {
     /**
      * Creates new form Welcome3
      */
-    public TutorWelcome() {
+    File file = new File("./ScheduleSystem.db");
+    private User user;
+    private boolean signedIn;
+    /**
+     * Creates new form NewJFrame
+     */
+    public TutorWelcome() throws ClassNotFoundException, SQLException {
+        signedIn = false;
         initComponents();
+        SignOutButton.setVisible(false);
+        
+        Class.forName("org.sqlite.JDBC");
+        
+        Connection connection = DriverManager.getConnection(DB_NAME);
+        
+        statement = connection.createStatement();
     }
+    
+    public TutorWelcome(User user) throws ClassNotFoundException, SQLException {
+        
+        initComponents();
+        signedIn = true;
+        this.user = user;
+        NotSignInLabel.setText("Hello " + this.user.getName());
+        SignInButton.setVisible(false);
+        SignOutButton.setVisible(true);
+        System.out.println(user.getName());
+        Class.forName("org.sqlite.JDBC");
+        
+        Connection connection = DriverManager.getConnection(DB_NAME);
+        
+        statement = connection.createStatement();
+    }
+    
+    private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
+    // Initializing the statement that's declared above
+    public static Statement statement;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,17 +74,29 @@ public class TutorWelcome extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         WelcomeLabel = new javax.swing.JLabel();
+<<<<<<< HEAD
         RoomScheduleButton = new javax.swing.JButton();
         ViewSchdeuleButton = new javax.swing.JButton();
         TheMACIcon = new javax.swing.JLabel();
         YSULabel = new javax.swing.JLabel();
         YoungstownLabel = new javax.swing.JLabel();
+=======
+        RoomButton = new javax.swing.JButton();
+        ScheduleButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        SignInButton = new javax.swing.JButton();
+        SignOutButton = new javax.swing.JButton();
+        NotSignInLabel = new javax.swing.JLabel();
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         WelcomeLabel.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         WelcomeLabel.setText("                    Welcome to Math Resource Scheduling ");
 
+<<<<<<< HEAD
         RoomScheduleButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         RoomScheduleButton.setText("Room Schedule");
         RoomScheduleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -61,12 +114,48 @@ public class TutorWelcome extends javax.swing.JFrame {
         });
 
         TheMACIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/The MAC Logo w Kate Penguin 2.png"))); // NOI18N
+=======
+        RoomButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        RoomButton.setText("Room Schedule");
+        RoomButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RoomButtonActionPerformed(evt);
+            }
+        });
+
+        ScheduleButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        ScheduleButton.setText("View Schedule");
+        ScheduleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ScheduleButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/Images/MAC_Logo.png"))); // NOI18N
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
 
         YSULabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         YSULabel.setText("Youngstown State Univeristy");
 
         YoungstownLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         YoungstownLabel.setText("Youngstown, Ohio");
+
+        SignInButton.setText("Sign In");
+        SignInButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignInButtonActionPerformed(evt);
+            }
+        });
+
+        SignOutButton.setText("Sign Out");
+        SignOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignOutButtonActionPerformed(evt);
+            }
+        });
+
+        NotSignInLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        NotSignInLabel.setText("Not Signed In");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,9 +168,15 @@ public class TutorWelcome extends javax.swing.JFrame {
                         .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(345, 345, 345)
+<<<<<<< HEAD
                         .addComponent(RoomScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
                         .addComponent(ViewSchdeuleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
+                        .addComponent(RoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(ScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
                 .addContainerGap(333, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -91,16 +186,35 @@ public class TutorWelcome extends javax.swing.JFrame {
                     .addComponent(YSULabel)
                     .addComponent(YoungstownLabel))
                 .addGap(28, 28, 28))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(SignInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SignOutButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(NotSignInLabel)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(SignInButton)
+                        .addComponent(SignOutButton))
+                    .addComponent(NotSignInLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
                     .addComponent(RoomScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ViewSchdeuleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                    .addComponent(RoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -131,13 +245,24 @@ public class TutorWelcome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void RoomScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomScheduleButtonActionPerformed
+=======
+    private void RoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomButtonActionPerformed
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
         // TODO add your handling code here:
         TutorWelcome.this.setVisible(false);
-        Resource  room;
+        Resource room;
+        
         try {
-            room = new Resource();
-             room.setVisible(true);
+            if (signedIn) {
+                room = new Resource(user);
+                room.setVisible(true);
+            }
+            else {
+                room = new Resource();
+                room.setVisible(true);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TutorWelcome.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -145,6 +270,7 @@ public class TutorWelcome extends javax.swing.JFrame {
         }
            
         
+<<<<<<< HEAD
     }//GEN-LAST:event_RoomScheduleButtonActionPerformed
 
     private void ViewSchdeuleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewSchdeuleButtonActionPerformed
@@ -153,6 +279,58 @@ public class TutorWelcome extends javax.swing.JFrame {
         TutorDayandTime tutor = new TutorDayandTime();
         tutor.setVisible(true);
     }//GEN-LAST:event_ViewSchdeuleButtonActionPerformed
+=======
+    }//GEN-LAST:event_RoomButtonActionPerformed
+
+    private void ScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScheduleButtonActionPerformed
+        // TODO add your handling code here:
+        
+        
+        myTutor mytutor;
+        try {
+            if (signedIn) {
+            TutorWelcome.this.setVisible(false);
+            
+            ResultSet rs = statement.executeQuery("SELECT * FROM tutor WHERE name = '" + user.getName() + "'");
+            
+            mytutor = new myTutor(rs.getString("name"), rs.getString("algebra"), rs.getString("precalc"), rs.getString("calc"), rs.getString("stats"), rs.getString("contact"),
+            rs.getString("mon"), rs.getString("tues"), rs.getString("wed"), rs.getString("thurs"), rs.getString("fri"));
+            
+            TutorDayandTime tutor = new TutorDayandTime(user, mytutor, statement);
+            tutor.setVisible(true);
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Please Sign In.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TutorWelcome.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_ScheduleButtonActionPerformed
+
+    private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
+        // TODO add your handling code here:
+        signedIn = false;
+        SignOutButton.setVisible(false);
+        SignInButton.setVisible(true);
+
+        NotSignInLabel.setText("Not Signed In");
+    }//GEN-LAST:event_SignOutButtonActionPerformed
+
+    private void SignInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonActionPerformed
+        // TODO add your handling code here:
+        TutorWelcome.this.setVisible(false);
+        SignIn signin;
+        try {
+            signin = new SignIn();
+            signin.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_SignInButtonActionPerformed
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
 
     /**
      * @param args the command line arguments
@@ -185,18 +363,36 @@ public class TutorWelcome extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TutorWelcome().setVisible(true);
+                try {
+                    new TutorWelcome().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TutorWelcome.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TutorWelcome.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JButton RoomScheduleButton;
     private javax.swing.JLabel TheMACIcon;
     private javax.swing.JButton ViewSchdeuleButton;
     private javax.swing.JLabel WelcomeLabel;
     private javax.swing.JLabel YSULabel;
     private javax.swing.JLabel YoungstownLabel;
+=======
+    private javax.swing.JLabel NotSignInLabel;
+    private javax.swing.JButton RoomButton;
+    private javax.swing.JButton ScheduleButton;
+    private javax.swing.JButton SignInButton;
+    private javax.swing.JButton SignOutButton;
+    private javax.swing.JLabel WelcomeLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

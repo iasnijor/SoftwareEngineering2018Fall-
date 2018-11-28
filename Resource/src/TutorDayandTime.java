@@ -21,6 +21,10 @@ public class TutorDayandTime extends javax.swing.JFrame {
      */
     myTutor mytutor;
     User user;
+<<<<<<< HEAD
+=======
+    private boolean signedIn;
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
 
     public TutorDayandTime() {
         initComponents();
@@ -28,6 +32,15 @@ public class TutorDayandTime extends javax.swing.JFrame {
     
     public TutorDayandTime(myTutor tutor, Statement statement) {
         
+        mytutor = tutor;
+        initComponents();
+        
+        getSchedule(statement);
+    }
+    
+    public TutorDayandTime(User user, myTutor tutor, Statement statement) {
+        this.user = user;
+        signedIn = true;
         mytutor = tutor;
         initComponents();
         
@@ -145,8 +158,21 @@ public class TutorDayandTime extends javax.swing.JFrame {
         else{
         Tutor tutor;
         try {
-            tutor = new Tutor();
-            tutor.setVisible(true);
+            if (signedIn) {
+                if (user.getLevel().equals("tutor")) {
+                    TutorWelcome welcome;
+                    welcome = new TutorWelcome(user);
+                    welcome.setVisible(true);
+                }
+                else {
+                    tutor = new Tutor(user);
+                    tutor.setVisible(true);
+                }
+            }
+            else {
+                tutor = new Tutor();
+                tutor.setVisible(true);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -161,8 +187,15 @@ public class TutorDayandTime extends javax.swing.JFrame {
         TutorAdd tutor;
         
         try {
-            tutor = new TutorAdd(true, mytutor);
-            tutor.setVisible(true);
+            if (signedIn) {
+                
+                tutor = new TutorAdd(user, true, mytutor);
+                tutor.setVisible(true);
+            }
+            else {
+                tutor = new TutorAdd(true, mytutor);
+                tutor.setVisible(true);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

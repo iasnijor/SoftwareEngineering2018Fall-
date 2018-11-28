@@ -276,7 +276,11 @@ is divided into following sections:
               <include name="*"/> 
             </dirset> 
           </src>  
+<<<<<<< HEAD
           <withKotlin/>  
+=======
+          
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
           <classpath> 
             <path path="@{classpath}"/> 
           </classpath>  

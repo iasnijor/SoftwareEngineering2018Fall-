@@ -13,16 +13,28 @@ import java.sql.Statement;
  *
  * @author Sean-
  */
-public class myEvent {
+public class myRequest {
     String roomName;
     int time;
     String contact;
     String eventName;
     String contactName;
+
+    public String getContact() {
+        return contact;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
     int day;
     int month;
         
-    public myEvent(String roomName, int time, String contactName, String contact, String eventName, int day) {
+    public myRequest(String roomName, int time, String contactName, String contact, String eventName, int day) {
         this.roomName = roomName;
         this.time = time;
         this.contactName = contactName;
@@ -31,7 +43,7 @@ public class myEvent {
         this.day = day;
     }
     
-    public myEvent(myRequest request) {
+    public myRequest(myRequest request) {
         roomName = request.getRoomName();
         time = request.getTime();
         contactName = request.getContactName();
@@ -49,7 +61,7 @@ public class myEvent {
         
         if (isGood(statement, time, roomName, day)) {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("INSERT INTO event (name, contact, event, room, time, day) VALUES (")
+            stringBuilder.append("INSERT INTO request (name, contact, event, room, time, day) VALUES (")
                     .append("'").append(contactName).append("','")
                     .append(contact).append("','")
                     .append(eventName).append("','")
@@ -61,14 +73,14 @@ public class myEvent {
         }
         
         else {
-            System.out.println("Error adding new event");
+            System.out.println("Error adding new request");
         }
         //This is the command required to send our new string
         // statement was originally created in DBUI.java and handles
         //  sending SQL statements to the DataBase
     }
     public boolean isGood(Statement statement, int newtime, String newRoom, int newDay) throws SQLException {
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM event");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM request");
         
         while (resultSet.next()) {
             if (resultSet.getString("room").equals(newRoom) && newtime == resultSet.getInt("time") && newDay == resultSet.getInt("day")) {
@@ -77,6 +89,25 @@ public class myEvent {
             }
         }
         return true;
+    }
+    
+    public void removeRequest(Statement statement) throws SQLException {
+        System.out.println(roomName + "   " + time + "    " + day);
+        //statement.executeUpdate
+        System.out.println("DELETE FROM request WHERE room= '" + roomName + "' AND time=" + time + " AND day=" + day + ";");
+        statement.executeUpdate("DELETE FROM request WHERE room = '" + roomName + "' AND time = " + time + " AND day = " + day);
+    }
+    
+    public String getRoomName() {
+        return roomName;
+    }
+    
+    public int getTime() {
+        return time;
+    }
+    
+    public int getDay() {
+        return day;
     }
 }
 
