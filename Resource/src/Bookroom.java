@@ -28,14 +28,20 @@ import java.util.logging.Logger;
  */
 public class Bookroom extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Book
-     */
+  
     File file = new File("./ScheduleSystem.db");
     User user;
     boolean signedIn;
     int day;
-    
+      /**
+     * Creates new form Book
+     */
+    /**
+     * Constructor initializes initial day for booking the room
+     * @param Day Day is the initial day the room is booked
+     * @throws ClassNotFoundException  Throws ClassNotFoundException if class is not found
+     * @throws SQLException Throws SQLEception if database is not connected
+     */
     public Bookroom(int Day) throws ClassNotFoundException, SQLException {
         signedIn = false;
         Class.forName("org.sqlite.JDBC");
@@ -48,7 +54,14 @@ public class Bookroom extends javax.swing.JFrame {
         this.day = Day;
         DayLabel.setText("Day: " + day);
     }
-    
+    /**
+     * Constructor initializes initial time room and day
+     * @param time time is the initial time for booking a room
+     * @param room room is  initial room to be booked
+     * @param Day day is the date in which the room should be booked
+     * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
+     * @throws SQLException  Throws SQLEception if database is not connected
+     */
     public Bookroom(String time, String room, int Day) throws ClassNotFoundException, SQLException {
         signedIn = false;
         Class.forName("org.sqlite.JDBC");
@@ -66,6 +79,13 @@ public class Bookroom extends javax.swing.JFrame {
         DayLabel.setText("Day: " + day);
         
     }
+    /**
+     * Constructor analyzes initial Day and user
+     * @param Day Day is the day in which the room is booked
+     * @param user user is the type of user can be Admin/ Student/teacher/Tutor
+     * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
+     * @throws SQLException Throws SQLEception if database is not connected
+     */
     public Bookroom(int Day, User user) throws ClassNotFoundException, SQLException {
         signedIn = true;
         this.user = user;
@@ -80,7 +100,15 @@ public class Bookroom extends javax.swing.JFrame {
         this.day = Day;
         DayLabel.setText("Day: " + day);
     }
-    
+    /**
+     * Constructor analyzes initial time room day and user who booked the room
+     * @param time time is initial time the room was booked 
+     * @param room room is the initial room which was booked
+     * @param Day Day is the initial day the room was booked on
+     * @param user User is the type of user who booked the room
+     * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
+     * @throws SQLException Throws SQLEception if database is not connected
+     */
     public Bookroom(String time, String room, int Day, User user) throws ClassNotFoundException, SQLException {
         signedIn = true;
         this.user = user;
@@ -102,6 +130,9 @@ public class Bookroom extends javax.swing.JFrame {
     }
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
     // Initializing the statement that's declared above
+    /**
+     * Statement for 
+     */
     public static Statement statement;
 
     /**
@@ -129,7 +160,7 @@ public class Bookroom extends javax.swing.JFrame {
         ContactTextField = new javax.swing.JTextField();
         BackButton = new javax.swing.JButton();
         DayLabel = new javax.swing.JLabel();
-        ImageLabel = new javax.swing.JLabel();
+        YSUIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -228,7 +259,7 @@ public class Bookroom extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(RoomtextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(YSUIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(151, 151, 151)
@@ -241,7 +272,7 @@ public class Bookroom extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(NameLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                                     .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +303,7 @@ public class Bookroom extends javax.swing.JFrame {
                         .addComponent(RoomtextLabel))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(ImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(YSUIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NameLabel)
@@ -332,9 +363,14 @@ public class Bookroom extends javax.swing.JFrame {
 
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
         // TODO add your handling code here:
-        submit();
-    }//GEN-LAST:event_SubmitButtonActionPerformed
 
+        submit();
+
+    }//GEN-LAST:event_SubmitButtonActionPerformed
+    /**
+     * Set Method for initializing the day
+     * @param day Day is an int value which represents a day
+     */
     public void setDay(int day) {
         this.day = day;
     }
@@ -480,7 +516,6 @@ public class Bookroom extends javax.swing.JFrame {
     private javax.swing.JLabel DayLabel;
     private javax.swing.JLabel EventLabel;
     private javax.swing.JTextField EventTextField;
-    private javax.swing.JLabel ImageLabel;
     private javax.swing.JLabel NameLabel;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JLabel RoomLabel;
@@ -489,6 +524,7 @@ public class Bookroom extends javax.swing.JFrame {
     private javax.swing.JButton SubmitButton;
     private javax.swing.JLabel TimeLabel;
     private javax.swing.JSpinner TimeSpinner;
+    private javax.swing.JLabel YSUIcon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

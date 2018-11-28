@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 
 /**
- *
+ *AdminRoom Panel for allowing admin to approve and decline Room requests
  * @author Rojen
  */
 public class AdminRoom extends javax.swing.JFrame {
@@ -77,7 +77,7 @@ public class AdminRoom extends javax.swing.JFrame {
         RoomRequestTable = new javax.swing.JTable();
         ApproveButton = new javax.swing.JButton();
         DeclineButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        RoomLabel = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,6 +140,7 @@ public class AdminRoom extends javax.swing.JFrame {
         jScrollPane2.setViewportView(RoomRequestTable);
 
         ApproveButton.setText("Approve");
+
         ApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ApproveButtonActionPerformed(evt);
@@ -153,8 +154,8 @@ public class AdminRoom extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setText("Room Requests");
+        RoomLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        RoomLabel.setText("Room Requests");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,7 +171,7 @@ public class AdminRoom extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(BackButton)
                         .addGap(440, 440, 440)
-                        .addComponent(jLabel1))
+                        .addComponent(RoomLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(448, 448, 448)
                         .addComponent(ApproveButton)
@@ -187,7 +188,7 @@ public class AdminRoom extends javax.swing.JFrame {
                         .addComponent(BackButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(jLabel1)))
+                        .addComponent(RoomLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -214,6 +215,12 @@ public class AdminRoom extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+/**
+ * Back Button takes to the previous window for the admin
+ * @param evt evt is and ActionEvent
+ */                                     
+
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
@@ -252,6 +259,7 @@ public class AdminRoom extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ApproveButtonActionPerformed
 
+
     /**
      * @param args the command line arguments
      */
@@ -286,6 +294,10 @@ public class AdminRoom extends javax.swing.JFrame {
             }
         });
     }
+
+// variables for different Buttons and Labels
+    
+
     
     public void getRequests() throws SQLException {
         ResultSet rs;
@@ -316,12 +328,13 @@ public class AdminRoom extends javax.swing.JFrame {
         requests.remove(index);
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ApproveButton;
     private javax.swing.JButton BackButton;
     private javax.swing.JButton DeclineButton;
+    private javax.swing.JLabel RoomLabel;
     private javax.swing.JTable RoomRequestTable;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

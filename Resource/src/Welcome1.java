@@ -18,7 +18,10 @@ public class Welcome1 extends javax.swing.JFrame {
         initComponents();
         SignOutButton.setVisible(false);
     }
-    
+    /**
+     * Creates a new Welcome form with a type of user
+     * @param user  user  is type of user which is accessing the welcome window
+     */
     public Welcome1(User user) {
         
         initComponents();
@@ -36,6 +39,8 @@ public class Welcome1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         DepartmentLabel = new javax.swing.JLabel();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
         RoomButton = new javax.swing.JButton();
         TutorButton = new javax.swing.JButton();
@@ -45,8 +50,8 @@ public class Welcome1 extends javax.swing.JFrame {
         SignInButton = new javax.swing.JButton();
         SignOutButton = new javax.swing.JButton();
         TheMacLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        YSULabel = new javax.swing.JLabel();
+        YoungstownLabel = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -62,6 +67,10 @@ public class Welcome1 extends javax.swing.JFrame {
         DepartmentLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         DepartmentLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         DepartmentLabel.setText("Department of Mathematics      "); // NOI18N
+
+        jMenu1.setText("jMenu1");
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Resource Scheduling System");
@@ -107,16 +116,14 @@ public class Welcome1 extends javax.swing.JFrame {
             }
         });
 
-
-        TheMacLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/Images/MAC_Logo.png"))); // NOI18N
-
+        TheMacLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/The MAC Logo w Kate Penguin2.png"))); // NOI18N
         TheMacLabel.setText("jLabel1");
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("Youngstown State Univeristy");
+        YSULabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        YSULabel.setText("Youngstown State Univeristy");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("Youngstown, Ohio");
+        YoungstownLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        YoungstownLabel.setText("Youngstown, Ohio");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,8 +151,8 @@ public class Welcome1 extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(YSULabel)
+                            .addComponent(YoungstownLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,9 +187,9 @@ public class Welcome1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                        .addComponent(YSULabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(YoungstownLabel)
                         .addGap(129, 129, 129)))
                 .addComponent(jLabel3)
                 .addContainerGap())
@@ -269,7 +276,9 @@ public class Welcome1 extends javax.swing.JFrame {
         
         NotSignInLabel.setText("Not Signed In");
     }//GEN-LAST:event_SignOutButtonActionPerformed
-
+/**
+ * @param args the command line arguments
+ */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -315,9 +324,11 @@ public class Welcome1 extends javax.swing.JFrame {
     private javax.swing.JLabel TheMacLabel;
     private javax.swing.JButton TutorButton;
     private javax.swing.JLabel WelcomeLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel YSULabel;
+    private javax.swing.JLabel YoungstownLabel;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

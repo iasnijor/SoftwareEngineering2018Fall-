@@ -17,7 +17,11 @@ public class Resource extends javax.swing.JFrame {
     User user;   
     private boolean signedIn;
     
-    
+    /**
+     * Creates new Room Scheduling Form
+     * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
+     * @throws SQLException Throws SQLException if database is not connected
+     */
     public Resource() throws ClassNotFoundException, SQLException {
         initComponents();
         
@@ -29,6 +33,12 @@ public class Resource extends javax.swing.JFrame {
         getEvents(statement);
     }
     
+    /**
+     * Creates new Room Scheduling Form with a type of user
+     * @param user User is the type of user using the form 
+     * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
+     * @throws SQLException Throws SQLException if database is not connected
+     */
     public Resource(User user) throws ClassNotFoundException, SQLException {
         initComponents();
         signedIn = true;
@@ -49,8 +59,11 @@ public class Resource extends javax.swing.JFrame {
     }
     
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
-    // Initializing the statement that's declared above
-    public static Statement statement;
+     
+    /**
+     * Initializing the statement that's declared above
+     */
+             public static Statement statement;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -221,20 +234,17 @@ public class Resource extends javax.swing.JFrame {
             begin.setVisible(true);
         }
         else {
-            if (user.getLevel().equals("tutor")) {
-                TutorWelcome welcome;
-                try {
-                    welcome = new TutorWelcome(user);
-                    welcome.setVisible(true);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            if(user.getLevel().equals("Teacher")){;
+            Welcome1 begin = new Welcome1(user);
+            begin.setVisible(true);
             }
-            else {
-                Welcome1 begin = new Welcome1(user);
-                begin.setVisible(true);
+              else  if(user.getLevel().equals("Teacher")){;
+            Welcome1 begin = new Welcome1(user);
+            begin.setVisible(true);
+            }
+             else if(user.getLevel().equals("Tutor")){
+                TutorWelcome wel= new TutorWelcome();
+                wel.setVisible(true);
             }
         }
     }//GEN-LAST:event_BackButtonActionPerformed
@@ -359,7 +369,10 @@ public class Resource extends javax.swing.JFrame {
     private void actionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
         getEvents(statement);
     }
-    
+    /**
+     * 
+     * @param args the command line argument
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -397,11 +410,18 @@ public class Resource extends javax.swing.JFrame {
             }
         });
     }
-    
+    /**
+     * Get Method for getting the Day
+     * @return Returns int value of the day
+     */
     public int getDay() {
         return Calender.getDay();
     }
-
+/**
+ * Get Method for getting the event
+ * @param statement Statement of the event
+ * @throws SQLException  throws SQLException if the database is not connected
+ */
     public void getEvents(Statement statement) throws SQLException {
         
         ResultSet resultSet = statement.executeQuery("SELECT * FROM event");

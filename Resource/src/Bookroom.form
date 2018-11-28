@@ -77,7 +77,7 @@
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ImageLabel" min="-2" pref="104" max="-2" attributes="0"/>
+                      <Component id="YSUIcon" min="-2" pref="104" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -92,7 +92,7 @@
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="NameLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace pref="78" max="32767" attributes="0"/>
                                           <Component id="NameTextField" min="-2" pref="200" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -137,7 +137,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                              <Component id="ImageLabel" max="32767" attributes="0"/>
+                              <Component id="YSUIcon" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
@@ -320,7 +320,7 @@
                 <Property name="text" type="java.lang.String" value="Day"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="ImageLabel">
+            <Component class="javax.swing.JLabel" name="YSUIcon">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel1"/>
               </Properties>

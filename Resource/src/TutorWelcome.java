@@ -74,6 +74,11 @@ public class TutorWelcome extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         WelcomeLabel = new javax.swing.JLabel();
+        RoomScheduleButton = new javax.swing.JButton();
+        ViewSchdeuleButton = new javax.swing.JButton();
+        TheMACIcon = new javax.swing.JLabel();
+        YSULabel = new javax.swing.JLabel();
+        YoungstownLabel = new javax.swing.JLabel();
         RoomButton = new javax.swing.JButton();
         ScheduleButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -88,29 +93,30 @@ public class TutorWelcome extends javax.swing.JFrame {
         WelcomeLabel.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         WelcomeLabel.setText("                    Welcome to Math Resource Scheduling ");
 
-        RoomButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        RoomButton.setText("Room Schedule");
-        RoomButton.addActionListener(new java.awt.event.ActionListener() {
+        RoomScheduleButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        RoomScheduleButton.setText("Room Schedule");
+        RoomScheduleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RoomButtonActionPerformed(evt);
+                RoomScheduleButtonActionPerformed(evt);
             }
         });
 
-        ScheduleButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        ScheduleButton.setText("View Schedule");
-        ScheduleButton.addActionListener(new java.awt.event.ActionListener() {
+        ViewSchdeuleButton.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        ViewSchdeuleButton.setText("View Schedule");
+        ViewSchdeuleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ScheduleButtonActionPerformed(evt);
+                ViewSchdeuleButtonActionPerformed(evt);
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/Images/MAC_Logo.png"))); // NOI18N
+        TheMACIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/The MAC Logo w Kate Penguin 2.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("Youngstown State Univeristy");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel3.setText("Youngstown, Ohio");
+        YSULabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        YSULabel.setText("Youngstown State Univeristy");
+
+        YoungstownLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        YoungstownLabel.setText("Youngstown, Ohio");
 
         SignInButton.setText("Sign In");
         SignInButton.addActionListener(new java.awt.event.ActionListener() {
@@ -140,17 +146,18 @@ public class TutorWelcome extends javax.swing.JFrame {
                         .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(345, 345, 345)
-                        .addComponent(RoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RoomScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
-                        .addComponent(ScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ViewSchdeuleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
                 .addContainerGap(333, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1)
+                .addComponent(TheMACIcon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(YSULabel)
+                    .addComponent(YoungstownLabel))
                 .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -174,17 +181,18 @@ public class TutorWelcome extends javax.swing.JFrame {
                 .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(RoomScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ViewSchdeuleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(YSULabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
+                        .addComponent(YoungstownLabel)
                         .addGap(83, 83, 83))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(TheMACIcon)
                         .addContainerGap())))
         );
 
@@ -206,7 +214,8 @@ public class TutorWelcome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomButtonActionPerformed
+    private void RoomScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomScheduleButtonActionPerformed
+
         // TODO add your handling code here:
         TutorWelcome.this.setVisible(false);
         Resource room;
@@ -226,7 +235,16 @@ public class TutorWelcome extends javax.swing.JFrame {
             Logger.getLogger(TutorWelcome.class.getName()).log(Level.SEVERE, null, ex);
         }
            
-        
+
+    }//GEN-LAST:event_RoomScheduleButtonActionPerformed
+
+    private void ViewSchdeuleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewSchdeuleButtonActionPerformed
+        // TODO add your handling code here:
+        TutorWelcome.this.setVisible(false);
+        TutorDayandTime tutor = new TutorDayandTime();
+        tutor.setVisible(true);
+    }//GEN-LAST:event_ViewSchdeuleButtonActionPerformed
+
     }//GEN-LAST:event_RoomButtonActionPerformed
 
     private void ScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScheduleButtonActionPerformed
@@ -321,6 +339,12 @@ public class TutorWelcome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton RoomScheduleButton;
+    private javax.swing.JLabel TheMACIcon;
+    private javax.swing.JButton ViewSchdeuleButton;
+    private javax.swing.JLabel WelcomeLabel;
+    private javax.swing.JLabel YSULabel;
+    private javax.swing.JLabel YoungstownLabel;
     private javax.swing.JLabel NotSignInLabel;
     private javax.swing.JButton RoomButton;
     private javax.swing.JButton ScheduleButton;

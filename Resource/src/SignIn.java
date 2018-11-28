@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,9 +24,11 @@ public class SignIn extends javax.swing.JFrame {
 
     
     File file = new File("./ScheduleSystem.db");
-    /**
-     * Creates new form NewJFrame
-     */
+  /**
+   * Creates new Sign in form
+   * @throws ClassNotFoundException throws ClassNotFoundException if the class is not found
+   * @throws SQLException  Throws SQLException if the database is not connected
+   */
     public SignIn() throws ClassNotFoundException, SQLException {
         initComponents();
         
@@ -38,7 +39,9 @@ public class SignIn extends javax.swing.JFrame {
         statement = connection.createStatement();
     }
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
-    // Initializing the statement that's declared above
+    /**
+     * Initializing the statement that's declared above
+     * */
     public static Statement statement;
     
     /**
@@ -226,6 +229,7 @@ public class SignIn extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         logIn();
+
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed

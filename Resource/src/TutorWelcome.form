@@ -52,20 +52,26 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="345" max="-2" attributes="0"/>
+<<<<<<< HEAD
+                          <Component id="RoomScheduleButton" min="-2" pref="271" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="ViewSchdeuleButton" min="-2" pref="224" max="-2" attributes="0"/>
+=======
                           <Component id="RoomButton" min="-2" pref="271" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="ScheduleButton" min="-2" pref="224" max="-2" attributes="0"/>
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
                       </Group>
                   </Group>
                   <EmptySpace pref="333" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="TheMACIcon" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="YSULabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="YoungstownLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
@@ -95,19 +101,24 @@
                   <Component id="WelcomeLabel" min="-2" pref="143" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+<<<<<<< HEAD
+                      <Component id="RoomScheduleButton" alignment="3" min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="ViewSchdeuleButton" alignment="3" min="-2" pref="77" max="-2" attributes="0"/>
+=======
                       <Component id="RoomButton" alignment="3" min="-2" pref="77" max="-2" attributes="0"/>
                       <Component id="ScheduleButton" alignment="3" min="-2" pref="77" max="-2" attributes="0"/>
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
                   </Group>
                   <EmptySpace pref="59" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="YSULabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="YoungstownLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="TheMACIcon" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -124,7 +135,11 @@
             <Property name="text" type="java.lang.String" value="                    Welcome to Math Resource Scheduling "/>
           </Properties>
         </Component>
+<<<<<<< HEAD
+        <Component class="javax.swing.JButton" name="RoomScheduleButton">
+=======
         <Component class="javax.swing.JButton" name="RoomButton">
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
@@ -132,10 +147,17 @@
             <Property name="text" type="java.lang.String" value="Room Schedule"/>
           </Properties>
           <Events>
+<<<<<<< HEAD
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RoomScheduleButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="ViewSchdeuleButton">
+=======
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RoomButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ScheduleButton">
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
@@ -143,17 +165,21 @@
             <Property name="text" type="java.lang.String" value="View Schedule"/>
           </Properties>
           <Events>
+<<<<<<< HEAD
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewSchdeuleButtonActionPerformed"/>
+=======
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ScheduleButtonActionPerformed"/>
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="TheMACIcon">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/src/Images/MAC_Logo.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="YSULabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
@@ -161,7 +187,7 @@
             <Property name="text" type="java.lang.String" value="Youngstown State Univeristy"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="YoungstownLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>

@@ -275,7 +275,16 @@ is divided into following sections:
             <dirset dir="@{gensrcdir}" erroronmissingdir="false"> 
               <include name="*"/> 
             </dirset> 
+<<<<<<< HEAD
           </src>   
+=======
+          </src>  
+<<<<<<< HEAD
+          <withKotlin/>  
+=======
+          
+>>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
+>>>>>>> 278a2ebf182a71b6f7c0ad64a9c4b3dac8c6914f
           <classpath> 
             <path path="@{classpath}"/> 
           </classpath>  
