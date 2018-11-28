@@ -86,7 +86,7 @@ public class myTutor {
                     .append(thurs).append("','")
                     .append(fri).append("');");
         
-        statement.execute(stringBuilder.toString());   
+        statement.executeUpdate(stringBuilder.toString());
     }
     
     public String getName() {
@@ -184,4 +184,33 @@ public class myTutor {
         }
         return arr;
     }
+    
+    public boolean equals(myTutor tutor) {
+        if (!name.equals(tutor.getName()))
+            return false;
+        if (!algebra.equals(tutor.getAlgebra()))
+            return false;
+        if (!precalc.equals(tutor.getPreCalc()))
+            return false;
+        if (!calc.equals(tutor.getCalc()))
+            return false;
+        if (!stats.equals(tutor.getStats()))
+            return false;
+        if (!contact.equals(tutor.getContact()))
+            return false;
+        if (!mon.equals(tutor.getMonday()))
+            return false;
+        if (!tues.equals(tutor.getTuesday()))
+            return false;
+        if (!wed.equals(tutor.getWednesday()))
+            return false;
+        if (!thurs.equals(tutor.getThursday()))
+            return false;
+        if (!fri.equals(tutor.getFriday()))
+            return false;
+        else
+            return true;
+    }
+     //String algebra, String precalc, String calc, String stats, 
+       //     String contact, String mon, String tues, String wed, String thurs, String fri)
 }

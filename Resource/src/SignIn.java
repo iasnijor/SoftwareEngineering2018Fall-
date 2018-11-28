@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -209,7 +210,7 @@ public class SignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-
+        boolean failed = true;
         String user = UserField.getText();
         String passwordString = "";
         char[] password = PasswordField.getPassword();
@@ -222,26 +223,36 @@ public class SignIn extends javax.swing.JFrame {
             
             while (resultSet.next()) {
                 if (resultSet.getString("email").contains(user) && resultSet.getString("password").equals(passwordString)) {
+                    failed = false;
                     System.out.println("Accepted");
-                    String name;
                     String[] userpart = user.split("@");
-                    String username;
-                    String email;
-                    String level;
-                    
+
                     User newuser = new User(resultSet.getString("name"), userpart[0], passwordString, user, resultSet.getString("level"));
                     SignIn.this.setVisible(false);
-                    Welcome1 begin = new Welcome1(newuser);
-                    begin.setVisible(true);
-                }
-                else {
-                    System.out.println("Sign-In Failed");
+                    
+                    if (newuser.getLevel().equals("student")) {
+                        Welcome1 begin = new Welcome1(newuser);
+                        begin.setVisible(true);
+                    }
+                    else if (newuser.getLevel().equals("admin")) {
+                        AdminWelcome begin = new AdminWelcome(newuser);
+                        begin.setVisible(true);
+                    }
+                    else if (newuser.getLevel().equals("tutor")) {
+                        TutorWelcome begin = new TutorWelcome(newuser);
+                        begin.setVisible(true);
+                    }
                 }
             }
             
+            if (failed)
+                JOptionPane.showMessageDialog(this, "Please Try Again.");
+            
         } catch (SQLException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed

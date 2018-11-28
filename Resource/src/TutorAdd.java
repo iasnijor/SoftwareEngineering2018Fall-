@@ -27,6 +27,7 @@ public class TutorAdd extends javax.swing.JFrame {
     User user;
     myTutor tutor;
     boolean edit;
+    private boolean signedIn;
     /**
      * Creates new form TutorAdd
      */
@@ -54,13 +55,36 @@ public class TutorAdd extends javax.swing.JFrame {
         }
     }
 
-    public TutorAdd(myTutor tutor) {
+    public TutorAdd(User user) throws ClassNotFoundException, SQLException {
+        signedIn = true;
+        this.user = user;
+        initComponents();
+        Class.forName("org.sqlite.JDBC");
+        Connection connection = DriverManager.getConnection(DB_NAME);
+        statement = connection.createStatement();
+    }
+    
+    public TutorAdd(User user, boolean edit, myTutor tutor) throws ClassNotFoundException, SQLException {
+        signedIn = true;
+        this.user = user;
+        initComponents();
+        Class.forName("org.sqlite.JDBC");
         
+        Connection connection = DriverManager.getConnection(DB_NAME);
+        
+        statement = connection.createStatement();
+        statement2 = connection.createStatement();
+        this.tutor = tutor;
+        
+        if (edit) {
+            getInformation();
+        }
     }
     // More information for DB
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
     // Initializing the statement that's declared above
     public static Statement statement;
+    public static Statement statement2;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -217,7 +241,7 @@ public class TutorAdd extends javax.swing.JFrame {
         jScrollPane4.setToolTipText("");
 
         AlgebraList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "1505    ", "1507    " };
+            String[] strings = { "1505", "1507" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -440,19 +464,42 @@ public class TutorAdd extends javax.swing.JFrame {
         System.out.println(precalc);
         
         myTutor newtutor = new myTutor(name, algebra, precalc, calc, stats, contact, mon, tues, wed, thurs, fri);
-        System.out.println(newtutor.getMonday());
+        //System.out.println(newtutor.getMonday());
         try {
-            newtutor.save(statement);
+            if (edit) {
+                //statement.executeUpdate("DELETE FROM tutor WHERE name = 'Mike' AND ");
+                
+                
+                   
+                //newtutor.save(statement);
+                
+            }
+            else {
+                newtutor.save(statement);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
+        
         TutorAdd.this.setVisible(false);
         Tutor tutorframe;
         try {
-            tutorframe = new Tutor();
-            tutorframe.setVisible(true);
+            if (signedIn) {
+                if (user.getLevel().equals("tutor")) {
+                    TutorDayandTime dayandtime = new TutorDayandTime(user, newtutor, statement);
+                    dayandtime.setVisible(true);
+                }
+                else {
+                    tutorframe = new Tutor(user);
+                    tutorframe.setVisible(true);
+                }
+            }
+            else {
+                tutorframe = new Tutor();
+                tutorframe.setVisible(true);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -472,9 +519,23 @@ public class TutorAdd extends javax.swing.JFrame {
         // TODO add your handling code here:
         TutorAdd.this.setVisible(false);
         Tutor tutor;
+        
         try {
-            tutor = new Tutor();
-            tutor.setVisible(true);
+            if (signedIn) {
+                TutorDayandTime dayandtime;
+                if (user.getLevel().equals("tutor")) {
+                    dayandtime = new TutorDayandTime(user, this.tutor, statement);
+                    dayandtime.setVisible(true);
+                }
+                else {
+                    tutor = new Tutor(user);
+                    tutor.setVisible(true);
+                }
+            }
+            else {
+                tutor = new Tutor();
+                tutor.setVisible(true);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -524,7 +585,7 @@ public class TutorAdd extends javax.swing.JFrame {
         });
     }
 
-        public void getInformation() {
+    public void getInformation() {
         NameTextfield.setText(tutor.getName());
         ContactTextfield.setText(tutor.getContact());
         
@@ -534,7 +595,7 @@ public class TutorAdd extends javax.swing.JFrame {
         
         for(int i = 0; i < AlgebraList1.getModel().getSize(); i++) {
             if(tutor.getAlgebra().contains(", " + AlgebraList1.getModel().getElementAt(i) + ", ") || 
-                    tutor.getAlgebra().startsWith(AlgebraList1.getModel().getElementAt(i) + ", "))
+                    tutor.getAlgebra().startsWith(AlgebraList1.getModel().getElementAt(i)))
                 alg.add(i);
         }
         for(int i = 0; i < PreCalcList.getModel().getSize(); i++) {
@@ -552,6 +613,8 @@ public class TutorAdd extends javax.swing.JFrame {
                     tutor.getStats().startsWith(StatisticsList.getModel().getElementAt(i) + ", "))
                 stat.add(i);
         }
+        System.out.println("'" + alg.toString() + "'");
+        System.out.println("'" + pre.toString() + "'");
         AlgebraList1.setSelectedIndices(asArray(alg));
         PreCalcList.setSelectedIndices(asArray(pre));
         CalculusList.setSelectedIndices(asArray(calc));

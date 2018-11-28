@@ -26,6 +26,8 @@ public class Tutor extends javax.swing.JFrame {
      */
     File file = new File("./ScheduleSystem.db");
     ArrayList<myTutor> tutors = new ArrayList();
+    boolean signedIn;
+    User user;
     /**
      * Creates new form Tutor
      */
@@ -38,6 +40,24 @@ public class Tutor extends javax.swing.JFrame {
         statement = connection.createStatement();
         
         getTutors(statement);
+    }
+    
+    public Tutor(User user) throws ClassNotFoundException {
+        this.user = user;
+        signedIn = true;
+        initComponents();
+        Class.forName("org.sqlite.JDBC");
+  
+        Connection connection;
+        try {
+            connection = DriverManager.getConnection(DB_NAME);
+                    
+            statement = connection.createStatement();
+        
+            getTutors(statement);
+        } catch (SQLException ex) {
+            Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     // More information for DB
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
@@ -68,6 +88,9 @@ public class Tutor extends javax.swing.JFrame {
                 {"", null},
                 {null, null},
                 {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
                 {null, null}
             },
             new String [] {
@@ -82,7 +105,7 @@ public class Tutor extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        TutorTable.setPreferredSize(new java.awt.Dimension(825, 200));
+        TutorTable.setPreferredSize(new java.awt.Dimension(825, 350));
         TutorTable.setRowHeight(50);
         jScrollPane1.setViewportView(TutorTable);
 
@@ -115,25 +138,24 @@ public class Tutor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(332, Short.MAX_VALUE)
-                .addComponent(TutorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(453, 453, 453))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AddTutorButton)
-                .addGap(356, 356, 356)
-                .addComponent(ViewScheduleButton)
-                .addGap(346, 346, 346))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BackButton)
                         .addContainerGap(1237, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(TutorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(453, 453, 453))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(AddTutorButton)
+                                .addGap(356, 356, 356)
+                                .addComponent(ViewScheduleButton)
+                                .addGap(346, 346, 346))))))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,9 +164,9 @@ public class Tutor extends javax.swing.JFrame {
                 .addComponent(BackButton)
                 .addGap(29, 29, 29)
                 .addComponent(TutorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddTutorButton)
                     .addComponent(ViewScheduleButton))
@@ -157,8 +179,15 @@ public class Tutor extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         Tutor.this.setVisible(false);
-        Welcome1 begin = new Welcome1();
-        begin.setVisible(true);
+        if (signedIn) {
+            Welcome1 begin = new Welcome1(user);
+            begin.setVisible(true);
+        }
+        else {
+            Tutor.this.setVisible(false);
+            Welcome1 begin = new Welcome1();
+            begin.setVisible(true);
+        }
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void ViewScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewScheduleButtonActionPerformed
@@ -166,17 +195,32 @@ public class Tutor extends javax.swing.JFrame {
         System.out.println(selectedIndex);
         myTutor mytutor = tutors.get(selectedIndex);
         Tutor.this.setVisible(false);
-        TutorDayandTime dayandtime = new TutorDayandTime(mytutor, statement);
-        dayandtime.setVisible(true);
+        
+        if (signedIn) {
+            TutorDayandTime dayandtime = new TutorDayandTime(user, mytutor, statement);
+            dayandtime.setVisible(true);
+        }
+        else {
+            TutorDayandTime dayandtime = new TutorDayandTime(mytutor, statement);
+            dayandtime.setVisible(true);
+        }
         
     }//GEN-LAST:event_ViewScheduleButtonActionPerformed
 
     private void AddTutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTutorButtonActionPerformed
-    Tutor.this.setVisible(false);
+        Tutor.this.setVisible(false);
         TutorAdd tutorbook;
+        
         try {
-            tutorbook = new TutorAdd();
-            tutorbook.setVisible(true);
+            
+            if (signedIn) {
+                tutorbook = new TutorAdd(user);
+                tutorbook.setVisible(true);
+            }
+            else {
+                tutorbook = new TutorAdd();
+                tutorbook.setVisible(true);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

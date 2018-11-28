@@ -1,3 +1,15 @@
+
+import java.sql.Statement;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,10 +25,40 @@ public class AdminRoom extends javax.swing.JFrame {
     /**
      * Creates new form AdminRoom
      */
+    // path to db
+    File file = new File("./ScheduleSystem.db");
+    User user;
+    boolean first = true;
+    ArrayList<myRequest> requests = new ArrayList();
+    
+    private boolean signedIn;
+    
     public AdminRoom() {
         initComponents();
     }
+    
+    public AdminRoom(User user) {
+        initComponents();
+        this.user = user;
+        signedIn = true;
+        
+        try {
+            Class.forName("org.sqlite.JDBC");
+            
+            Connection connection = DriverManager.getConnection(DB_NAME);
+            statement = connection.createStatement();
+            
+            getRequests();
+            
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
+    // Initializing the statement that's declared above
+    public static Statement statement;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,11 +72,11 @@ public class AdminRoom extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         RoomRequestTable = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ApproveButton = new javax.swing.JButton();
+        DeclineButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -54,10 +96,10 @@ public class AdminRoom extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
 
@@ -97,12 +139,17 @@ public class AdminRoom extends javax.swing.JFrame {
         RoomRequestTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(RoomRequestTable);
 
-        jButton2.setText("Approve");
-
-        jButton3.setText("Decline");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ApproveButton.setText("Approve");
+        ApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ApproveButtonActionPerformed(evt);
+            }
+        });
+
+        DeclineButton.setText("Decline");
+        DeclineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeclineButtonActionPerformed(evt);
             }
         });
 
@@ -121,14 +168,14 @@ public class AdminRoom extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addComponent(BackButton)
                         .addGap(440, 440, 440)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(448, 448, 448)
-                        .addComponent(jButton2)
+                        .addComponent(ApproveButton)
                         .addGap(83, 83, 83)
-                        .addComponent(jButton3)))
+                        .addComponent(DeclineButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,7 +184,7 @@ public class AdminRoom extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jButton1))
+                        .addComponent(BackButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jLabel1)))
@@ -145,8 +192,8 @@ public class AdminRoom extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(ApproveButton)
+                    .addComponent(DeclineButton))
                 .addGap(36, 36, 36))
         );
 
@@ -168,16 +215,42 @@ public class AdminRoom extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        AdminRoom.this.setVisible(false);
-        AdminWelcome wel= new AdminWelcome();
-        wel.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (signedIn) {
+            // holds user to pass back to home page
+            // keeps user signed in
+            AdminRoom.this.setVisible(false);
+            AdminWelcome welcome = new AdminWelcome(user);
+            welcome.setVisible(true);
+        }
+        else {
+            AdminRoom.this.setVisible(false);
+            AdminWelcome welcome = new AdminWelcome();
+            welcome.setVisible(true);
+        }
+    }//GEN-LAST:event_BackButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void DeclineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeclineButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_DeclineButtonActionPerformed
+
+    private void ApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApproveButtonActionPerformed
+        // TODO add your handling code here:
+        int index = RoomRequestTable.getSelectedRow();
+        try {
+            createEvent(index);
+            AdminRoom.this.setVisible(false);
+            AdminRoom newad = new AdminRoom(user);
+            newad.setVisible(true);
+            //RoomRequestTable.removeAll();
+            
+            getRequests();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRoom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ApproveButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,12 +286,41 @@ public class AdminRoom extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void getRequests() throws SQLException {
+        ResultSet rs;
+        statement.cancel();
+        statement.close();
+        rs = statement.executeQuery("SELECT * FROM request");
+        
+            
+        while (rs.next()) {
+            requests.add(new myRequest(rs.getString("room"), rs.getInt("time"), rs.getString("name"), rs.getString("contact"), rs.getString("event"), rs.getInt("day")));
+        }
+        
+        for (int i=0; i < requests.size(); i++) {
+            RoomRequestTable.setValueAt(requests.get(i).getRoomName(), i, 0);
+            RoomRequestTable.setValueAt("Day: " + String.valueOf(requests.get(i).getDay()) + ", Time: " + String.valueOf(requests.get(i).getTime()), i, 1);
+        }
+        
+        rs.close();
+        
+    }
+    
+    public void createEvent(int index) throws SQLException {
+        myEvent newEvent;
+        myRequest selectedRequest = new myRequest(requests.get(index));
+        newEvent = new myEvent(requests.get(index));
+        newEvent.save(statement);
+        selectedRequest.removeRequest(statement);
+        requests.remove(index);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ApproveButton;
+    private javax.swing.JButton BackButton;
+    private javax.swing.JButton DeclineButton;
     private javax.swing.JTable RoomRequestTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
