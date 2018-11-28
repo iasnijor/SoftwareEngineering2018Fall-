@@ -427,6 +427,32 @@ public class Resource extends javax.swing.JFrame {
             } //1st for
         } //while
     }
+    
+    public void getRequests(Statement statement) throws SQLException {
+        
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM request");
+        
+        while (resultSet.next()) {
+            for (int i = 0; i < Table.getRowCount(); i++) { // 0-5
+                for (int j = 0; j < Table.getColumnCount(); j++) { // 0-9
+
+                    String columntime = Table.getColumnName(j);
+                    String[] parts = columntime.split(":");
+                
+                    int day = Calender.getDay();
+                
+                    if (Table.getValueAt(i, 0).equals(resultSet.getString("room")) && parts[0].equals(resultSet.getString("time"))) {                    
+                        if (day == resultSet.getInt("day")) {
+                            Table.setValueAt("?", i, j);
+                            //System.out.println("FOUND");
+                        }
+                        else 
+                            Table.setValueAt("", i, j);
+                    } //1st if
+                } //2nd for
+            } //1st for
+        } //while
+    }
 
     
     

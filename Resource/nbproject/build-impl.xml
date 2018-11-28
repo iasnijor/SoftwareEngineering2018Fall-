@@ -275,8 +275,7 @@ is divided into following sections:
             <dirset dir="@{gensrcdir}" erroronmissingdir="false"> 
               <include name="*"/> 
             </dirset> 
-          </src>  
-          
+          </src>   
           <classpath> 
             <path path="@{classpath}"/> 
           </classpath>  

@@ -49,8 +49,10 @@ public class TutorAdd extends javax.swing.JFrame {
         
         statement = connection.createStatement();
         this.tutor = tutor;
+        this.edit = edit;
         
         if (edit) {
+            NameTextfield.setEditable(false);
             getInformation();
         }
     }
@@ -75,8 +77,10 @@ public class TutorAdd extends javax.swing.JFrame {
         statement = connection.createStatement();
         statement2 = connection.createStatement();
         this.tutor = tutor;
+        this.edit = edit;
         
         if (edit) {
+            NameTextfield.setEditable(false);
             getInformation();
         }
     }
@@ -463,17 +467,25 @@ public class TutorAdd extends javax.swing.JFrame {
         System.out.println(algebra);
         System.out.println(precalc);
         
-        myTutor newtutor = new myTutor(name, algebra, precalc, calc, stats, contact, mon, tues, wed, thurs, fri);
         //System.out.println(newtutor.getMonday());
+        myTutor newtutor;
+        newtutor = new myTutor(name, algebra, precalc, calc, stats, contact, mon, tues, wed, thurs, fri);
         try {
             if (edit) {
                 //statement.executeUpdate("DELETE FROM tutor WHERE name = 'Mike' AND ");
-                
-                
+                System.out.println("EDIT HIT");
+                StringBuilder sb = new StringBuilder();
+                sb.append("UPDATE tutor SET algebra = '")
+                        .append(algebra + "', precalc = '" + precalc + "', calc = '" + calc + "', stats = '" + stats)
+                        .append("', contact = '" + contact)
+                        .append("', mon = '" + mon + "', tues = '" + tues + "', wed = '" + wed + "', thurs = '" + thurs + "', fri = '" + fri + "' ")
+                        .append("WHERE name = '" + tutor.getName() + "';");
                    
-                //newtutor.save(statement);
+                statement.executeUpdate(sb.toString());
+                             
                 
             }
+            
             else {
                 newtutor.save(statement);
             }
@@ -486,6 +498,7 @@ public class TutorAdd extends javax.swing.JFrame {
         TutorAdd.this.setVisible(false);
         Tutor tutorframe;
         try {
+            
             if (signedIn) {
                 if (user.getLevel().equals("tutor")) {
                     TutorDayandTime dayandtime = new TutorDayandTime(user, newtutor, statement);
@@ -572,17 +585,17 @@ public class TutorAdd extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new TutorAdd().setVisible(true);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                try {
+//                    new TutorAdd().setVisible(true);
+//                } catch (ClassNotFoundException ex) {
+//                    Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        });
     }
 
     public void getInformation() {
@@ -649,6 +662,7 @@ public class TutorAdd extends javax.swing.JFrame {
         WednesdayList.setSelectedIndices(asArray(wednesday));
         ThursdayList.setSelectedIndices(asArray(thursday));
         FridayList.setSelectedIndices(asArray(friday));
+        
     }
     
     public int[] asArray(ArrayList<Integer> day) {

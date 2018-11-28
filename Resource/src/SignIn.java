@@ -1,4 +1,5 @@
 
+import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.io.File;
 import java.sql.Connection;
@@ -75,6 +76,7 @@ public class SignIn extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sign In");
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -95,6 +97,19 @@ public class SignIn extends javax.swing.JFrame {
 
         PasswordLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         PasswordLabel.setText("Password:");
+
+        UserField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UserFieldKeyPressed(evt);
+            }
+        });
+
+        PasswordField.setToolTipText("");
+        PasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PasswordFieldKeyPressed(evt);
+            }
+        });
 
         RegisterButton.setBackground(new java.awt.Color(153, 0, 0));
         RegisterButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -210,6 +225,88 @@ public class SignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        logIn();
+    }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
+        // TODO add your handling code here:
+        SignIn.this.setVisible(false);
+        Registration registration;
+        try {
+            //try {
+            registration = new Registration();            
+            registration.setVisible(true);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //} catch (ClassNotFoundException ex) {
+        //    Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
+        //} catch (SQLException ex) {
+        //    Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
+        //}
+    }//GEN-LAST:event_RegisterButtonActionPerformed
+
+    private void PasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PasswordFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            logIn();
+        }
+    }//GEN-LAST:event_PasswordFieldKeyPressed
+
+    private void UserFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UserFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            PasswordField.grabFocus();
+        }
+    }//GEN-LAST:event_UserFieldKeyPressed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new SignIn().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        });
+    }
+    
+    public void logIn() {
         boolean failed = true;
         String user = UserField.getText();
         String passwordString = "";
@@ -253,70 +350,6 @@ public class SignIn extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
         }        
-    }//GEN-LAST:event_LoginButtonActionPerformed
-
-    private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        // TODO add your handling code here:
-        SignIn.this.setVisible(false);
-        Registration registration;
-        try {
-            //try {
-            registration = new Registration();            
-            registration.setVisible(true);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //} catch (ClassNotFoundException ex) {
-        //    Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
-        //} catch (SQLException ex) {
-        //    Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
-        //}
-    }//GEN-LAST:event_RegisterButtonActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Welcome1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new SignIn().setVisible(true);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

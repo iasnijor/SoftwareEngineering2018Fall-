@@ -1,4 +1,5 @@
 
+import com.sun.glass.events.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
@@ -146,6 +147,11 @@ public class Bookroom extends javax.swing.JFrame {
                 EventTextFieldActionPerformed(evt);
             }
         });
+        EventTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EventTextFieldKeyPressed(evt);
+            }
+        });
 
         TimeLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         TimeLabel.setText("Time");
@@ -154,6 +160,11 @@ public class Bookroom extends javax.swing.JFrame {
         EventLabel.setText("Event");
 
         TimeSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"8", "9", "10", "11", "12", "1", "2", "3", "4", "5"}));
+        TimeSpinner.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TimeSpinnerKeyPressed(evt);
+            }
+        });
 
         SubmitButton.setBackground(new java.awt.Color(0, 0, 0));
         SubmitButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -166,12 +177,29 @@ public class Bookroom extends javax.swing.JFrame {
         });
 
         RoomSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"Conference Small", "Conference Suite", "Conference 524", "Lab 214", "Lab 403", "Lab 414"}));
+        RoomSpinner.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RoomSpinnerKeyPressed(evt);
+            }
+        });
 
         NameLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         NameLabel.setText("Name");
 
         ContactLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         ContactLabel.setText("Contact Number ");
+
+        NameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NameTextFieldKeyPressed(evt);
+            }
+        });
+
+        ContactTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ContactTextFieldKeyPressed(evt);
+            }
+        });
 
         BackButton.setBackground(new java.awt.Color(0, 0, 0));
         BackButton.setForeground(new java.awt.Color(153, 0, 0));
@@ -185,7 +213,6 @@ public class Bookroom extends javax.swing.JFrame {
         DayLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         DayLabel.setText("Day");
 
-        ImageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Rojen\\Documents\\GitHub\\SoftwareEngineering2018Fall-\\Resource\\build\\classes\\Images\\button.jpg")); // NOI18N
         ImageLabel.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -305,39 +332,7 @@ public class Bookroom extends javax.swing.JFrame {
 
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
         // TODO add your handling code here:
-        String Name = NameTextField.getText();
-        String Contact= ContactTextField.getText();
-        String myEvent= EventTextField.getText();
-        Object Room= RoomSpinner.getValue();
-        Room=Room.toString();
-        
-        
-        int Time = Integer.parseInt(TimeSpinner.getValue().toString());
-         //Time= Time.toString();
-         
-        try {
-        myRequest request = new myRequest(RoomSpinner.getValue().toString() , Time , Name, Contact, myEvent, day);
-            request.save(statement);
-        } catch (SQLException ex) {
-            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
-        }
-//        
-//        System.out.println(Name);
-//        System.out.println(Contact);
-//        System.out.println(Room);
-//        System.out.println(myEvent);
-//        System.out.println(Time);
-//        
-        Bookroom.this.setVisible(false);
-        Resource room;
-        try {
-            room = new Resource();
-            room.setVisible(true);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        submit();
     }//GEN-LAST:event_SubmitButtonActionPerformed
 
     public void setDay(int day) {
@@ -367,6 +362,39 @@ public class Bookroom extends javax.swing.JFrame {
             Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void NameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NameTextFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            ContactTextField.grabFocus();
+        }
+    }//GEN-LAST:event_NameTextFieldKeyPressed
+
+    private void ContactTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ContactTextFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            RoomSpinner.grabFocus();
+        }
+    }//GEN-LAST:event_ContactTextFieldKeyPressed
+
+    private void RoomSpinnerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RoomSpinnerKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            EventTextField.grabFocus();
+        }
+    }//GEN-LAST:event_RoomSpinnerKeyPressed
+
+    private void EventTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EventTextFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            TimeSpinner.grabFocus();
+        }
+    }//GEN-LAST:event_EventTextFieldKeyPressed
+
+    private void TimeSpinnerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TimeSpinnerKeyPressed
+        // TODO add your handling code here:
+        submit();
+    }//GEN-LAST:event_TimeSpinnerKeyPressed
 
     /**
      * @param args the command line arguments
@@ -406,6 +434,43 @@ public class Bookroom extends javax.swing.JFrame {
                 Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+    }
+    
+    public void submit() {
+        String Name = NameTextField.getText();
+        String Contact= ContactTextField.getText();
+        String myEvent= EventTextField.getText();
+        Object Room= RoomSpinner.getValue();
+        Room=Room.toString();
+        
+        
+        int Time = Integer.parseInt(TimeSpinner.getValue().toString());
+         //Time= Time.toString();
+         
+        try {
+            if (user.getLevel().equals("student") || user.getLevel().equals("tutor")) {
+                myRequest request = new myRequest(RoomSpinner.getValue().toString() , Time , Name, Contact, myEvent, day);
+                request.save(statement);
+            }
+            
+            else {
+                myEvent event = new myEvent(RoomSpinner.getValue().toString(), Time, Name, Contact, myEvent, day);
+                event.save(statement);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Bookroom.this.setVisible(false);
+        Resource room;
+        try {
+            room = new Resource();
+            room.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

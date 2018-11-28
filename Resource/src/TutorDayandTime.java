@@ -27,21 +27,24 @@ public class TutorDayandTime extends javax.swing.JFrame {
         initComponents();
     }
     
-    public TutorDayandTime(myTutor tutor, Statement statement) {
+    public TutorDayandTime(myTutor tutor, Statement statement) throws SQLException {
         
         mytutor = tutor;
         initComponents();
         
         getSchedule(statement);
+        
+        statement.close();
     }
     
-    public TutorDayandTime(User user, myTutor tutor, Statement statement) {
+    public TutorDayandTime(User user, myTutor tutor, Statement statement) throws SQLException {
         this.user = user;
         signedIn = true;
         mytutor = tutor;
         initComponents();
         
         getSchedule(statement);
+        statement.close();
     }
 
     /**
