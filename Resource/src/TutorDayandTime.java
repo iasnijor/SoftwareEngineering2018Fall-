@@ -21,6 +21,7 @@ public class TutorDayandTime extends javax.swing.JFrame {
      */
     myTutor mytutor;
     User user;
+    private boolean signedIn;
 /**
  * Creates a New TutorDayandTime form
  */

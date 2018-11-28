@@ -27,6 +27,7 @@ public class TutorAdd extends javax.swing.JFrame {
     User user;
     myTutor tutor;
     boolean edit;
+    boolean signedIn;
   /**
    * Creates a New Tutor add form
    * @throws ClassNotFoundException Throws ClassNotFoundException if the class is not found
@@ -85,7 +86,7 @@ public class TutorAdd extends javax.swing.JFrame {
         Connection connection = DriverManager.getConnection(DB_NAME);
         
         statement = connection.createStatement();
-        statement2 = connection.createStatement();
+        
         this.tutor = tutor;
         this.edit = edit;
         

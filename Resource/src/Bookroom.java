@@ -244,8 +244,6 @@ public class Bookroom extends javax.swing.JFrame {
         DayLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         DayLabel.setText("Day");
 
-        ImageLabel.setText("jLabel1");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(

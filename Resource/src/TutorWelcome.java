@@ -245,7 +245,7 @@ public class TutorWelcome extends javax.swing.JFrame {
         tutor.setVisible(true);
     }//GEN-LAST:event_ViewSchdeuleButtonActionPerformed
 
-    }//GEN-LAST:event_RoomButtonActionPerformed
+                                              
 
     private void ScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScheduleButtonActionPerformed
         // TODO add your handling code here:
@@ -338,6 +338,7 @@ public class TutorWelcome extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton RoomScheduleButton;
     private javax.swing.JLabel TheMACIcon;
@@ -350,7 +351,6 @@ public class TutorWelcome extends javax.swing.JFrame {
     private javax.swing.JButton ScheduleButton;
     private javax.swing.JButton SignInButton;
     private javax.swing.JButton SignOutButton;
-    private javax.swing.JLabel WelcomeLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

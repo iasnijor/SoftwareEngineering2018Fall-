@@ -199,12 +199,22 @@ public class Tutor extends javax.swing.JFrame {
         Tutor.this.setVisible(false);
         
         if (signedIn) {
-            TutorDayandTime dayandtime = new TutorDayandTime(user, mytutor, statement);
+            TutorDayandTime dayandtime;
+            try {
+                dayandtime = new TutorDayandTime(user, mytutor, statement);
             dayandtime.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else {
-            TutorDayandTime dayandtime = new TutorDayandTime(mytutor, statement);
-            dayandtime.setVisible(true);
+            TutorDayandTime dayandtime;
+            try {
+                dayandtime = new TutorDayandTime(mytutor, statement);
+                dayandtime.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }//GEN-LAST:event_ViewScheduleButtonActionPerformed

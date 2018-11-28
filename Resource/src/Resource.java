@@ -243,8 +243,15 @@ public class Resource extends javax.swing.JFrame {
             begin.setVisible(true);
             }
              else if(user.getLevel().equals("Tutor")){
-                TutorWelcome wel= new TutorWelcome();
-                wel.setVisible(true);
+                TutorWelcome wel;
+                try {
+                    wel = new TutorWelcome();
+                    wel.setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }//GEN-LAST:event_BackButtonActionPerformed
