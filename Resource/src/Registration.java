@@ -21,8 +21,11 @@ public class Registration extends javax.swing.JFrame {
     
     File file = new File("./ScheduleSystem.db");
 
+    
     /**
-     * Creates new form Registration
+     *  Creates new form Registration
+     * @throws SQLException  Throws SQLException if database is not connected
+     * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
      */
     public Registration() throws SQLException, ClassNotFoundException {
         initComponents();
@@ -35,7 +38,10 @@ public class Registration extends javax.swing.JFrame {
     }
     
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
-    // Initializing the statement that's declared above
+    
+    /**
+     * // Initializing the statement that's declared above
+     */
     public static Statement statement;
 
     /**

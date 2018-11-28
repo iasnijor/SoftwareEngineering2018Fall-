@@ -18,7 +18,10 @@ public class Welcome1 extends javax.swing.JFrame {
         initComponents();
         SignOutButton.setVisible(false);
     }
-    
+    /**
+     * Creates a new Welcome form with a type of user
+     * @param user  user  is type of user which is accessing the welcome window
+     */
     public Welcome1(User user) {
         
         initComponents();
@@ -273,7 +276,9 @@ public class Welcome1 extends javax.swing.JFrame {
         
         NotSignInLabel.setText("Not Signed In");
     }//GEN-LAST:event_SignOutButtonActionPerformed
-
+/**
+ * @param args the command line arguments
+ */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

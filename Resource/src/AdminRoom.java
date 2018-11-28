@@ -221,25 +221,25 @@ public class AdminRoom extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-<<<<<<< HEAD
+
 /**
  * Back Button takes to the previous window for the admin
  * @param evt evt is and ActionEvent
  */
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         AdminRoom.this.setVisible(false);
         AdminWelcome wel= new AdminWelcome();
         wel.setVisible(true);
-    }//GEN-LAST:event_BackButtonActionPerformed
+    }                                          
     /**
      * 
      * @param evt 
      */
-    private void DeclineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeclineButtonActionPerformed
+    private void DeclineButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
-    }//GEN-LAST:event_DeclineButtonActionPerformed
-=======
+    }                                             
+
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
@@ -277,7 +277,7 @@ public class AdminRoom extends javax.swing.JFrame {
             Logger.getLogger(AdminRoom.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ApproveButtonActionPerformed
->>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
+
 
     /**
      * @param args the command line arguments
@@ -313,10 +313,10 @@ public class AdminRoom extends javax.swing.JFrame {
             }
         });
     }
-<<<<<<< HEAD
+
 // variables for different Buttons and Labels
     
-=======
+
     
     public void getRequests() throws SQLException {
         ResultSet rs;
@@ -347,7 +347,7 @@ public class AdminRoom extends javax.swing.JFrame {
         requests.remove(index);
     }
 
->>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ApproveButton;
     private javax.swing.JButton BackButton;

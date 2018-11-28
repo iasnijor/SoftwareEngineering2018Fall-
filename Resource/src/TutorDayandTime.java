@@ -21,26 +21,19 @@ public class TutorDayandTime extends javax.swing.JFrame {
      */
     myTutor mytutor;
     User user;
-<<<<<<< HEAD
-=======
-    private boolean signedIn;
->>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
-
+/**
+ * Creates a New TutorDayandTime form
+ */
     public TutorDayandTime() {
         initComponents();
     }
-    
+    /**
+     * Creates a New TutorDayandTime form with initial value of tutor and Statement
+     * @param tutor Tutor is the initial tutor in the system
+     * @param statement  Statement is the initial statement declared before
+     */
     public TutorDayandTime(myTutor tutor, Statement statement) {
         
-        mytutor = tutor;
-        initComponents();
-        
-        getSchedule(statement);
-    }
-    
-    public TutorDayandTime(User user, myTutor tutor, Statement statement) {
-        this.user = user;
-        signedIn = true;
         mytutor = tutor;
         initComponents();
         
@@ -158,21 +151,8 @@ public class TutorDayandTime extends javax.swing.JFrame {
         else{
         Tutor tutor;
         try {
-            if (signedIn) {
-                if (user.getLevel().equals("tutor")) {
-                    TutorWelcome welcome;
-                    welcome = new TutorWelcome(user);
-                    welcome.setVisible(true);
-                }
-                else {
-                    tutor = new Tutor(user);
-                    tutor.setVisible(true);
-                }
-            }
-            else {
-                tutor = new Tutor();
-                tutor.setVisible(true);
-            }
+            tutor = new Tutor();
+            tutor.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -187,15 +167,8 @@ public class TutorDayandTime extends javax.swing.JFrame {
         TutorAdd tutor;
         
         try {
-            if (signedIn) {
-                
-                tutor = new TutorAdd(user, true, mytutor);
-                tutor.setVisible(true);
-            }
-            else {
-                tutor = new TutorAdd(true, mytutor);
-                tutor.setVisible(true);
-            }
+            tutor = new TutorAdd(true, mytutor);
+            tutor.setVisible(true);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -237,6 +210,10 @@ public class TutorDayandTime extends javax.swing.JFrame {
             }
         });
     }
+    /**
+     * Get method for getting the schedule of the tutor
+     * @param statement  Statement is the statement declared  before
+     */
     public void getSchedule(Statement statement) {
         for (int day = 0; day < ScheduleTable.getRowCount(); day++) {
             for (int hour = 0; hour < ScheduleTable.getColumnCount(); hour++) {

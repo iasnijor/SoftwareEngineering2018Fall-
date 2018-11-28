@@ -27,14 +27,20 @@ import java.util.logging.Logger;
  */
 public class Bookroom extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Book
-     */
+  
     File file = new File("./ScheduleSystem.db");
     User user;
     boolean signedIn;
     int day;
-    
+      /**
+     * Creates new form Book
+     */
+    /**
+     * Constructor initializes initial day for booking the room
+     * @param Day Day is the initial day the room is booked
+     * @throws ClassNotFoundException  Throws ClassNotFoundException if class is not found
+     * @throws SQLException Throws SQLEception if database is not connected
+     */
     public Bookroom(int Day) throws ClassNotFoundException, SQLException {
         signedIn = false;
         Class.forName("org.sqlite.JDBC");
@@ -47,7 +53,14 @@ public class Bookroom extends javax.swing.JFrame {
         this.day = Day;
         DayLabel.setText("Day: " + day);
     }
-    
+    /**
+     * Constructor initializes initial time room and day
+     * @param time time is the initial time for booking a room
+     * @param room room is  initial room to be booked
+     * @param Day day is the date in which the room should be booked
+     * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
+     * @throws SQLException  Throws SQLEception if database is not connected
+     */
     public Bookroom(String time, String room, int Day) throws ClassNotFoundException, SQLException {
         signedIn = false;
         Class.forName("org.sqlite.JDBC");
@@ -65,6 +78,13 @@ public class Bookroom extends javax.swing.JFrame {
         DayLabel.setText("Day: " + day);
         
     }
+    /**
+     * Constructor analyzes initial Day and user
+     * @param Day Day is the day in which the room is booked
+     * @param user user is the type of user can be Admin/ Student/teacher/Tutor
+     * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
+     * @throws SQLException Throws SQLEception if database is not connected
+     */
     public Bookroom(int Day, User user) throws ClassNotFoundException, SQLException {
         signedIn = true;
         this.user = user;
@@ -79,7 +99,15 @@ public class Bookroom extends javax.swing.JFrame {
         this.day = Day;
         DayLabel.setText("Day: " + day);
     }
-    
+    /**
+     * Constructor analyzes initial time room day and user who booked the room
+     * @param time time is initial time the room was booked 
+     * @param room room is the initial room which was booked
+     * @param Day Day is the initial day the room was booked on
+     * @param user User is the type of user who booked the room
+     * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
+     * @throws SQLException Throws SQLEception if database is not connected
+     */
     public Bookroom(String time, String room, int Day, User user) throws ClassNotFoundException, SQLException {
         signedIn = true;
         this.user = user;
@@ -101,6 +129,9 @@ public class Bookroom extends javax.swing.JFrame {
     }
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
     // Initializing the statement that's declared above
+    /**
+     * Statement for 
+     */
     public static Statement statement;
 
     /**
@@ -316,8 +347,8 @@ public class Bookroom extends javax.swing.JFrame {
          //Time= Time.toString();
          
         try {
-        myRequest request = new myRequest(RoomSpinner.getValue().toString() , Time , Name, Contact, myEvent, day);
-            request.save(statement);
+        myEvent myevent = new myEvent(RoomSpinner.getValue().toString() , Time , Name, Contact, myEvent, day);
+            myevent.save(statement);
         } catch (SQLException ex) {
             Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -339,7 +370,10 @@ public class Bookroom extends javax.swing.JFrame {
             Logger.getLogger(Bookroom.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_SubmitButtonActionPerformed
-
+    /**
+     * Set Method for initializing the day
+     * @param day Day is an int value which represents a day
+     */
     public void setDay(int day) {
         this.day = day;
     }

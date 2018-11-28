@@ -513,8 +513,8 @@
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="2">
-                    <StringItem index="0" value="1505"/>
-                    <StringItem index="1" value="1507"/>
+                    <StringItem index="0" value="1505    "/>
+                    <StringItem index="1" value="1507    "/>
                   </StringArray>
                 </Property>
               </Properties>
