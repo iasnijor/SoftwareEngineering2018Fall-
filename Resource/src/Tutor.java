@@ -29,6 +29,11 @@ public class Tutor extends javax.swing.JFrame {
     /**
      * Creates new form Tutor
      */
+    /**
+     * Creates New Tutor Form 
+     * @throws SQLException Throws SQLException if the database is not connected
+     * @throws ClassNotFoundException  throws ClassNotFoundException if the class is not found
+     */
     public Tutor() throws SQLException, ClassNotFoundException {
         initComponents();
         Class.forName("org.sqlite.JDBC");
@@ -41,7 +46,9 @@ public class Tutor extends javax.swing.JFrame {
     }
     // More information for DB
     private static final String DB_NAME = "jdbc:sqlite:ScheduleSystem.db";
-    // Initializing the statement that's declared above
+    /**
+    *Initializing the statement that's declared above
+    **/
     public static Statement statement;
     /**
      * This method is called from within the constructor to initialize the form.
@@ -157,7 +164,8 @@ public class Tutor extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         Tutor.this.setVisible(false);
-        Welcome1 begin = new Welcome1();
+        
+       AdminWelcome begin = new AdminWelcome();
         begin.setVisible(true);
     }//GEN-LAST:event_BackButtonActionPerformed
 
@@ -224,7 +232,11 @@ public class Tutor extends javax.swing.JFrame {
             }
         });
     }
-    
+    /**
+     * Get method for getting the tutors
+     * @param statement Statement which is declared before
+     * @throws SQLException Throws SQLException if the database is not connected 
+     */
     public void getTutors(Statement statement) throws SQLException {
         ResultSet rs = statement.executeQuery("SELECT * FROM tutor");
         

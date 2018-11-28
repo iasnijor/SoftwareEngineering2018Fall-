@@ -24,28 +24,33 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="332" max="32767" attributes="0"/>
-              <Component id="TutorLabel" min="-2" pref="517" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="453" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="AddTutorButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="356" max="-2" attributes="0"/>
-              <Component id="ViewScheduleButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="346" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="BackButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="1237" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="BackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="1231" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="TutorLabel" min="-2" pref="517" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="453" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="AddTutorButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="356" max="-2" attributes="0"/>
+                              <Component id="ViewScheduleButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="346" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
           </Group>

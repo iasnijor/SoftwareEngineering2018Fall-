@@ -128,7 +128,7 @@ public class Bookroom extends javax.swing.JFrame {
         ContactTextField = new javax.swing.JTextField();
         BackButton = new javax.swing.JButton();
         DayLabel = new javax.swing.JLabel();
-        ImageLabel = new javax.swing.JLabel();
+        YSUIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,8 +185,8 @@ public class Bookroom extends javax.swing.JFrame {
         DayLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         DayLabel.setText("Day");
 
-        ImageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Rojen\\Documents\\GitHub\\SoftwareEngineering2018Fall-\\Resource\\build\\classes\\Images\\button.jpg")); // NOI18N
-        ImageLabel.setText("jLabel1");
+        YSUIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Rojen\\Documents\\GitHub\\SoftwareEngineering2018Fall-\\Resource\\build\\classes\\Images\\button.jpg")); // NOI18N
+        YSUIcon.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -201,7 +201,7 @@ public class Bookroom extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(RoomtextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(YSUIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(151, 151, 151)
@@ -214,7 +214,7 @@ public class Bookroom extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(NameLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                                     .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +245,7 @@ public class Bookroom extends javax.swing.JFrame {
                         .addComponent(RoomtextLabel))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(ImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(YSUIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NameLabel)
@@ -415,7 +415,6 @@ public class Bookroom extends javax.swing.JFrame {
     private javax.swing.JLabel DayLabel;
     private javax.swing.JLabel EventLabel;
     private javax.swing.JTextField EventTextField;
-    private javax.swing.JLabel ImageLabel;
     private javax.swing.JLabel NameLabel;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JLabel RoomLabel;
@@ -424,6 +423,7 @@ public class Bookroom extends javax.swing.JFrame {
     private javax.swing.JButton SubmitButton;
     private javax.swing.JLabel TimeLabel;
     private javax.swing.JSpinner TimeSpinner;
+    private javax.swing.JLabel YSUIcon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

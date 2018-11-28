@@ -5,7 +5,7 @@
  */
 
 /**
- *
+ *AdminRoom Panel for allowing admin to approve and decline Room requests
  * @author Rojen
  */
 public class AdminRoom extends javax.swing.JFrame {
@@ -30,12 +30,12 @@ public class AdminRoom extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         RoomRequestTable = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        ApproveButton = new javax.swing.JButton();
+        DeclineButton = new javax.swing.JButton();
+        RoomLabel = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,10 +54,10 @@ public class AdminRoom extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackButton.setText("Back");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackButtonActionPerformed(evt);
             }
         });
 
@@ -97,17 +97,17 @@ public class AdminRoom extends javax.swing.JFrame {
         RoomRequestTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(RoomRequestTable);
 
-        jButton2.setText("Approve");
+        ApproveButton.setText("Approve");
 
-        jButton3.setText("Decline");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        DeclineButton.setText("Decline");
+        DeclineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                DeclineButtonActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setText("Room Requests");
+        RoomLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        RoomLabel.setText("Room Requests");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,14 +121,14 @@ public class AdminRoom extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addComponent(BackButton)
                         .addGap(440, 440, 440)
-                        .addComponent(jLabel1))
+                        .addComponent(RoomLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(448, 448, 448)
-                        .addComponent(jButton2)
+                        .addComponent(ApproveButton)
                         .addGap(83, 83, 83)
-                        .addComponent(jButton3)))
+                        .addComponent(DeclineButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,16 +137,16 @@ public class AdminRoom extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jButton1))
+                        .addComponent(BackButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(jLabel1)))
+                        .addComponent(RoomLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(ApproveButton)
+                    .addComponent(DeclineButton))
                 .addGap(36, 36, 36))
         );
 
@@ -167,17 +167,23 @@ public class AdminRoom extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+/**
+ * Back Button takes to the previous window for the admin
+ * @param evt evt is and ActionEvent
+ */
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         AdminRoom.this.setVisible(false);
         AdminWelcome wel= new AdminWelcome();
         wel.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BackButtonActionPerformed
+    /**
+     * 
+     * @param evt 
+     */
+    private void DeclineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeclineButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_DeclineButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,13 +219,14 @@ public class AdminRoom extends javax.swing.JFrame {
             }
         });
     }
-
+// variables for different Buttons and Labels
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ApproveButton;
+    private javax.swing.JButton BackButton;
+    private javax.swing.JButton DeclineButton;
+    private javax.swing.JLabel RoomLabel;
     private javax.swing.JTable RoomRequestTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -221,8 +221,18 @@ public class Resource extends javax.swing.JFrame {
             begin.setVisible(true);
         }
         else {
+            if(user.getLevel().equals("Teacher")){;
             Welcome1 begin = new Welcome1(user);
             begin.setVisible(true);
+            }
+              else  if(user.getLevel().equals("Teacher")){;
+            Welcome1 begin = new Welcome1(user);
+            begin.setVisible(true);
+            }
+             else if(user.getLevel().equals("Tutor")){
+                TutorWelcome wel= new TutorWelcome();
+                wel.setVisible(true);
+            }
         }
     }//GEN-LAST:event_BackButtonActionPerformed
 
