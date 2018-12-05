@@ -295,7 +295,7 @@
             <Component class="javax.swing.JList" name="CalculusList">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
+                  <StringArray count="9">
                     <StringItem index="0" value="1552"/>
                     <StringItem index="1" value="1570"/>
                     <StringItem index="2" value="1571"/>
@@ -305,7 +305,6 @@
                     <StringItem index="6" value="2670"/>
                     <StringItem index="7" value="2673"/>
                     <StringItem index="8" value="3705"/>
-                    <StringItem index="9" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -513,8 +512,8 @@
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="2">
-                    <StringItem index="0" value="1505    "/>
-                    <StringItem index="1" value="1507    "/>
+                    <StringItem index="0" value="1505"/>
+                    <StringItem index="1" value="1507"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -537,12 +536,11 @@
             <Component class="javax.swing.JList" name="StatisticsList">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
+                  <StringArray count="4">
                     <StringItem index="0" value="2623"/>
                     <StringItem index="1" value="2601"/>
                     <StringItem index="2" value="2625"/>
                     <StringItem index="3" value="3717"/>
-                    <StringItem index="4" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -565,11 +563,10 @@
             <Component class="javax.swing.JList" name="PreCalcList">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="4">
+                  <StringArray count="3">
                     <StringItem index="0" value="1510"/>
                     <StringItem index="1" value="1511"/>
                     <StringItem index="2" value="1513"/>
-                    <StringItem index="3" value="    "/>
                   </StringArray>
                 </Property>
               </Properties>

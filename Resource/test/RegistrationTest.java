@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -41,12 +42,15 @@ public class RegistrationTest {
      */
     @Test
     public void testMain() {
-        System.out.println("main");
+        System.out.println("Registration main, testing for registration is done in form");
         String[] args = null;
         Registration.main(args);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
+    
+    //myUser user = new myUser(name, username, passwordString, email, level);
+    //                user.save(statement);
     
 }
 

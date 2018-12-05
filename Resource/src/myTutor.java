@@ -29,6 +29,7 @@ public class myTutor {
     String thurs;
     String fri;
     
+    public myTutor() {}
     public myTutor(String name, 
             String algebra, String precalc, String calc, String stats, 
             String contact, String mon, String tues, String wed, String thurs, String fri) {

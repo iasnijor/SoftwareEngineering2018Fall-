@@ -30,7 +30,7 @@ public class Bookroom extends javax.swing.JFrame {
 
   
     File file = new File("./ScheduleSystem.db");
-    User user;
+    myUser user;
     boolean signedIn;
     int day;
       /**
@@ -86,7 +86,7 @@ public class Bookroom extends javax.swing.JFrame {
      * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
      * @throws SQLException Throws SQLEception if database is not connected
      */
-    public Bookroom(int Day, User user) throws ClassNotFoundException, SQLException {
+    public Bookroom(int Day, myUser user) throws ClassNotFoundException, SQLException {
         signedIn = true;
         this.user = user;
         Class.forName("org.sqlite.JDBC");
@@ -105,11 +105,11 @@ public class Bookroom extends javax.swing.JFrame {
      * @param time time is initial time the room was booked 
      * @param room room is the initial room which was booked
      * @param Day Day is the initial day the room was booked on
-     * @param user User is the type of user who booked the room
+     * @param user myUser is the type of user who booked the room
      * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
      * @throws SQLException Throws SQLEception if database is not connected
      */
-    public Bookroom(String time, String room, int Day, User user) throws ClassNotFoundException, SQLException {
+    public Bookroom(String time, String room, int Day, myUser user) throws ClassNotFoundException, SQLException {
         signedIn = true;
         this.user = user;
         Class.forName("org.sqlite.JDBC");
@@ -361,9 +361,24 @@ public class Bookroom extends javax.swing.JFrame {
 
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
         // TODO add your handling code here:
-
-        submit();
-
+        if(NameTextField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Enter Name");
+        }
+        else if(ContactTextField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Enter Contact Information");
+        }
+        else if(RoomSpinner.getValue().toString().equals("")) {
+            JOptionPane.showMessageDialog(this, "Enter Room");
+        }
+        else if(EventTextField.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Enter Event Name");
+        }
+        else if(TimeSpinner.getValue().toString().equals("")) {
+            JOptionPane.showMessageDialog(this, "Enter Time");
+        }
+        else {
+            submit();
+        }
     }//GEN-LAST:event_SubmitButtonActionPerformed
     /**
      * Set Method for initializing the day

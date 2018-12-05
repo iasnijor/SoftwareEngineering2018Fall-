@@ -329,7 +329,7 @@ public class SignIn extends javax.swing.JFrame {
                     System.out.println("Accepted");
                     String[] userpart = user.split("@");
 
-                    User newuser = new User(resultSet.getString("name"), userpart[0], passwordString, user, resultSet.getString("level"));
+                    myUser newuser = new myUser(resultSet.getString("name"), userpart[0], passwordString, user, resultSet.getString("level"));
                     SignIn.this.setVisible(false);
                     
                     if (newuser.getLevel().equals("student")) {

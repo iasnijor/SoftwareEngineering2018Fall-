@@ -8,7 +8,7 @@ import java.util.logging.Logger;
  */
 public class Welcome1 extends javax.swing.JFrame {
 
-    private User user;
+    private myUser user;
     private boolean signedIn;
     /**
      * Creates new form NewJFrame
@@ -22,15 +22,18 @@ public class Welcome1 extends javax.swing.JFrame {
      * Creates a new Welcome form with a type of user
      * @param user  user  is type of user which is accessing the welcome window
      */
-    public Welcome1(User user) {
+    public Welcome1(myUser user) {
         
         initComponents();
+        
         signedIn = true;
         this.user = user;
+        
         NotSignInLabel.setText("Hello " + this.user.getName());
         SignInButton.setVisible(false);
         SignOutButton.setVisible(true);
-        System.out.println(user.getName());
+        
+        System.out.println(this.user.getName());
     }
 
     @SuppressWarnings("unchecked")
@@ -245,8 +248,21 @@ public class Welcome1 extends javax.swing.JFrame {
         //tutor.setVisible(true);
 
         //try {
-            ViewTutor tutor = new ViewTutor();
-            tutor.setVisible(true);
+            ViewTutor tutor;
+        try {
+            if(signedIn) {
+                tutor = new ViewTutor(this.user);
+                tutor.setVisible(true);
+            }
+            else {
+                tutor = new ViewTutor();
+                tutor.setVisible(true);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Welcome1.class.getName()).log(Level.SEVERE, null, ex);
+        }
         //} catch (SQLException ex) {
           //  Logger.getLogger(Beginning.class.getName()).log(Level.SEVERE, null, ex);
         //} catch (ClassNotFoundException ex) {

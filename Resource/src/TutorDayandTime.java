@@ -20,7 +20,7 @@ public class TutorDayandTime extends javax.swing.JFrame {
      * Creates new form TutorDayandTime
      */
     myTutor mytutor;
-    User user;
+    myUser user;
     private boolean signedIn;
 /**
  * Creates a New TutorDayandTime form
@@ -39,7 +39,7 @@ public class TutorDayandTime extends javax.swing.JFrame {
         statement.close();
     }
     
-    public TutorDayandTime(User user, myTutor tutor, Statement statement) throws SQLException {
+    public TutorDayandTime(myUser user, myTutor tutor, Statement statement) throws SQLException {
         this.user = user;
         signedIn = true;
         mytutor = tutor;
@@ -153,14 +153,19 @@ public class TutorDayandTime extends javax.swing.JFrame {
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
         TutorDayandTime.this.setVisible(false);
-        if (user.getLevel().equals("Admin")){
-            AdminWelcome wel = new AdminWelcome();
-            wel.setVisible(true);
+        if (user.getLevel().equals("admin")){
+            Tutor tutor;
+            try {
+                tutor = new Tutor(user);
+                tutor.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else{
-        Tutor tutor;
+        TutorWelcome tutor;
         try {
-            tutor = new Tutor();
+            tutor = new TutorWelcome(user);
             tutor.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);
@@ -176,7 +181,7 @@ public class TutorDayandTime extends javax.swing.JFrame {
         TutorAdd tutor;
         
         try {
-            tutor = new TutorAdd(true, mytutor);
+            tutor = new TutorAdd(user, true, mytutor);
             tutor.setVisible(true);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TutorDayandTime.class.getName()).log(Level.SEVERE, null, ex);

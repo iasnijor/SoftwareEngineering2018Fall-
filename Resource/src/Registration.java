@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,10 +19,14 @@ import java.util.logging.Logger;
  *
  * @author Sean-
  */
-public class Registration extends javax.swing.JFrame {
-    
-    File file = new File("./ScheduleSystem.db");
 
+public class Registration extends javax.swing.JFrame {
+    File file = new File("./ScheduleSystem.db");
+        String name;
+        String username;
+        String passwordString = "";
+        String email;
+        String level;
     
     /**
      *  Creates new form Registration
@@ -85,6 +91,12 @@ public class Registration extends javax.swing.JFrame {
 
         FirstTextField.setToolTipText("");
 
+        EmailTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailTextFieldActionPerformed(evt);
+            }
+        });
+
         EmailLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         EmailLabel.setText("Email");
 
@@ -101,7 +113,7 @@ public class Registration extends javax.swing.JFrame {
             }
         });
 
-        UserSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"Student", "Faculty"}));
+        UserSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"Student", "Tutor", "Faculty", "Admin"}));
 
         UserLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         UserLabel.setText("User Type");
@@ -211,45 +223,7 @@ public class Registration extends javax.swing.JFrame {
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
         // TODO add your handling code here:
-        String name;
-        String username;
-        String passwordString = "";
-        String email;
-        String level;
-        
-        name = FirstTextField.getText() + " " + LastTextField.getText();
-        
-        email = EmailTextField.getText();
-        
-        String[] emailparts;
-        emailparts = email.split("@");
-        username = emailparts[0];
-        
-        char[] password = PasswordField.getPassword();
-        for (int i = 0; i < password.length; i++)
-            passwordString += password[i];
-        
-        level = UserSpinner.getValue().toString();
-        
-        User user = new User(name, username, passwordString, email, level);
-        try {
-            user.save(statement);
-        } catch (SQLException ex) {
-            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        System.out.println("Registered");
-        
-        Registration.this.setVisible(false);
-        SignIn signin;
-        try {
-            signin = new SignIn();
-            signin.setVisible(true);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        register();
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
@@ -265,6 +239,10 @@ public class Registration extends javax.swing.JFrame {
             Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void EmailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,6 +283,101 @@ public class Registration extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    
+    public void register() {
+        boolean good = false;
+
+        
+        name = FirstTextField.getText() + " " + LastTextField.getText();
+        
+        email = EmailTextField.getText();
+        
+        String[] emailparts;
+        emailparts = email.split("@");
+        username = emailparts[0];
+        
+        
+        
+        char[] password = PasswordField.getPassword();
+        for (int i = 0; i < password.length; i++)
+            passwordString += password[i];
+        
+        level = UserSpinner.getValue().toString();
+        
+        if(level.equals("Admin")) {
+            String code = JOptionPane.showInputDialog(this, "Enter Admin Code:");
+            if (code.equals("RSAdmin")) {
+                good = true;
+                try {
+                    myUser user = new myUser(name, username, passwordString, email, level);
+                    user.save(statement);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Incorrect Admin Code");
+                good = false;
+            }
+        }
+        else if(level.equals("Faculty")) {
+            String code = JOptionPane.showInputDialog(this, "Enter Faculty Code:");
+            if (code.equals("MATHFaculty")) {
+                good = true;
+                try {
+                    myUser user = new myUser(name, username, passwordString, email, level);
+                    user.save(statement);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Incorrect Faculty Code");
+                good = false;
+            }
+        }
+        else if(level.equals("Tutor")) {
+            String code = JOptionPane.showInputDialog(this, "EnterFaculty Code:");
+            if (code.equals("MACTutor")) {
+                good = true;
+                try {
+                    myUser user = new myUser(name, username, passwordString, email, level);
+                    user.save(statement);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Incorrect Tutor Code");
+                good = false;
+            }
+        }
+        
+        else {
+            good = true;
+            try {
+                    myUser user = new myUser(name, username, passwordString, email, level);
+                    user.save(statement);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+        
+        
+        if (good) {
+            System.out.println("Registered");
+            Registration.this.setVisible(false);
+            SignIn signin;
+            try {
+                signin = new SignIn();
+                signin.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

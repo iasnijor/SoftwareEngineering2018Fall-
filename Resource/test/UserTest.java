@@ -38,25 +38,25 @@ public class UserTest {
     }
 
     /**
-     * Test of save method, of class User.
+     * Test of save method, of class myUser.
      */
     @Test
     public void testSave() throws Exception {
         System.out.println("save");
         Statement statement = null;
-        User instance = null;
+        myUser instance = null;
         instance.save(statement);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getName method, of class User.
+     * Test of getName method, of class myUser.
      */
     @Test
     public void testGetName() {
         System.out.println("getName");
-        User instance = null;
+        myUser instance = null;
         String expResult = "";
         String result = instance.getName();
         assertEquals(expResult, result);
@@ -65,12 +65,12 @@ public class UserTest {
     }
 
     /**
-     * Test of getLevel method, of class User.
+     * Test of getLevel method, of class myUser.
      */
     @Test
     public void testGetLevel() {
         System.out.println("getLevel");
-        User instance = null;
+        myUser instance = null;
         String expResult = "";
         String result = instance.getLevel();
         assertEquals(expResult, result);

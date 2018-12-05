@@ -24,7 +24,7 @@ public class TutorAdd extends javax.swing.JFrame {
      * Creates new form TutorAdd
      */
     File file = new File("./ScheduleSystem.db");
-    User user;
+    myUser user;
     myTutor tutor;
     boolean edit;
     boolean signedIn;
@@ -68,7 +68,7 @@ public class TutorAdd extends javax.swing.JFrame {
         }
     }
 
-    public TutorAdd(User user) throws ClassNotFoundException, SQLException {
+    public TutorAdd(myUser user) throws ClassNotFoundException, SQLException {
         signedIn = true;
         this.user = user;
         initComponents();
@@ -77,7 +77,7 @@ public class TutorAdd extends javax.swing.JFrame {
         statement = connection.createStatement();
     }
     
-    public TutorAdd(User user, boolean edit, myTutor tutor) throws ClassNotFoundException, SQLException {
+    public TutorAdd(myUser user, boolean edit, myTutor tutor) throws ClassNotFoundException, SQLException {
         signedIn = true;
         this.user = user;
         initComponents();
@@ -194,7 +194,7 @@ public class TutorAdd extends javax.swing.JFrame {
         jScrollPane1.setToolTipText("");
 
         CalculusList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "1552", "1570", "1571", "1572", "1580", "1581", "2670", "2673", "3705", " " };
+            String[] strings = { "1552", "1570", "1571", "1572", "1580", "1581", "2670", "2673", "3705" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -258,7 +258,7 @@ public class TutorAdd extends javax.swing.JFrame {
         jScrollPane4.setToolTipText("");
 
         AlgebraList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "1505    ", "1507    " };
+            String[] strings = { "1505", "1507" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -267,7 +267,7 @@ public class TutorAdd extends javax.swing.JFrame {
         jScrollPane5.setToolTipText("");
 
         StatisticsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "2623", "2601", "2625", "3717", " " };
+            String[] strings = { "2623", "2601", "2625", "3717" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -276,7 +276,7 @@ public class TutorAdd extends javax.swing.JFrame {
         jScrollPane6.setToolTipText("");
 
         PreCalcList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "1510", "1511", "1513", "    " };
+            String[] strings = { "1510", "1511", "1513" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -545,8 +545,21 @@ public class TutorAdd extends javax.swing.JFrame {
         TutorAdd.this.setVisible(false);
         Tutor tutor;
         try {
-            tutor = new Tutor();
-            tutor.setVisible(true);
+            if (signedIn) {
+                TutorDayandTime dayandtime;
+                if (user.getLevel().equals("tutor")) {
+                    dayandtime = new TutorDayandTime(user, this.tutor, statement);
+                    dayandtime.setVisible(true);
+                }
+                else {
+                    tutor = new Tutor(user);
+                    tutor.setVisible(true);
+                }
+            }
+            else {
+                tutor = new Tutor();
+                tutor.setVisible(true);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TutorAdd.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -608,7 +621,7 @@ public class TutorAdd extends javax.swing.JFrame {
         
         for(int i = 0; i < AlgebraList1.getModel().getSize(); i++) {
             if(tutor.getAlgebra().contains(", " + AlgebraList1.getModel().getElementAt(i) + ", ") || 
-                    tutor.getAlgebra().startsWith(AlgebraList1.getModel().getElementAt(i) + ", "))
+                    tutor.getAlgebra().startsWith(AlgebraList1.getModel().getElementAt(i)))
                 alg.add(i);
         }
         for(int i = 0; i < PreCalcList.getModel().getSize(); i++) {
@@ -626,6 +639,9 @@ public class TutorAdd extends javax.swing.JFrame {
                     tutor.getStats().startsWith(StatisticsList.getModel().getElementAt(i) + ", "))
                 stat.add(i);
         }
+        System.out.println("'" + alg.toString() + "'");
+        System.out.println("'" + pre.toString() + "'");
+        
         AlgebraList1.setSelectedIndices(asArray(alg));
         PreCalcList.setSelectedIndices(asArray(pre));
         CalculusList.setSelectedIndices(asArray(calc));
@@ -662,6 +678,7 @@ public class TutorAdd extends javax.swing.JFrame {
         FridayList.setSelectedIndices(asArray(friday));
         
     }
+        
     /**
      * Methods for initializing day of the tutor
      * @param day Day is an array list of day

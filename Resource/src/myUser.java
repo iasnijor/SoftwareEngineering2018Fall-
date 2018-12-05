@@ -7,7 +7,7 @@ import java.sql.Statement;
  *
  * @author Sean-
  */
-public class User {
+public class myUser {
     private String name;
     private String username;
     private String password;
@@ -16,7 +16,7 @@ public class User {
     
     private String level;
     
-    public User(String name, String username, String password, String email, String level) {
+    public myUser(String name, String username, String password, String email, String level) {
         this.name = name;
         this.username = username;
         this.password = password;
@@ -72,6 +72,10 @@ public class User {
     
     public String getLevel() {
         return level.toLowerCase();
+    }
+    
+    public String getUser() {
+        return username;
     }
     
 }

@@ -84,7 +84,7 @@ public class myRequest {
         
         while (resultSet.next()) {
             if (resultSet.getString("room").equals(newRoom) && newtime == resultSet.getInt("time") && newDay == resultSet.getInt("day")) {
-                
+                System.out.println("Request not good");
                 return false;
             }
         }

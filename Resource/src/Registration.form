@@ -172,6 +172,9 @@
         <Component class="javax.swing.JTextField" name="LastTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="EmailTextField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmailTextFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="EmailLabel">
           <Properties>
@@ -211,7 +214,9 @@
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel type="list">
                 <ListItem value="Student"/>
+                <ListItem value="Tutor"/>
                 <ListItem value="Faculty"/>
+                <ListItem value="Admin"/>
               </SpinnerModel>
             </Property>
           </Properties>

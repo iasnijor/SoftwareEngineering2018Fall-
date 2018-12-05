@@ -3,40 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Resource.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/MouseListener.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Registration.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/TutorWelcome.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/AdminRoom.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Tutor.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/ViewTutor.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/SignIn.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/TutorDayandTime.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Welcome1.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/AdminWelcome.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Schedule.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Room.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Bookroom.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/TutorAdd.java</file>
-            <file>file:/C:/Users/Rojen/Documents/GitHub/SoftwareEngineering2018Fall-/Resource/src/Student.java</file>
-=======
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/Tutor.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/ViewTutor.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/TutorDayandTime.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/TutorWelcome.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/AdminWelcome.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/myTutor.java</file>
+            <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/TutorBook.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/AdminRoom.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/Resource.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/myRequest.java</file>
-            <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/Day.java</file>
+            <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/test/AdminRoomTest.java</file>
+            <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/myUser.java</file>
+            <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/Registration.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/SignIn.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/TutorAdd.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/myEvent.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/Welcome1.java</file>
             <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/Bookroom.java</file>
->>>>>>> d2edd46cae3aceab88af509d5daf8ac01d57985e
+            <file>file:/C:/Users/Sean-/hi4/SoftwareEngineering2018Fall-/Resource/src/mySession.java</file>
         </group>
     </open-files>
 </project-private>

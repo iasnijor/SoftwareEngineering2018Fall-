@@ -54,6 +54,7 @@ public class ResourceTest {
      */
     @Test
     public void testGetDay() {
+        myUser newuser = new myUser("Sean", "srkeyse", "password", "srkeyse", "admin");
         System.out.println("getDay");
         Resource instance = new Resource();
         int expResult = 0;

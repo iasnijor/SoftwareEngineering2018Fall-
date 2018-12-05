@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class Resource extends javax.swing.JFrame {
 
     File file = new File("./ScheduleSystem.db");
-    User user;   
+    myUser user;   
     private boolean signedIn;
     
     /**
@@ -35,11 +35,11 @@ public class Resource extends javax.swing.JFrame {
     
     /**
      * Creates new Room Scheduling Form with a type of user
-     * @param user User is the type of user using the form 
+     * @param user myUser is the type of user using the form 
      * @throws ClassNotFoundException Throws ClassNotFoundException if class is not found
      * @throws SQLException Throws SQLException if database is not connected
      */
-    public Resource(User user) throws ClassNotFoundException, SQLException {
+    public Resource(myUser user) throws ClassNotFoundException, SQLException {
         initComponents();
         signedIn = true;
         this.user = user;
@@ -234,18 +234,14 @@ public class Resource extends javax.swing.JFrame {
             begin.setVisible(true);
         }
         else {
-            if(user.getLevel().equals("Teacher")){;
-            Welcome1 begin = new Welcome1(user);
-            begin.setVisible(true);
+            if(user.getLevel().equals("teacher") || user.getLevel().equals("student")){
+                Welcome1 begin = new Welcome1(user);
+                begin.setVisible(true);
             }
-              else  if(user.getLevel().equals("Teacher")){;
-            Welcome1 begin = new Welcome1(user);
-            begin.setVisible(true);
-            }
-             else if(user.getLevel().equals("Tutor")){
+            else if(user.getLevel().equals("tutor")){
                 TutorWelcome wel;
                 try {
-                    wel = new TutorWelcome();
+                    wel = new TutorWelcome(user);
                     wel.setVisible(true);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(Resource.class.getName()).log(Level.SEVERE, null, ex);

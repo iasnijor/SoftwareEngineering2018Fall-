@@ -27,7 +27,7 @@ public class Tutor extends javax.swing.JFrame {
     File file = new File("./ScheduleSystem.db");
     ArrayList<myTutor> tutors = new ArrayList();
     boolean signedIn;
-    User user;
+    myUser user;
     /**
      * Creates new form Tutor
      */
@@ -47,7 +47,7 @@ public class Tutor extends javax.swing.JFrame {
         getTutors(statement);
     }
     
-    public Tutor(User user) throws ClassNotFoundException {
+    public Tutor(myUser user) throws ClassNotFoundException {
         this.user = user;
         signedIn = true;
         initComponents();
@@ -185,10 +185,13 @@ public class Tutor extends javax.swing.JFrame {
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         // TODO add your handling code here:
-        Tutor.this.setVisible(false);
         
-       AdminWelcome begin = new AdminWelcome();
-        begin.setVisible(true);
+       Tutor.this.setVisible(false);
+
+        AdminWelcome wel = new AdminWelcome(user);
+        wel.setVisible(true);
+            
+        
 
     }//GEN-LAST:event_BackButtonActionPerformed
 
@@ -198,23 +201,15 @@ public class Tutor extends javax.swing.JFrame {
         myTutor mytutor = tutors.get(selectedIndex);
         Tutor.this.setVisible(false);
         
-        if (signedIn) {
-            TutorDayandTime dayandtime;
-            try {
-                dayandtime = new TutorDayandTime(user, mytutor, statement);
-            dayandtime.setVisible(true);
-            } catch (SQLException ex) {
-                Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else {
-            TutorDayandTime dayandtime;
-            try {
-                dayandtime = new TutorDayandTime(mytutor, statement);
+        try {
+            if (signedIn) {
+                TutorDayandTime dayandtime = new TutorDayandTime(user, mytutor, statement);
                 dayandtime.setVisible(true);
-            } catch (SQLException ex) {
-                Logger.getLogger(Tutor.class.getName()).log(Level.SEVERE, null, ex);
+            } else {
+                TutorDayandTime dayandtime = new TutorDayandTime(mytutor, statement);
+                dayandtime.setVisible(true);
             }
+        } catch (SQLException sQLException) {
         }
         
     }//GEN-LAST:event_ViewScheduleButtonActionPerformed
@@ -294,6 +289,8 @@ public class Tutor extends javax.swing.JFrame {
             rs.getString("mon"), rs.getString("tues"), rs.getString("wed"), rs.getString("thurs"), rs.getString("fri")));
             
         }
+        
+        System.out.println(tutors.toString());
         
         for(int i = 0; i<tutors.size(); i++) {
             TutorTable.setValueAt(tutors.get(i).getName(), i, 0);

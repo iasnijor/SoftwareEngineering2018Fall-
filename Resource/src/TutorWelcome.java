@@ -26,7 +26,7 @@ public class TutorWelcome extends javax.swing.JFrame {
      * Creates new form Welcome3
      */
     File file = new File("./ScheduleSystem.db");
-    private User user;
+    private myUser user;
     private boolean signedIn;
     /**
      * Creates new form NewJFrame
@@ -43,7 +43,7 @@ public class TutorWelcome extends javax.swing.JFrame {
         statement = connection.createStatement();
     }
     
-    public TutorWelcome(User user) throws ClassNotFoundException, SQLException {
+    public TutorWelcome(myUser user) throws ClassNotFoundException, SQLException {
         
         initComponents();
         signedIn = true;
@@ -79,16 +79,12 @@ public class TutorWelcome extends javax.swing.JFrame {
         TheMACIcon = new javax.swing.JLabel();
         YSULabel = new javax.swing.JLabel();
         YoungstownLabel = new javax.swing.JLabel();
-        RoomButton = new javax.swing.JButton();
-        ScheduleButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         SignInButton = new javax.swing.JButton();
         SignOutButton = new javax.swing.JButton();
         NotSignInLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Resource Scheduling System - Tutor");
 
         WelcomeLabel.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         WelcomeLabel.setText("                    Welcome to Math Resource Scheduling ");
@@ -109,8 +105,7 @@ public class TutorWelcome extends javax.swing.JFrame {
             }
         });
 
-        TheMACIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/The MAC Logo w Kate Penguin 2.png"))); // NOI18N
-
+        TheMACIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/Images/MAC_Logo.png"))); // NOI18N
 
         YSULabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         YSULabel.setText("Youngstown State Univeristy");
@@ -149,7 +144,6 @@ public class TutorWelcome extends javax.swing.JFrame {
                         .addComponent(RoomScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
                         .addComponent(ViewSchdeuleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-
                 .addContainerGap(333, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -183,7 +177,6 @@ public class TutorWelcome extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RoomScheduleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ViewSchdeuleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -239,10 +232,25 @@ public class TutorWelcome extends javax.swing.JFrame {
     }//GEN-LAST:event_RoomScheduleButtonActionPerformed
 
     private void ViewSchdeuleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewSchdeuleButtonActionPerformed
-        // TODO add your handling code here:
-        TutorWelcome.this.setVisible(false);
-        TutorDayandTime tutor = new TutorDayandTime();
-        tutor.setVisible(true);
+        myTutor mytutor;
+        try {
+            if (signedIn) {
+            TutorWelcome.this.setVisible(false);
+            
+            ResultSet rs = statement.executeQuery("SELECT * FROM tutor WHERE name = '" + user.getName() + "'");
+            
+            mytutor = new myTutor(rs.getString("name"), rs.getString("algebra"), rs.getString("precalc"), rs.getString("calc"), rs.getString("stats"), rs.getString("contact"),
+            rs.getString("mon"), rs.getString("tues"), rs.getString("wed"), rs.getString("thurs"), rs.getString("fri"));
+            
+            TutorDayandTime tutor = new TutorDayandTime(user, mytutor, statement);
+            tutor.setVisible(true);
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Please Sign In.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TutorWelcome.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ViewSchdeuleButtonActionPerformed
 
                                               
@@ -340,20 +348,15 @@ public class TutorWelcome extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel NotSignInLabel;
     private javax.swing.JButton RoomScheduleButton;
+    private javax.swing.JButton SignInButton;
+    private javax.swing.JButton SignOutButton;
     private javax.swing.JLabel TheMACIcon;
     private javax.swing.JButton ViewSchdeuleButton;
     private javax.swing.JLabel WelcomeLabel;
     private javax.swing.JLabel YSULabel;
     private javax.swing.JLabel YoungstownLabel;
-    private javax.swing.JLabel NotSignInLabel;
-    private javax.swing.JButton RoomButton;
-    private javax.swing.JButton ScheduleButton;
-    private javax.swing.JButton SignInButton;
-    private javax.swing.JButton SignOutButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

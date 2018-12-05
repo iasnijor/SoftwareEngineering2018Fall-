@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -27,7 +28,7 @@ public class AdminRoom extends javax.swing.JFrame {
      */
     // path to db
     File file = new File("./ScheduleSystem.db");
-    User user;
+    myUser user;
     boolean first = true;
     ArrayList<myRequest> requests = new ArrayList();
     
@@ -37,7 +38,7 @@ public class AdminRoom extends javax.swing.JFrame {
         initComponents();
     }
     
-    public AdminRoom(User user) {
+    public AdminRoom(myUser user) {
         initComponents();
         this.user = user;
         signedIn = true;
@@ -103,18 +104,9 @@ public class AdminRoom extends javax.swing.JFrame {
             }
         });
 
+        RoomRequestTable.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         RoomRequestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -140,7 +132,6 @@ public class AdminRoom extends javax.swing.JFrame {
         jScrollPane2.setViewportView(RoomRequestTable);
 
         ApproveButton.setText("Approve");
-
         ApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ApproveButtonActionPerformed(evt);
@@ -239,7 +230,20 @@ public class AdminRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void DeclineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeclineButtonActionPerformed
-        // TODO add your handling code here:
+        int index = RoomRequestTable.getSelectedRow();
+        try {
+            removeRequest(index);
+            AdminRoom.this.setVisible(false);
+            AdminRoom newad = new AdminRoom(user);
+            newad.setVisible(true);
+            //RoomRequestTable.removeAll();
+            
+            getRequests();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRoom.class.getName()).log(Level.SEVERE, null, ex);
+        }
+// TODO add your handling code here:
     }//GEN-LAST:event_DeclineButtonActionPerformed
 
     private void ApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApproveButtonActionPerformed
@@ -301,8 +305,8 @@ public class AdminRoom extends javax.swing.JFrame {
     
     public void getRequests() throws SQLException {
         ResultSet rs;
-        statement.cancel();
-        statement.close();
+        //statement.cancel();
+        //statement.close();
         rs = statement.executeQuery("SELECT * FROM request");
         
             
@@ -326,6 +330,21 @@ public class AdminRoom extends javax.swing.JFrame {
         newEvent.save(statement);
         selectedRequest.removeRequest(statement);
         requests.remove(index);
+    }
+    
+    public void removeRequest(int index) throws SQLException {
+        if(RoomRequestTable.getSelectedRow() != -1 && !(RoomRequestTable.getValueAt(RoomRequestTable.getSelectedRow(), 0) == null)) {
+            myRequest selectedRequest = new myRequest(requests.get(index));
+            selectedRequest.removeRequest(statement);
+            requests.remove(index);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Select a Request");
+        }
+    }
+    
+    public void removeEvent(String contact) {
+        
     }
 
 

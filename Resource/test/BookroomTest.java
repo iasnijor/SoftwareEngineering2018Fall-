@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,19 +38,6 @@ public class BookroomTest {
     }
 
     /**
-     * Test of setDay method, of class Bookroom.
-     */
-    @Test
-    public void testSetDay() {
-        System.out.println("setDay");
-        int day = 0;
-        Bookroom instance = null;
-        instance.setDay(day);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of main method, of class Bookroom.
      */
     @Test
@@ -58,8 +46,22 @@ public class BookroomTest {
         String[] args = null;
         Bookroom.main(args);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Bookroom Main :)");
     }
     
+    @Test
+    public void testSubmit() throws ClassNotFoundException, SQLException {
+        //String Name = NameTextField.getText();
+        //String Contact= ContactTextField.getText();
+        //String myEvent= EventTextField.getText();
+        //Object Room= RoomSpinner.getValue();
+        //Room=Room.toString();
+        myUser newuser = new myUser("Sean", "srkeyse", "password", "srkeyse", "admin");
+        Bookroom instance = new Bookroom("4", "Conference Small", 66, newuser);
+        instance.submit();
+        
+        if(Bookroom.statement.executeUpdate("DELETE FROM event WHERE name = 'Sean' AND day = '66';") == -1)
+            fail("Event Doesn't Exist");
+    }
 }
 
